@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi Crossover Smith | Academia em casa | MegaGym</title>
+<meta name="description" content="Multi Crossover Smith MegaGym: smith, crossover, rack de supino e agachamento, pulley, remada e barra fixa numa estação de 2,20 m que não precisa ser fixada. Veja se cabe na sua casa. A partir de R$ 14.890 no Pix ou 15x sem juros.">
+<meta name="theme-color" content="#fc5400">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/smith-cut.webp">
+<style>
+:root{
+  --orange:#fc5400;
+  --ink:#0a0a0a;
+  --ink-2:#1c1c1c;
+  --paper:#eeebe6;
+  --stone:#d6d0c6;
+  --white:#ffffff;
+  --muted-ink:#3d3a36;
+  --muted-paper:#b9b4ad;
+  --display:"Barlow Condensed", Impact, sans-serif;
+  --body:"Manrope", system-ui, sans-serif;
+  --m:clamp(16px,2.4vw,40px);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --r:28px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--orange);color:var(--ink)}
+.wrap{padding:0 var(--m);max-width:1600px;margin:0 auto}
+.d{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.ch-ink :focus-visible,.ch-photo :focus-visible{outline-color:var(--orange)}
+section{position:relative}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* botão único da página: retângulo de cantos retos */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:16px 28px;background:var(--orange);color:var(--ink);font-family:var(--body);font-weight:800;font-size:16px;text-decoration:none;transition:transform .2s var(--ease),background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:18px;height:18px;transition:transform .25s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn.dark{background:var(--ink);color:var(--white)}
+
+/* cantos fixos: marca e ação, com a tinta do capítulo embaixo */
+.corner{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:18px var(--m);pointer-events:none}
+.corner>*{pointer-events:auto}
+.mark{display:block;width:150px;height:39px;background:currentColor;-webkit-mask:url(assets/logo.png) left center/contain no-repeat;mask:url(assets/logo.png) left center/contain no-repeat;color:var(--ink);transition:color .3s}
+.corner .btn{min-height:46px;padding:11px 20px;font-size:15px;transition:background .3s,color .3s,transform .2s var(--ease)}
+body[data-ch="orange"] .corner .btn{background:var(--ink);color:var(--white)}
+body[data-ch="ink"] .mark,body[data-ch="photo"] .mark{color:var(--white)}
+@media (max-width:640px){.mark{width:118px;height:31px}.corner{padding:14px 16px}.corner .btn{min-height:44px;padding:10px 16px;font-size:14px}}
+
+/* ---------- HERO ---------- */
+.hero{background:var(--orange);min-height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,15vh,150px) 0 var(--m)}
+.hero>.wrap{width:100%}
+.hero h1{font-size:clamp(84px,12.5vw,220px);line-height:.82;letter-spacing:-.03em;position:relative;z-index:3}
+.hero h1 span{display:block}
+.hero h1 .l1{color:var(--white)}
+.hero h1 .l2{color:var(--ink)}
+.hero-smith{position:absolute;z-index:2;right:max(2vw,8px);bottom:-12vh;height:min(104vh,1100px);width:auto;max-width:none;pointer-events:none}
+.hero-foot{position:relative;z-index:3;display:grid;grid-template-columns:minmax(0,560px);gap:18px;margin-top:40px}
+.hero-foot p{font-size:20px;font-weight:600;max-width:34ch}
+.hero-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+.hero-price b{font-family:var(--display);font-weight:900;font-size:clamp(48px,4.6vw,76px);line-height:.9}
+.hero-price span{font-size:16px;font-weight:700}
+.hero-row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.hero-row .note{font-size:16px;font-weight:700}
+.tmr{font-family:var(--display);font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.tmr small{font-family:var(--body);font-size:.62em;font-weight:800;margin:0 4px 0 1px}
+@media (max-width:900px){
+  .hero{padding-top:96px;min-height:auto}
+  .hero h1{font-size:21vw}
+  .hero-smith{position:relative;right:auto;bottom:auto;height:auto;width:88vw;max-width:520px;margin:-2vw -4vw 8px auto}
+  .hero-foot{margin-top:0}
+  .hero-foot p{font-size:17px}
+}
+
+/* ---------- CASA (cena fixada) ---------- */
+.house-sec{background:var(--paper)}
+.house-pin{height:100svh;display:grid;grid-template-rows:auto 1fr;padding:96px var(--m) 28px;overflow:hidden}
+.house-head{display:grid;grid-template-columns:1fr minmax(0,440px);gap:24px 40px;align-items:end}
+.house-head h2{font-size:clamp(52px,6.4vw,110px)}
+.house-steps{position:relative;min-height:5.4em}
+.house-steps p{position:absolute;inset:auto 0 0 0;font-size:20px;font-weight:600}
+.house-steps p+p{opacity:0}
+.house-view{position:relative;display:grid;place-items:center;min-height:0;overflow:hidden}
+.house{position:relative;width:min(100%,calc((100svh - 300px)*1.6));aspect-ratio:1600/1000;transform-origin:72.5% 71%}
+.house svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.house-smith{position:absolute;left:66.5%;bottom:14%;width:10.75%;height:auto;max-width:none}
+.dim{stroke:var(--orange);stroke-width:4;fill:none}
+.dim-t{font:800 22px var(--body);fill:var(--ink)}
+.dim-t.o{fill:var(--orange)}
+@media (max-width:900px){
+  .house-pin{grid-template-rows:auto 1fr;padding-top:84px}
+  .house-head{grid-template-columns:1fr}
+  .house-head h2{font-size:15vw}
+  .house-steps{min-height:6.4em}
+  .house-steps p{font-size:17px}
+  .house{width:100%}
+}
+
+/* ---------- 8 EM 1 ---------- */
+.feat{background:var(--ink);color:var(--paper);padding:clamp(110px,14vw,200px) 0}
+.feat .wrap{display:grid;grid-template-columns:5fr 7fr;gap:40px}
+.feat-h{position:sticky;top:96px;align-self:start}
+.feat-h h2{font-size:clamp(120px,15vw,250px);color:var(--orange)}
+.feat-h p{font-size:20px;max-width:26ch;margin-top:28px}
+.blocks{display:flex;flex-direction:column;gap:120px}
+.blk h3{font-family:var(--display);font-weight:800;font-size:clamp(34px,3vw,48px);line-height:.95;text-transform:uppercase;margin-bottom:24px}
+.blk-row{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start}
+.blk:nth-child(even) .blk-row{grid-template-columns:1fr 220px}
+.blk:nth-child(even) .blk-row figure{order:2}
+.blk figure{aspect-ratio:3/4;overflow:hidden;background:var(--ink-2)}
+.blk figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.blk:hover figure img{transform:scale(1.05)}
+.blk ul{list-style:none;display:flex;flex-direction:column;gap:14px;font-size:18px}
+.blk li{padding-left:22px;position:relative}
+.blk li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;background:var(--orange)}
+@media (max-width:900px){
+  .feat .wrap{grid-template-columns:1fr}
+  .feat-h{position:sticky;top:0;z-index:3;background:var(--ink);padding:70px 0 14px;margin:0 calc(var(--m)*-1);padding-left:var(--m)}
+  .feat-h h2{font-size:24vw}
+  .feat-h p{font-size:17px;margin-top:10px}
+  .blocks{gap:72px}
+  .blk-row,.blk:nth-child(even) .blk-row{grid-template-columns:1fr}
+  .blk:nth-child(even) .blk-row figure{order:0}
+  .blk figure{aspect-ratio:4/3}
+  .blk ul{font-size:17px}
+}
+
+/* ---------- VERBOS ---------- */
+.verbs h2.sr{position:absolute}
+.verb{position:relative;height:100svh;overflow:hidden;color:var(--white)}
+.verb>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.verb-w{position:sticky;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(96px,17vw,300px);line-height:.85;letter-spacing:-.02em;z-index:2}
+.verb-wrap{position:absolute;inset:0}
+.verb p{position:absolute;left:0;bottom:0;z-index:2;max-width:560px;padding:80px var(--m) var(--m);font-size:20px;font-weight:600;background:radial-gradient(120% 120% at 0% 100%,rgba(0,0,0,.72) 0%,rgba(0,0,0,0) 70%)}
+@media (max-width:900px){.verb-w{font-size:24vw}.verb p{max-width:none;font-size:17px;padding:64px 16px 20px;background:linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,0))}}
+
+/* ---------- CABE AQUI? ---------- */
+.fit{background:var(--stone);padding:clamp(110px,13vw,200px) 0}
+.fit .wrap{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,80px);align-items:start}
+.fit h2{font-size:clamp(64px,7.4vw,124px)}
+.fit-lead{font-size:20px;margin:24px 0 32px;max-width:34ch}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.presets button{min-height:44px;padding:10px 18px;background:var(--paper);font-weight:800;font-size:16px;transition:background .2s,color .2s}
+.presets button:hover{background:var(--white)}
+.presets button.on{background:var(--ink);color:var(--white)}
+.rng{margin-bottom:22px}
+.rng-top{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:16px;margin-bottom:8px}
+.rng-top output{font-family:var(--display);font-weight:900;font-size:32px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;background:linear-gradient(90deg,var(--ink) var(--p,40%),var(--paper) var(--p,40%));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;background:var(--orange);border:0;transition:transform .2s}
+input[type=range]::-webkit-slider-thumb:active{transform:scale(1.15)}
+input[type=range]::-moz-range-thumb{width:30px;height:30px;background:var(--orange);border:0;border-radius:0}
+.fit-board{background:var(--paper);padding:clamp(20px,2.4vw,36px)}
+.fit-verdict{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(48px,5vw,84px);line-height:.9}
+.fit-verdict.no{color:#b33a00}
+.fit-detail{font-size:18px;font-weight:600;margin:10px 0 18px}
+.fit-draw{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.fit-draw svg{width:100%;height:auto;display:block}
+.fit-draw figcaption{font-size:14px;font-weight:700;margin-top:6px;color:var(--muted-ink)}
+.fit-tip{font-size:16px;margin-top:18px;color:var(--muted-ink)}
+@media (max-width:900px){.fit .wrap{grid-template-columns:1fr}.fit h2{font-size:17vw}.fit-lead{font-size:17px}.fit-draw{grid-template-columns:1fr 1fr}}
+
+/* ---------- AÇO (blocos de números) ---------- */
+.steel{background:var(--paper);padding:clamp(110px,13vw,200px) 0}
+.tiles{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;align-items:start}
+.tile{padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+.tile b{font-family:var(--display);font-weight:900;font-size:clamp(64px,6.4vw,112px);line-height:.85}
+.tile p{font-size:18px;font-weight:600;max-width:30ch}
+.t1{grid-column:1/7;height:70vh;min-height:440px;background:var(--orange)}
+.t2{grid-column:7/10;margin-top:14vh;height:44vh;min-height:300px;background:var(--ink);color:var(--paper)}
+.t3{grid-column:10/13;margin-top:26vh;height:34vh;min-height:260px;background:var(--stone)}
+.steel-h{grid-column:7/13;grid-row:1;align-self:start;font-size:clamp(40px,3.6vw,60px);padding-top:4px}
+@media (max-width:900px){
+  .tiles{grid-template-columns:1fr 1fr;gap:6px}
+  .steel-h{grid-column:1/-1;grid-row:auto;font-size:11vw;margin-bottom:16px}
+  .t1{grid-column:1/-1;height:auto;min-height:62vw;margin:0}
+  .t2,.t3{grid-column:auto;height:auto;min-height:56vw;margin:0}
+  .t3{margin-top:32px}
+  .tile{padding:20px}
+  .tile b{font-size:15vw}.t2 b,.t3 b{font-size:11vw}
+  .tile p{font-size:16px}
+}
+
+/* ---------- FICHA ---------- */
+.spec{background:var(--ink);color:var(--paper);padding:clamp(110px,13vw,200px) 0}
+.spec h2{font-size:clamp(64px,7.4vw,124px);margin-bottom:56px;color:var(--orange)}
+.spec dl{display:grid;grid-template-columns:1fr 1fr;gap:4px 8px}
+.spec dl div{background:var(--ink-2);padding:20px 24px;display:grid;grid-template-columns:minmax(0,15ch) 1fr;gap:16px;align-items:baseline}
+.spec dt{font-size:16px;font-weight:700;color:var(--muted-paper)}
+.spec dd{font-size:19px;font-weight:700}
+@media (max-width:900px){.spec h2{font-size:17vw;margin-bottom:32px}.spec dl{grid-template-columns:1fr}.spec dl div{grid-template-columns:1fr;gap:4px;padding:16px}.spec dd{font-size:17px}}
+
+/* ---------- MONTE A SUA (cópias sobre o título) ---------- */
+.prints{background:var(--orange);height:100svh;min-height:640px;overflow:hidden;display:grid;place-items:center}
+.prints h2{text-align:center;font-size:clamp(120px,14vw,230px);line-height:.85}
+.print{position:absolute;background:var(--white);padding:8px;transition:transform .25s var(--ease)}
+.print img{display:block;width:100%;height:auto}
+.print:hover{transform:rotate(0) scale(1.03)!important;z-index:5}
+.pr1{width:22vw;max-width:360px;left:5vw;top:9svh;transform:rotate(-8deg);z-index:2}
+.pr2{width:22vw;max-width:360px;right:5vw;top:38svh;transform:rotate(6deg);z-index:3}
+.pr3{width:14vw;max-width:220px;left:57vw;bottom:-9svh;transform:rotate(-4deg);z-index:2}
+.prints .note{position:absolute;left:var(--m);bottom:24px;max-width:36ch;font-size:17px;font-weight:700;z-index:4}
+@media (max-width:900px){.prints{height:86svh}.prints h2{font-size:28vw}.pr1{width:38vw;left:4vw;top:13svh;transform:rotate(-6deg)}.pr2{width:38vw;right:4vw;left:auto;top:17svh;transform:rotate(5deg)}.prints{place-items:end center;padding-bottom:30svh}.pr3{display:none}.prints .note{font-size:16px;right:16px}}
+
+/* ---------- INGRESSO (preço) ---------- */
+.buy{background:var(--paper);padding:clamp(110px,13vw,200px) 0}
+.buy h2{font-size:clamp(64px,7.4vw,124px);margin-bottom:40px}
+.ticket{position:relative;display:grid;grid-template-columns:7fr 3fr;background:var(--ink);color:var(--paper);max-width:1280px;margin:0 auto}
+.ticket::before,.ticket::after{content:"";position:absolute;left:70%;width:28px;height:28px;border-radius:50%;background:var(--paper);transform:translateX(-50%)}
+.ticket::before{top:-14px}.ticket::after{bottom:-14px}
+.ticket>*,.t-main>*{min-width:0}
+.kit-img{max-width:340px}
+.perf{position:absolute;left:70%;top:24px;bottom:24px;width:6px;transform:translateX(-50%);background:radial-gradient(circle,var(--paper) 2.6px,transparent 3px) 0 0/6px 16px repeat-y}
+.t-main{padding:40px;display:grid;grid-template-columns:1fr minmax(0,300px);gap:32px}
+.t-main h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,3.6vw,60px);line-height:.9}
+.resumo{display:block;font-size:16px;font-weight:700;color:var(--muted-paper);margin-top:12px}
+.opt{margin-top:24px}
+.opt-k{display:block;font-size:16px;font-weight:700;margin-bottom:10px}
+.opt-g{display:flex;flex-wrap:wrap;gap:6px}
+.opt-g button{min-height:44px;padding:10px 14px;background:var(--ink-2);color:var(--paper);font-weight:800;font-size:15px;transition:background .2s,color .2s}
+.opt-g button:hover{background:#2b2b2b}
+.opt-g button.on{background:var(--paper);color:var(--ink)}
+.sw{display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px}
+.kit-img{background:var(--white);aspect-ratio:3/4;overflow:hidden}
+.kit-img img{width:100%;height:100%;object-fit:contain}
+.kit-name{font-family:var(--display);font-weight:800;font-size:28px;text-transform:uppercase;margin:16px 0 4px;line-height:1}
+.kit-tag{font-size:16px;color:var(--muted-paper);margin-bottom:12px}
+.kit-lista{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:16px}
+.kit-lista li{padding-left:18px;position:relative;line-height:1.4}
+.kit-lista li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;background:var(--orange)}
+.t-stub{padding:40px 32px;display:flex;flex-direction:column;justify-content:center;gap:10px;text-align:center}
+.t-stub .k{font-size:16px;font-weight:700}
+.t-stub .price{font-family:var(--display);font-weight:900;font-size:clamp(56px,5.4vw,92px);line-height:.85;color:var(--paper)}
+.t-stub .price small{font-size:.4em;vertical-align:top}
+.t-stub .inst{font-size:16px}
+.t-stub .off{font-size:16px;font-weight:800;color:var(--orange)}
+.t-stub .btn{width:100%;margin-top:10px}
+.t-stub .cd{font-size:16px;font-weight:700;margin-top:6px}
+.t-stub .cd .tmr{font-size:24px;color:var(--orange)}
+.after{max-width:1280px;margin:32px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.after div{background:var(--stone);padding:22px 24px;font-size:16px}
+.after b{display:block;font-size:18px;margin-bottom:4px}
+.after a{font-weight:800}
+@media (max-width:1100px){.t-main{grid-template-columns:1fr}}
+@media (max-width:900px){
+  .buy h2{font-size:17vw}
+  .ticket{grid-template-columns:1fr}
+  .ticket::before,.ticket::after{left:auto;top:auto;bottom:auto}
+  .ticket::before{left:-14px;top:var(--cut,70%);transform:translateY(-50%)}
+  .ticket::after{right:-14px;top:var(--cut,70%);transform:translateY(-50%)}
+  .perf{left:24px;right:24px;top:var(--cut,70%);bottom:auto;width:auto;height:6px;transform:translateY(-50%);background:radial-gradient(circle,var(--paper) 2.6px,transparent 3px) 0 0/16px 6px repeat-x}
+  .t-main{padding:24px 20px}
+  .t-main h3{font-size:9vw}
+  .t-stub{padding:32px 20px}
+  .t-stub .price{font-size:16vw}
+  .after{grid-template-columns:1fr}
+}
+
+/* ---------- DÚVIDAS (fichas com aba) ---------- */
+.faq{background:var(--paper);padding:0 0 clamp(110px,13vw,200px)}
+.faq h2{font-size:clamp(56px,5.6vw,96px);margin-bottom:48px}
+.drawer{max-width:1100px;margin:0 auto}
+.card{--i:0;--step:150px;position:relative;margin-top:-28px;padding-top:40px}
+.card:first-child{margin-top:0}
+.card-tab{position:absolute;top:0;left:calc(var(--i)*var(--step));height:40px;width:220px;display:flex;align-items:center;padding:0 18px;font-weight:800;font-size:16px;background:var(--c);color:var(--t)}
+.card-body{background:var(--c);color:var(--t);padding:22px 28px 30px}
+.card button{display:block;width:100%;text-align:left;font-size:21px;font-weight:700;min-height:44px;color:var(--t)}
+.card button span{float:right;font-family:var(--display);font-weight:900;font-size:28px;line-height:1;transition:transform .3s var(--ease)}
+.card.open button span{transform:rotate(45deg)}
+.card .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.card.open .ans{grid-template-rows:1fr}
+.card .ans>div{overflow:hidden}
+.card .ans p{padding-top:14px;font-size:17px;max-width:62ch}
+.c-o{--c:var(--orange);--t:var(--ink)}
+.c-i{--c:var(--ink);--t:var(--paper)}
+.c-s{--c:var(--stone);--t:var(--ink)}
+@media (max-width:900px){.faq h2{font-size:13vw}.card{--step:min(40px,calc((100vw - 32px - 140px)/5))}.card-tab{width:140px;font-size:15px}.card button{font-size:18px}.card-body{padding:18px 20px 24px}.card .ans p{font-size:16px}}
+
+/* ---------- FAIXA: COMPRAR ---------- */
+.cta{display:block;position:relative;background:var(--orange);color:var(--ink);text-decoration:none;height:60svh;min-height:380px;overflow:hidden;transition:background .2s,color .2s}
+.cta:hover,.cta:focus-visible{background:var(--ink);color:var(--orange)}
+.cta p{position:absolute;left:var(--m);top:var(--m);font-size:20px;font-weight:700;max-width:30ch}
+.cta svg{position:absolute;right:var(--m);top:var(--m);width:48px;height:48px}
+.cta b{position:absolute;left:var(--m);right:var(--m);bottom:24px;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(90px,24.5vw,420px);line-height:.78;letter-spacing:-.03em;white-space:nowrap}
+@media (max-width:640px){.cta{height:46svh;min-height:300px}.cta p{font-size:17px}.cta svg{width:32px;height:32px}}
+
+/* ---------- RODAPÉ ---------- */
+.foot{display:grid;grid-template-columns:1fr 1fr;min-height:100svh;background:var(--ink);color:var(--paper)}
+.foot-ph{position:relative;overflow:hidden}
+.foot-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 35%;transform-origin:55% 30%}
+.foot-r{padding:80px var(--m) 28px calc(var(--m)*1.5);display:flex;flex-direction:column}
+.foot-r .mark{color:var(--paper);margin-bottom:40px}
+.foot-menu{list-style:none;display:flex;flex-direction:column;gap:20px}
+.foot-menu a{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(34px,2.8vw,48px);line-height:1;text-decoration:none;display:inline-block;transition:transform .25s var(--ease),color .25s}
+.foot-menu:hover a{color:var(--muted-paper)}
+.foot-menu a:hover,.foot-menu a:focus-visible{transform:translateX(12px);color:var(--orange)}
+.foot-info{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:64px;font-size:16px}
+.foot-info b{display:block;margin-bottom:4px}
+.legal{margin-top:auto;padding-top:40px;font-size:14px;color:var(--muted-paper)}
+@media (max-width:900px){.foot{grid-template-columns:1fr;min-height:auto}.foot-ph{height:50svh}.foot-r{padding:48px 16px 28px}.foot-menu a{font-size:9vw}.foot-info{grid-template-columns:1fr}}
+
+/* ---------- barra fixa no celular ---------- */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--ink);color:var(--paper);transform:translateY(110%);transition:transform .45s var(--ease)}
+.dock.show{transform:none}
+.dock b{font-family:var(--display);font-weight:900;font-size:26px;line-height:1;display:block}
+.dock span{font-size:14px}
+.dock .btn{min-height:46px;padding:10px 18px;font-size:15px}
+@media (max-width:900px){.dock{display:flex}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
+}
+</style>
+</head>
+<body data-ch="orange">
+
+<div class="corner">
+  <a href="#topo" class="mark" aria-label="MegaGym, voltar ao topo"></a>
+  <a href="#oferta" class="btn">Comprar</a>
+</div>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="topo" data-ch="orange">
+  <div class="wrap">
+    <h1 class="d"><span class="l1">Academia</span><span class="l2">em casa.</span><span class="sr"> Multi Crossover Smith MegaGym</span></h1>
+  </div>
+  <img class="hero-smith" src="assets/smith-cut.webp" alt="Multi Crossover Smith MegaGym, estação preta com topo laranja" width="1160" height="1484" fetchpriority="high">
+  <div class="wrap hero-foot">
+    <p>Multi Crossover Smith: smith, crossover, rack, pulley, remada e barra fixa numa estação de 2,20 m que fica de pé sozinha.</p>
+    <div class="hero-price"><b>R$ 14.890</b><span>no Pix, a partir de · ou 15x de R$ 1.102,96 sem juros</span></div>
+    <div class="hero-row">
+      <a href="#oferta" class="btn dark">Ver kits e comprar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <span class="note" data-tm>Black Friday termina em <span class="tmr"><b data-u="d">0</b><small>d</small><b data-u="h">00</b>:<b data-u="m">00</b>:<b data-u="s">00</b></span></span>
+    </div>
+    <span class="note" style="font-size:16px;font-weight:700">Frete grátis na Black Friday* · 12 meses de garantia</span>
+  </div>
+</section>
+
+<!-- A CASA -->
+<section class="house-sec" id="casa" data-ch="paper" aria-labelledby="casa-h">
+  <div class="house-pin">
+    <div class="house-head">
+      <h2 class="d" id="casa-h">É gigante.<br>E cabe em casa.</h2>
+      <div class="house-steps" aria-live="polite">
+        <p>Uma casa comum: sala, quarto e garagem. Nenhuma obra.</p>
+        <p>Escolha um canto. A garagem dá conta.</p>
+        <p>São 2,20 m de altura: mais alta que a porta, que tem 2,10 m.</p>
+        <p>E não precisa furar parede nem piso: são 300 kg de pé sozinhos.</p>
+      </div>
+    </div>
+    <div class="house-view">
+      <div class="house">
+        <svg viewBox="0 0 1600 1000" role="img" aria-label="Desenho em corte de uma casa com sala, quarto e garagem; a estação fica na garagem, ao lado de uma porta de 2,10 m">
+          <!-- chão -->
+          <rect x="0" y="860" width="1600" height="140" fill="#d6d0c6"/>
+          <!-- casa: dois andares -->
+          <rect x="120" y="280" width="760" height="580" fill="#f7f5f1"/>
+          <path d="M96 290 L500 96 L904 290 Z" fill="#0a0a0a"/>
+          <rect x="120" y="280" width="16" height="580" fill="#0a0a0a"/>
+          <rect x="864" y="280" width="16" height="580" fill="#0a0a0a"/>
+          <rect x="120" y="562" width="760" height="18" fill="#0a0a0a"/>
+          <!-- quarto (cima) -->
+          <rect x="190" y="360" width="150" height="110" fill="#d6d0c6"/><rect x="262" y="360" width="6" height="110" fill="#f7f5f1"/><rect x="190" y="412" width="150" height="6" fill="#f7f5f1"/>
+          <rect x="420" y="372" width="70" height="88" fill="#fc5400"/>
+          <rect x="560" y="440" width="240" height="44" fill="#0a0a0a"/><rect x="560" y="410" width="22" height="122" fill="#0a0a0a"/><rect x="560" y="484" width="240" height="40" fill="#3d3a36"/><rect x="600" y="430" width="70" height="16" fill="#eeebe6"/>
+          <rect x="560" y="524" width="12" height="38" fill="#0a0a0a"/><rect x="788" y="524" width="12" height="38" fill="#0a0a0a"/>
+          <!-- sala (baixo) -->
+          <rect x="560" y="640" width="190" height="130" fill="#d6d0c6"/><rect x="652" y="640" width="6" height="130" fill="#f7f5f1"/><rect x="560" y="700" width="190" height="6" fill="#f7f5f1"/>
+          <rect x="190" y="760" width="300" height="56" fill="#0a0a0a"/><rect x="190" y="720" width="300" height="46" fill="#3d3a36"/><rect x="170" y="736" width="34" height="80" fill="#0a0a0a"/><rect x="476" y="736" width="34" height="80" fill="#0a0a0a"/>
+          <rect x="196" y="816" width="10" height="44" fill="#0a0a0a"/><rect x="474" y="816" width="10" height="44" fill="#0a0a0a"/>
+          <rect x="150" y="846" width="420" height="14" fill="#fc5400"/>
+          <rect x="770" y="700" width="8" height="160" fill="#0a0a0a"/><path d="M740 700 L808 700 L790 660 L758 660 Z" fill="#fc5400"/>
+          <!-- garagem -->
+          <rect x="880" y="580" width="560" height="280" fill="#f7f5f1"/>
+          <rect x="880" y="562" width="580" height="18" fill="#0a0a0a"/>
+          <rect x="1424" y="580" width="16" height="280" fill="#0a0a0a"/>
+          <rect x="1424" y="580" width="16" height="64" fill="#3d3a36"/>
+          <!-- porta da garagem (2,10 m) -->
+          <rect x="912" y="650" width="80" height="210" fill="#d6d0c6"/>
+          <rect x="976" y="752" width="8" height="18" fill="#0a0a0a"/>
+          <!-- pessoa de 1,80 m -->
+          <g fill="#3d3a36"><circle cx="1378" cy="694" r="13"/><path d="M1360 712 h36 l6 70 h-10 l-4 78 h-10 l-2 -64 h-4 l-2 64 h-10 l-4 -78 h-10 z"/></g>
+          <!-- cotas -->
+          <g class="dims">
+            <path class="dim dim-door" d="M900 650 L900 860 M890 650 L910 650 M890 860 L910 860"/>
+            <text class="dim-t" x="912" y="638">2,10 m</text>
+            <path class="dim dim-smith" d="M1254 640 L1254 860 M1244 640 L1264 640 M1244 860 L1264 860"/>
+            <text class="dim-t o" x="1266" y="760">2,20 m</text>
+          </g>
+          <!-- rótulos dos cômodos -->
+          <text class="dim-t" x="150" y="320">Quarto</text>
+          <text class="dim-t" x="150" y="618">Sala</text>
+          <text class="dim-t" x="1240" y="618">Garagem</text>
+        </svg>
+        <img class="house-smith" src="assets/smith-cut-640.webp" alt="" aria-hidden="true" width="640" height="818">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 EM 1 -->
+<section class="feat" id="estacoes" data-ch="ink" aria-labelledby="f-h">
+  <div class="wrap">
+    <div class="feat-h">
+      <h2 class="d" id="f-h">8 em 1.</h2>
+      <p>Smith, crossover, pulley, remada baixa, rack de agachamento, rack de supino, barra fixa e apolete numa estrutura só.</p>
+    </div>
+    <div class="blocks">
+      <article class="blk">
+        <h3>Smith com barra guiada</h3>
+        <div class="blk-row">
+          <figure><img src="assets/s-smith.webp" alt="Barra guiada do smith com travas de segurança" loading="lazy" width="900" height="1200"></figure>
+          <ul><li>Barra de 2,20 m e 28 mm, em trilhos cromados</li><li>16 níveis de trava ao longo do curso</li><li>Travas de segurança automáticas</li><li>Anilhas de furo 31 mm (ponteira olímpica de 51 mm à parte)</li></ul>
+        </div>
+      </article>
+      <article class="blk">
+        <h3>Crossover de polias móveis</h3>
+        <div class="blk-row">
+          <figure><img src="assets/s-crossover.webp" alt="Homem fazendo crucifixo no crossover" loading="lazy" width="900" height="1200"></figure>
+          <ul><li>Duas polias independentes, uma de cada lado</li><li>Altura trocada com trava click rápido</li><li>Polias em ABS de alta resistência com rolamento</li><li>Tensão constante do começo ao fim do movimento</li></ul>
+        </div>
+      </article>
+      <article class="blk">
+        <h3>Bateria de 82 ou 122 kg por lado</h3>
+        <div class="blk-row">
+          <figure><img src="assets/s-bateria.webp" alt="Baterias de pesos injetados da estação" loading="lazy" width="900" height="1200"></figure>
+          <ul><li>Pesos injetados e emborrachados</li><li>Carga escolhida no pino, sem carregar anilha</li><li>Deslizam sem barulho e não enferrujam</li><li>Fáceis de limpar</li></ul>
+        </div>
+      </article>
+      <article class="blk">
+        <h3>Rack de supino e agachamento</h3>
+        <div class="blk-row">
+          <figure><img src="assets/s-rack.webp" alt="Rack modular em uso para supino e agachamento" loading="lazy" width="900" height="1200"></figure>
+          <ul><li>Suportes cavalete para até 250 kg</li><li>Suportes de barra para até 100 kg</li><li>Agachamento livre ou guiado</li><li>6 anilheiros para até 500 kg no total</li></ul>
+        </div>
+      </article>
+      <article class="blk">
+        <h3>Pulley e remada baixa</h3>
+        <div class="blk-row">
+          <figure><img src="assets/s-pulley.webp" alt="Homem fazendo puxada alta no pulley" loading="lazy" width="900" height="1200"></figure>
+          <ul><li>Puxador curvado e articulado de 97 cm</li><li>Puxador reto de 51 cm</li><li>Corda e dois puxadores de crossover</li><li>Duas tornozeleiras para pernas e glúteos</li></ul>
+        </div>
+      </article>
+      <article class="blk">
+        <h3>Barra fixa, paralela e apolete</h3>
+        <div class="blk-row">
+          <figure><img src="assets/s-barra-fixa.webp" alt="Homem fazendo barra fixa no topo da estação" loading="lazy" width="900" height="1200"></figure>
+          <ul><li>Barra fixa multipegadas para até 150 kg</li><li>Aceita cadeira extensora, banco pulley e barras paralelas de encaixe</li><li>Acessórios vendidos à parte ou inclusos nos kits</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VERBOS -->
+<section class="verbs" data-ch="photo" aria-labelledby="v-h">
+  <h2 class="sr" id="v-h">O que dá para fazer na estação</h2>
+  <div class="verb"><img src="assets/v-empurre.webp" alt="Homem fazendo desenvolvimento de ombros no smith" loading="lazy" style="object-position:50% 52%"><div class="verb-wrap"><div class="verb-w">Empurre.</div></div><p>Desenvolvimento, supino e agachamento guiados no smith, com trava a cada nível.</p></div>
+  <div class="verb"><img src="assets/v-puxe.webp" alt="Homem fazendo puxada alta no pulley" loading="lazy" style="object-position:50% 60%"><div class="verb-wrap"><div class="verb-w">Puxe.</div></div><p>Puxada alta e remada baixa no pulley, com a carga escolhida no pino.</p></div>
+  <div class="verb"><img src="assets/v-abra.webp" alt="Homem fazendo crucifixo no crossover" loading="lazy" style="object-position:50% 50%"><div class="verb-wrap"><div class="verb-w">Abra.</div></div><p>Crucifixo no crossover, com as polias na altura que o exercício pede.</p></div>
+  <div class="verb"><img src="assets/v-suba.webp" alt="Homem fazendo barra fixa no topo da estação" loading="lazy" style="object-position:50% 28%"><div class="verb-wrap"><div class="verb-w">Suba.</div></div><p>Barra fixa no topo da estrutura, para dorsais, bíceps e core.</p></div>
+</section>
+
+<!-- CABE AQUI? -->
+<section class="fit" id="cabe" data-ch="paper" aria-labelledby="fit-h">
+  <div class="wrap">
+    <div>
+      <h2 class="d" id="fit-h">Cabe aí?</h2>
+      <p class="fit-lead">Coloque as medidas do cômodo e veja a estação na planta, em escala.</p>
+      <div class="presets" role="group" aria-label="Cômodo">
+        <button type="button" data-room="garagem" class="on">Garagem</button>
+        <button type="button" data-room="quarto">Quarto</button>
+        <button type="button" data-room="sala">Sala</button>
+        <button type="button" data-room="varanda">Varanda</button>
+      </div>
+      <div class="rng"><div class="rng-top"><label for="rw">Largura</label><output id="rwo">3,0 m</output></div><input type="range" id="rw" min="1.8" max="6" step="0.1" value="3"></div>
+      <div class="rng"><div class="rng-top"><label for="rd">Profundidade</label><output id="rdo">5,0 m</output></div><input type="range" id="rd" min="1" max="7" step="0.1" value="5"></div>
+      <div class="rng"><div class="rng-top"><label for="rh">Pé-direito</label><output id="rho">2,70 m</output></div><input type="range" id="rh" min="2" max="3.5" step="0.05" value="2.7"></div>
+    </div>
+    <div class="fit-board">
+      <div class="fit-verdict" id="fv" aria-live="polite">Cabe com folga.</div>
+      <p class="fit-detail" id="fd">Sobram 50 cm até o teto e 9,8 m² livres no cômodo.</p>
+      <div class="fit-draw">
+        <figure><svg id="plan" viewBox="0 0 600 440" role="img" aria-label="Planta do cômodo com a estação"></svg><figcaption>Planta, vista de cima</figcaption></figure>
+        <figure><svg id="elev" viewBox="0 0 300 440" role="img" aria-label="Corte do cômodo com a altura da estação"></svg><figcaption>Corte, vista de lado</figcaption></figure>
+      </div>
+      <p class="fit-tip">Conta usada: 2,20 m de largura (a barra guiada) por 1,20 m de fundo e 2,20 m de altura. Nossa sugestão: deixe cerca de 1 m livre na frente para o banco e os exercícios no cabo (a área clara na planta) e uns 30 cm acima da estação para a barra fixa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AÇO -->
+<section class="steel" data-ch="paper" aria-labelledby="st-h">
+  <div class="wrap tiles">
+    <h2 class="d steel-h" id="st-h">Aço que não balança.</h2>
+    <div class="tile t1"><b><span class="count" data-to="300">300</span> kg</b><p>de equipamento com as baterias de 82 kg (340 kg com as de 122 kg). Por isso fica firme sem ser fixada no chão nem na parede.</p></div>
+    <div class="tile t2"><b><span class="count" data-to="500">500</span> kg</b><p>nos 6 anilheiros reforçados da estrutura.</p></div>
+    <div class="tile t3"><b>60x60</b><p>tubo das guias, com chapa de até 2 mm.</p></div>
+  </div>
+</section>
+
+<!-- FICHA -->
+<section class="spec" id="especificacoes" data-ch="ink" aria-labelledby="sp-h">
+  <div class="wrap">
+    <h2 class="d" id="sp-h">Ficha técnica</h2>
+    <dl>
+      <div><dt>Montado (A × L × C)</dt><dd>2,20 × 1,60 × 1,20 m</dd></div>
+      <div><dt>Peso do equipamento</dt><dd>300 kg (82 kg) · 340 kg (122 kg)</dd></div>
+      <div><dt>Bateria de pesos</dt><dd>2 × 82 kg ou 2 × 122 kg, injetada e emborrachada</dd></div>
+      <div><dt>Barra guiada</dt><dd>2,20 m · 28 mm · 16 níveis</dd></div>
+      <div><dt>Anilhas na barra guiada</dt><dd>Furo de 31 mm (ponteira olímpica de 51 mm à parte)</dd></div>
+      <div><dt>Polias</dt><dd>2 móveis, em ABS com rolamento</dd></div>
+      <div><dt>Suporte cavalete</dt><dd>Até 250 kg</dd></div>
+      <div><dt>Suporte de barra</dt><dd>Até 100 kg</dd></div>
+      <div><dt>Barra fixa</dt><dd>Multipegadas, até 150 kg</dd></div>
+      <div><dt>Anilheiros</dt><dd>6 unidades, até 500 kg no total</dd></div>
+      <div><dt>Usuário</dt><dd>Até 2,00 m e 150 kg</dd></div>
+      <div><dt>Estrutura</dt><dd>Metalon e aço SAE 1020, pintura eletrostática fosca</dd></div>
+      <div><dt>Fixação</dt><dd>Não precisa fixar no chão nem na parede</dd></div>
+      <div><dt>Garantia</dt><dd>12 meses</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- MONTE A SUA -->
+<section class="prints" id="kits" data-ch="orange" aria-labelledby="pr-h">
+  <h2 class="d" id="pr-h">Monte<br>a sua.</h2>
+  <figure class="print pr1"><img src="assets/kit-k3-L.webp" alt="Kit 3: estação laranja com banco supino, banco pulley, extensora e anilhas" loading="lazy" width="800" height="1067"></figure>
+  <figure class="print pr2"><img src="assets/kit-k6-P.webp" alt="Kit 6: estação preta com banco supino, esteira, halteres e anilhas" loading="lazy" width="800" height="1067"></figure>
+  <figure class="print pr3"><img src="assets/kit-k1-P.webp" alt="Kit 1: estação preta com banco ajustável e barra" loading="lazy" width="800" height="1067"></figure>
+  <p class="note">Só a estação ou a academia inteira: 8 conjuntos, em preto ou laranja, com bateria de 82 ou 122 kg.</p>
+</section>
+
+<!-- PREÇO -->
+<section class="buy" id="oferta" data-ch="paper" aria-labelledby="buy-h">
+  <div class="wrap">
+    <h2 class="d" id="buy-h">Escolha e garanta.</h2>
+    <div class="ticket">
+      <div class="t-main">
+        <div>
+          <h3>Multi Crossover Smith</h3>
+          <span class="resumo" data-b="resumo" aria-live="polite">Unidade · Laranja · 2 baterias de 82 kg</span>
+          <div class="opt">
+            <span class="opt-k">Conjunto</span>
+            <div class="opt-g" role="group" aria-label="Conjunto">
+              <button type="button" data-opt="conj" data-val="uni">Unidade</button>
+              <button type="button" data-opt="conj" data-val="k1">Kit 1</button>
+              <button type="button" data-opt="conj" data-val="k2">Kit 2</button>
+              <button type="button" data-opt="conj" data-val="k3">Kit 3</button>
+              <button type="button" data-opt="conj" data-val="k4">Kit 4</button>
+              <button type="button" data-opt="conj" data-val="k5">Kit 5</button>
+              <button type="button" data-opt="conj" data-val="k6a">Kit 6 · 110 V</button>
+              <button type="button" data-opt="conj" data-val="k6b">Kit 6 · 220 V</button>
+            </div>
+          </div>
+          <div class="opt">
+            <span class="opt-k">Cor</span>
+            <div class="opt-g" role="group" aria-label="Cor">
+              <button type="button" data-opt="cor" data-val="L"><i class="sw" style="background:#fc5400"></i>Laranja</button>
+              <button type="button" data-opt="cor" data-val="P"><i class="sw" style="background:#555"></i>Preto</button>
+            </div>
+          </div>
+          <div class="opt">
+            <span class="opt-k">Bateria de pesos (cada lado)</span>
+            <div class="opt-g" role="group" aria-label="Bateria de pesos">
+              <button type="button" data-opt="bat" data-val="82">2 × 82 kg</button>
+              <button type="button" data-opt="bat" data-val="122">2 × 122 kg</button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="kit-img"><img data-b="kit-img" src="assets/kit-uni-L.webp" alt="Unidade do Multi Crossover Smith" width="800" height="1067" loading="lazy"></div>
+          <div class="kit-name" data-b="kit-nome">Unidade</div>
+          <p class="kit-tag" data-b="kit-tag">A estação completa, pronta para treinar.</p>
+          <ul class="kit-lista" data-b="kit-lista"></ul>
+        </div>
+      </div>
+      <span class="perf" aria-hidden="true"></span>
+      <div class="t-stub">
+        <span class="k">No Pix</span>
+        <div class="price"><small>R$</small><span data-b="pix-int">14.890</span><small data-b="pix-cents">,00</small></div>
+        <span class="off">De R$ <s data-b="de">20.518,66</s> · <span data-b="off">27%</span> OFF</span>
+        <span class="inst">ou R$ <span data-b="cartao">16.544,44</span> em 15x de R$ <span data-b="parcela">1.102,96</span> sem juros</span>
+        <a class="btn" href="https://megagym.com.br/cart/52078340604178:1" data-buy>Comprar agora
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <span class="cd" data-tm>Termina em <span class="tmr"><b data-u="d">0</b><small>d</small><b data-u="h">00</b>:<b data-u="m">00</b>:<b data-u="s">00</b></span></span>
+        <span class="k">Em estoque</span>
+      </div>
+    </div>
+    <div class="after">
+      <div><b>Frete grátis na Black Friday*</b>Confira o prazo para o seu CEP. <a href="https://megagym.com.br/products/multi-crossover-smith-com-rack-integrado-barra-guiada" target="_blank" rel="noopener">Calcular frete</a></div>
+      <div><b>Até 5 dias de preparação</b>Antes do envio, já inclusos na previsão de entrega da cotação.</div>
+      <div><b>12 meses de garantia</b>Até 21x no cartão (15x sem juros) e 10% off no Pix.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DÚVIDAS -->
+<section class="faq" id="faq" data-ch="paper" aria-labelledby="faq-h">
+  <div class="wrap">
+    <h2 class="d" id="faq-h">Antes de levar pra casa.</h2>
+    <div class="drawer">
+      <div class="card c-o open" style="--i:0"><span class="card-tab">Fixação</span><div class="card-body"><button type="button" aria-expanded="true">Precisa fixar no chão ou na parede?<span aria-hidden="true">+</span></button><div class="ans"><div><p>Não. Com 300 kg (baterias de 82 kg) ou 340 kg (baterias de 122 kg), ela foi projetada para ficar estável apenas apoiada no piso.</p></div></div></div></div>
+      <div class="card c-i" style="--i:1"><span class="card-tab">Espaço</span><div class="card-body"><button type="button" aria-expanded="false">Quanto espaço eu preciso?<span aria-hidden="true">+</span></button><div class="ans"><div><p>Montada, ela mede 2,20 m de altura, 1,60 m de largura e 1,20 m de comprimento, e a barra guiada tem 2,20 m. Use o "Cabe aí?" acima para testar o seu cômodo.</p></div></div></div></div>
+      <div class="card c-s" style="--i:2"><span class="card-tab">Bateria</span><div class="card-body"><button type="button" aria-expanded="false">Qual bateria escolher: 82 kg ou 122 kg?<span aria-hidden="true">+</span></button><div class="ans"><div><p>São duas baterias, uma de cada lado. A de 82 kg por lado atende a maior parte dos treinos em casa. A de 122 kg por lado é para quem já treina com carga alta ou para uso por várias pessoas, como em studios e condomínios.</p></div></div></div></div>
+      <div class="card c-o" style="--i:3"><span class="card-tab">Anilhas</span><div class="card-body"><button type="button" aria-expanded="false">Quais anilhas servem na barra guiada?<span aria-hidden="true">+</span></button><div class="ans"><div><p>A barra guiada tem 28 mm e vem no padrão para anilhas com furo de 31 mm. Para anilhas olímpicas (furo de 51 mm), existe uma ponteira de aço cromado vendida à parte. Fale com a equipe da MegaGym.</p></div></div></div></div>
+      <div class="card c-i" style="--i:4"><span class="card-tab">Entrega</span><div class="card-body"><button type="button" aria-expanded="false">Em quanto tempo chega?<span aria-hidden="true">+</span></button><div class="ans"><div><p>Ela pede até 5 dias de preparação antes do envio, e esse período já está incluso na previsão de entrega que aparece quando você calcula o frete para o seu CEP.</p></div></div></div></div>
+      <div class="card c-s" style="--i:5"><span class="card-tab">Pagamento</span><div class="card-body"><button type="button" aria-expanded="false">Quais as formas de pagamento e a garantia?<span aria-hidden="true">+</span></button><div class="ans"><div><p>Cartão em até 15x sem juros (ou em até 21x, consulte as condições no checkout) e Pix com 10% de desconto. A garantia é de 12 meses. Ela é indicada para usuários de até 2,00 m e 150 kg.</p></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAIXA COMPRAR -->
+<a class="cta" href="https://megagym.com.br/cart/52078340604178:1" data-buy data-ch="orange" aria-label="Comprar: vai para o carrinho da MegaGym com a configuração escolhida">
+  <p>Leva você ao carrinho da MegaGym com o conjunto, a cor e a bateria que você escolheu.</p>
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M12 36L36 12M16 12h20v20"/></svg>
+  <b aria-hidden="true">Comprar</b>
+</a>
+</main>
+
+<footer class="foot" data-ch="ink">
+  <div class="foot-ph"><img src="assets/s-estudio.webp" alt="Multi Crossover Smith montado na sala de exposição da MegaGym" loading="lazy" width="900" height="1200"></div>
+  <div class="foot-r">
+    <a href="#topo" class="mark" aria-label="MegaGym, voltar ao topo"></a>
+    <ul class="foot-menu">
+      <li><a href="#casa">A casa</a></li>
+      <li><a href="#estacoes">8 em 1</a></li>
+      <li><a href="#cabe">Cabe aí?</a></li>
+      <li><a href="#especificacoes">Ficha técnica</a></li>
+      <li><a href="#oferta">Kits e preço</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
+    </ul>
+    <div class="foot-info">
+      <div><b>Loja</b><a href="https://megagym.com.br" target="_blank" rel="noopener">megagym.com.br</a></div>
+      <div><b>Produto</b><a href="https://megagym.com.br/products/multi-crossover-smith-com-rack-integrado-barra-guiada" target="_blank" rel="noopener">Ver na loja</a></div>
+    </div>
+    <p class="legal">*Frete grátis válido durante a campanha de Black Friday. Confirme a disponibilidade e o prazo para o seu CEP no cálculo de frete. Preços e condições sujeitos a alteração sem aviso prévio. © MegaGym Equipamentos.</p>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <div><b>R$ <span data-b="pix-int">14.890</span></b><span>no Pix · 15x R$ <span data-b="parcela">1.102,96</span></span></div>
+  <a href="#oferta" class="btn">Comprar</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  const $ = (s,c=document)=>c.querySelector(s);
+  const $$ = (s,c=document)=>Array.from(c.querySelectorAll(s));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+
+  /* ---------- CONFIGURAÇÃO DA OFERTA (edite aqui) ---------- */
+  const OFERTA_FIM = new Date('2026-11-27T23:59:59-03:00');
+  const PIX_OFF = 0.10, PARCELAS = 15, CART = 'https://megagym.com.br/cart/';
+  // conjunto | cor (P preto, L laranja) | bateria | id da variante | preço | preço "de"
+  const VARIANTES = [
+    ['uni','P',82,52078340538642,16544.44,20518.66],['uni','P',122,52078340571410,19433.33,26385.33],
+    ['uni','L',82,52078340604178,16544.44,20518.66],['uni','L',122,52078340636946,19433.33,26385.33],
+    ['k1','P',82,52141758087442,17776.67,24302.67],['k1','P',122,52141758316818,20655.55,28805.33],
+    ['k1','L',82,52141758546194,17776.67,24302.67],['k1','L',122,52141758775570,20655.55,28805.33],
+    ['k2','P',82,52141758120210,18544.44,26033.34],['k2','P',122,52141758349586,21544.44,30492.00],
+    ['k2','L',82,52141758578962,18544.44,26033.34],['k2','L',122,52141758808338,21544.44,30492.00],
+    ['k3','P',82,52141758152978,20655.55,28438.66],['k3','P',122,52141758382354,23544.44,32941.33],
+    ['k3','L',82,52141758611730,20655.55,28438.66],['k3','L',122,52141758841106,23655.55,32941.33],
+    ['k4','P',82,52141758185746,20544.44,29025.33],['k4','P',122,52141758415122,23499.00,33572.00],
+    ['k4','L',82,52141758644498,20544.44,29025.33],['k4','L',122,52141758873874,23499.00,33572.00],
+    ['k5','P',82,52141758218514,23665.55,32516.00],['k5','P',122,52141758447890,26554.44,37062.67],
+    ['k5','L',82,52141758677266,23665.55,32516.00],['k5','L',122,52141758906642,26554.44,37062.67],
+    ['k6a','P',82,52141758251282,24655.55,33425.33],['k6a','P',122,52141758480658,27544.44,37972.00],
+    ['k6a','L',82,52141758710034,24766.67,33425.33],['k6a','L',122,52141758939410,27655.55,37972.00],
+    ['k6b','P',82,52141758284050,24655.55,33425.33],['k6b','P',122,52141758513426,27544.44,37972.00],
+    ['k6b','L',82,52141758742802,24766.67,33425.33],['k6b','L',122,52141758972178,27655.55,37972.00]
+  ];
+  const BASE = ['Puxador pulley curvado de 97 cm','Puxador pulley reto de 51 cm','2 puxadores de crossover','Puxador corda','2 tornozeleiras'];
+  const CARDIO = ['Barra W de 1,20 m','2 halteres de 40 cm','2 steps de EVA','Colchonete','100 kg em anilhas emborrachadas (2 a 20 kg)'];
+  const KITS = {
+    uni:{n:'Unidade',img:'uni',t:'A estação completa, pronta para treinar.',i:['Multi Crossover Smith com rack e barra guiada','2 suportes cavalete','2 suportes de barra',...BASE]},
+    k1:{n:'Kit 1',img:'k1',t:'Estação + banco + barra livre.',i:['Multi Crossover Smith com rack e barra guiada','Banco livre ajustável profissional M1','Barra reta maciça de 2,20 m',...BASE]},
+    k2:{n:'Kit 2',img:'k2',t:'Estação + banco + extensora e pulley.',i:['Multi Crossover Smith com rack e barra guiada','Banco livre ajustável profissional M1','Banco pulley','Cadeira extensora',...BASE]},
+    k3:{n:'Kit 3',img:'k3',t:'Tudo do Kit 2, com banco supino e anilhas.',i:['Multi Crossover Smith com rack e barra guiada','Banco supino regulável com extensora e mesa flexora','Barra reta maciça de 2,20 m','Banco pulley','Cadeira extensora','80 kg em anilhas emborrachadas (2 a 20 kg)',...BASE]},
+    k4:{n:'Kit 4',img:'k4',t:'Banco M1, extensora, pulley, barra e anilhas.',i:['Multi Crossover Smith com rack e barra guiada','Banco livre ajustável profissional M1','Barra reta maciça de 2,20 m','Banco pulley','Cadeira extensora','80 kg em anilhas Sport emborrachadas (2 a 20 kg)',...BASE]},
+    k5:{n:'Kit 5',img:'k5',t:'Musculação completa + Smart Bike 13K.',i:['Multi Crossover Smith com rack e barra guiada','Banco supino regulável com extensora e mesa flexora','Bicicleta Smart Magnetic 13K','Barra reta maciça de 2,20 m',...CARDIO,...BASE]},
+    k6a:{n:'Kit 6 · esteira 110 V',img:'k6',t:'Musculação completa + esteira Smart Pace.',i:['Multi Crossover Smith com rack e barra guiada','Banco supino regulável com extensora e mesa flexora','Esteira MegaGym Smart Pace 110 V','Barra reta maciça de 2,20 m',...CARDIO,...BASE]},
+    k6b:{n:'Kit 6 · esteira 220 V',img:'k6',t:'Musculação completa + esteira Smart Pace.',i:['Multi Crossover Smith com rack e barra guiada','Banco supino regulável com extensora e mesa flexora','Esteira MegaGym Smart Pace 220 V','Barra reta maciça de 2,20 m',...CARDIO,...BASE]}
+  };
+  const brl=n=>n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const state={conj:'uni',cor:'L',bat:82};
+  const txt=(k,v)=>$$('[data-b="'+k+'"]').forEach(e=>{e.textContent=v});
+  function render(){
+    const row=VARIANTES.find(r=>r[0]===state.conj&&r[1]===state.cor&&r[2]===state.bat); if(!row) return;
+    const price=row[4],de=row[5],pix=Math.round(price*(1-PIX_OFF)*100)/100,kit=KITS[state.conj];
+    const pt=brl(pix),cut=pt.lastIndexOf(',');
+    txt('pix-int',pt.slice(0,cut)); txt('pix-cents',pt.slice(cut));
+    txt('de',brl(de)); txt('cartao',brl(price)); txt('parcela',brl(price/PARCELAS));
+    txt('off',Math.round((de-pix)/de*100)+'%');
+    txt('kit-nome',kit.n); txt('kit-tag',kit.t);
+    txt('resumo',kit.n+' · '+(state.cor==='P'?'Preto':'Laranja')+' · 2 baterias de '+state.bat+' kg');
+    $$('[data-b="kit-lista"]').forEach(ul=>{ul.innerHTML=kit.i.map(x=>'<li>'+x+'</li>').join('')});
+    $$('[data-b="kit-img"]').forEach(im=>{const s='assets/kit-'+kit.img+'-'+state.cor+'.webp'; if(im.getAttribute('src')!==s) im.setAttribute('src',s); im.alt=kit.n+' do Multi Crossover Smith, cor '+(state.cor==='P'?'preta':'laranja')});
+    $$('[data-buy]').forEach(a=>{a.href=CART+row[3]+':1'});
+    $$('[data-opt]').forEach(b=>{const on=String(state[b.dataset.opt])===b.dataset.val; b.classList.toggle('on',on); b.setAttribute('aria-pressed',on?'true':'false')});
+  }
+  $$('[data-opt]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.opt; state[k]=k==='bat'?+b.dataset.val:b.dataset.val; render();}));
+  render();
+
+  // contador preso à data real do fim da campanha
+  function tick(){
+    const left=OFERTA_FIM-Date.now();
+    if(left<=0){ $$('[data-tm]').forEach(e=>{e.style.display='none'}); clearInterval(tid); return }
+    const p=n=>String(n).padStart(2,'0');
+    const v={d:String(Math.floor(left/864e5)),h:p(Math.floor(left%864e5/36e5)),m:p(Math.floor(left%36e5/6e4)),s:p(Math.floor(left%6e4/1e3))};
+    $$('[data-u]').forEach(b=>{ if(b.textContent!==v[b.dataset.u]) b.textContent=v[b.dataset.u]; });
+  }
+  const tid=setInterval(tick,250); tick();
+
+  // dúvidas: uma ficha aberta por vez
+  $$('.card button').forEach(b=>b.addEventListener('click',()=>{
+    const c=b.closest('.card'), open=!c.classList.contains('open');
+    $$('.card').forEach(x=>{x.classList.remove('open');x.querySelector('button').setAttribute('aria-expanded','false')});
+    if(open){c.classList.add('open');b.setAttribute('aria-expanded','true')}
+  }));
+
+  /* ---------- CABE AÍ? planta e corte em escala ---------- */
+  const ROOMS={garagem:[3,5,2.7],quarto:[3,3,2.6],sala:[4,4.5,2.7],varanda:[2.5,3.5,2.6]};
+  const SW=2.2, SD=1.2, SH=2.2, FRONT=1.0, BASEW=1.6;
+  const rw=$('#rw'),rd=$('#rd'),rh=$('#rh');
+  const m=(v,d=1)=>v.toFixed(d).replace('.',',')+' m';
+  const NS='http://www.w3.org/2000/svg';
+  const el=(tag,a)=>{const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);return e};
+  function draw(){
+    const W=+rw.value,D=+rd.value,Hh=+rh.value;
+    $('#rwo').textContent=m(W); $('#rdo').textContent=m(D); $('#rho').textContent=m(Hh,2);
+    [rw,rd,rh].forEach(i=>i.style.setProperty('--p',((i.value-i.min)/(i.max-i.min)*100)+'%'));
+    const plan=$('#plan'); plan.innerHTML='';
+    const s=Math.min(520/Math.max(W,SW),360/Math.max(D,SD+FRONT)), w=W*s,d=D*s, x0=(600-w)/2, y0=(440-d)/2;
+    plan.append(el('rect',{x:x0-8,y:y0-8,width:w+16,height:d+16,fill:'#0a0a0a'}));
+    plan.append(el('rect',{x:x0,y:y0,width:w,height:d,fill:'#ffffff'}));
+    const sx=x0+(w-SW*s)/2, fy=y0+Math.min(SD,D)*s;
+    plan.append(el('rect',{x:sx,y:fy,width:SW*s,height:Math.max(0,Math.min(FRONT,D-SD))*s,fill:'#e6e0d6'}));
+    plan.append(el('rect',{x:x0+(w-BASEW*s)/2,y:y0,width:BASEW*s,height:SD*s,fill:'#0a0a0a'}));
+    plan.append(el('rect',{x:sx,y:y0+SD*s*0.45,width:SW*s,height:Math.max(6,0.08*s),fill:'#fc5400'}));
+    const t1=el('text',{x:x0+w/2,y:y0+d-14,'text-anchor':'middle',style:'font:800 18px Manrope,sans-serif',fill:'#0a0a0a'}); t1.textContent=m(W)+' × '+m(D); plan.append(t1);
+    const elev=$('#elev'); elev.innerHTML='';
+    const e=330/Math.max(Hh,2.6), fl=410, ce=fl-Hh*e;
+    elev.append(el('rect',{x:20,y:ce-14,width:260,height:14,fill:'#0a0a0a'}));
+    elev.append(el('rect',{x:20,y:fl,width:260,height:14,fill:'#0a0a0a'}));
+    const top=fl-SH*e;
+    elev.append(el('rect',{x:70,y:top,width:12,height:SH*e,fill:'#0a0a0a'}));
+    elev.append(el('rect',{x:168,y:top,width:12,height:SH*e,fill:'#0a0a0a'}));
+    elev.append(el('rect',{x:62,y:top,width:126,height:14,fill:'#fc5400'}));
+    const ph=1.8*e; elev.append(el('circle',{cx:232,cy:fl-ph+12,r:12,fill:'#3d3a36'})); elev.append(el('rect',{x:220,y:fl-ph+26,width:24,height:ph-26,fill:'#3d3a36'}));
+    const gap=Math.round((Hh-SH)*100);
+    const t2=el('text',{x:150,y:Math.max(24,top-(gap>0?14:-30)),'text-anchor':'middle',style:'font:800 18px Manrope,sans-serif',fill:gap>=0?'#0a0a0a':'#b33a00'}); t2.textContent=gap>=0?('+'+gap+' cm'):(gap+' cm'); elev.append(t2);
+    const fv=$('#fv'),fd=$('#fd'); fv.classList.remove('no');
+    const free=(W*D-BASEW*SD);
+    if(Hh<SH){fv.textContent='Não cabe.';fv.classList.add('no');fd.textContent='O pé-direito precisa de pelo menos 2,20 m. Faltam '+Math.round((SH-Hh)*100)+' cm.';}
+    else if(W<SW||D<SD){fv.textContent='Não cabe.';fv.classList.add('no');fd.textContent='A barra guiada pede 2,20 m de largura e a base, 1,20 m de fundo.';}
+    else if(W<SW+0.4||D<SD+FRONT||Hh<SH+0.3){fv.textContent='Cabe, mas justo.';fd.textContent='Sobram '+gap+' cm até o teto. Fica apertado para o banco e para a barra fixa.';}
+    else {fv.textContent='Cabe com folga.';fd.textContent='Sobram '+gap+' cm até o teto e '+free.toFixed(1).replace('.',',')+' m² livres no cômodo.';}
+  }
+  [rw,rd,rh].forEach(i=>i.addEventListener('input',()=>{$$('[data-room]').forEach(b=>b.classList.remove('on'));draw()}));
+  $$('[data-room]').forEach(b=>b.addEventListener('click',()=>{const r=ROOMS[b.dataset.room];rw.value=r[0];rd.value=r[1];rh.value=r[2];$$('[data-room]').forEach(x=>x.classList.toggle('on',x===b));draw()}));
+  draw();
+
+  // capítulo de cor: os cantos fixos pegam a tinta da seção embaixo deles
+  const chSecs=$$('[data-ch]').filter(e=>e!==document.body);
+  function chapter(){
+    const y=40; let ch='orange';
+    for(const s of chSecs){const r=s.getBoundingClientRect(); if(r.top<=y&&r.bottom>y){ch=s.dataset.ch;break}}
+    if(document.body.dataset.ch!==ch) document.body.dataset.ch=ch;
+    const dock=$('#dock'),hero=$('.hero'),off=$('#oferta').getBoundingClientRect();
+    dock.classList.toggle('show',window.scrollY>hero.offsetHeight*.8&&!(off.top<innerHeight&&off.bottom>0));
+  }
+  window.addEventListener('scroll',chapter,{passive:true}); chapter();
+
+  if(!hasGsap||reduce) return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  let lenis=null;
+  if(typeof Lenis!=='undefined'){
+    lenis=new Lenis({duration:1.1,smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update); lenis.on('scroll',chapter);
+    gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
+    $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=$(a.getAttribute('href'));if(!t)return;e.preventDefault();lenis.scrollTo(t,{offset:0})}));
+  }
+
+  /* ---------- hero: o título sobe, a estação é erguida do chão ---------- */
+  gsap.from('.hero h1 span:not(.sr)',{yPercent:100,opacity:0,duration:1.1,stagger:.1,ease:'expo.out'});
+  gsap.from('.hero-smith',{yPercent:30,duration:1.6,ease:'expo.out',delay:.15});
+  gsap.from('.hero-foot>*',{y:24,opacity:0,duration:.9,stagger:.08,ease:'power3.out',delay:.45});
+  gsap.to('.hero-smith',{yPercent:-10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero h1',{yPercent:-30,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  /* ---------- a casa: câmera entra na garagem, a estação é colocada, as cotas aparecem ---------- */
+  (function(){
+    const sec=$('.house-sec'),house=$('.house'),smith=$('.house-smith'),steps=$$('.house-steps p');
+    const dims=$$('.dims path'); dims.forEach(p=>{const L=p.getTotalLength?p.getTotalLength():400;p.style.strokeDasharray=L;p.style.strokeDashoffset=L});
+    gsap.set(smith,{yPercent:-260,opacity:0});
+    gsap.set('.dims text',{opacity:0});
+    const zoom=()=>innerWidth<900?2.05:2.15;
+    const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:sec,start:'top top',end:'+=340%',pin:'.house-pin',scrub:1,anticipatePin:1,invalidateOnRefresh:true}});
+    const swap=(i,at)=>tl.to(steps[i-1],{opacity:0,y:-12,duration:.25},at).fromTo(steps[i],{opacity:0,y:12},{opacity:1,y:0,duration:.25},at+.15);
+    tl.to({}, {duration:.4})
+      .to(house,{scale:zoom,duration:1.4,ease:'power2.inOut'},.4);
+    swap(1,.6);
+    tl.to(smith,{opacity:1,duration:.1},1.7)
+      .to(smith,{yPercent:0,duration:.9,ease:'bounce.out'},1.7)
+      .to(dims[0],{strokeDashoffset:0,duration:.5},2.6)
+      .to('.dims text:nth-of-type(1)',{opacity:1,duration:.2},2.8)
+      .to(dims[1],{strokeDashoffset:0,duration:.6},3.0)
+      .to('.dims text:nth-of-type(2)',{opacity:1,duration:.2},3.4);
+    swap(2,2.7);
+    swap(3,3.8);
+    tl.to(house,{scale:()=>zoom()*1.12,duration:1.1,ease:'power1.inOut'},4.0).to({}, {duration:.5});
+  })();
+
+  /* ---------- verbos: a palavra encolhe e solta conforme a foto passa ---------- */
+  $$('.verb').forEach(v=>{
+    gsap.fromTo(v.querySelector('img'),{scale:1.15},{scale:1,ease:'none',scrollTrigger:{trigger:v,start:'top bottom',end:'bottom top',scrub:true}});
+    gsap.fromTo(v.querySelector('.verb-w'),{letterSpacing:'.12em',opacity:.2},{letterSpacing:'-.02em',opacity:1,ease:'none',scrollTrigger:{trigger:v,start:'top 80%',end:'top 10%',scrub:true}});
+  });
+
+  /* ---------- 8 em 1: blocos entram em sequência ---------- */
+  $$('.blk').forEach(b=>{
+    const tl=gsap.timeline({scrollTrigger:{trigger:b,start:'top 82%'}});
+    tl.from(b.querySelector('h3'),{y:28,opacity:0,duration:.8,ease:'power3.out'})
+      .from(b.querySelector('figure'),{clipPath:'inset(100% 0 0 0)',duration:1,ease:'expo.out'},'-=.55')
+      .from(b.querySelectorAll('li'),{x:-16,opacity:0,stagger:.07,duration:.6,ease:'power3.out'},'-=.7');
+  });
+
+  /* ---------- números do aço contam; blocos sobem em degraus ---------- */
+  gsap.from('.tile',{y:80,opacity:0,stagger:.12,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.tiles',start:'top 75%'}});
+  $$('.count').forEach(c=>{const to=+c.dataset.to,o={v:0};c.textContent='0';
+    ScrollTrigger.create({trigger:c,start:'top 85%',once:true,onEnter:()=>gsap.to(o,{v:to,duration:1.8,ease:'power3.out',onUpdate:()=>c.textContent=Math.round(o.v)})});});
+
+  /* ---------- cópias caem sobre o título ---------- */
+  gsap.from('.print',{y:-180,opacity:0,rotate:(i)=>[-24,20,-14][i],stagger:.14,duration:1.1,ease:'back.out(1.4)',scrollTrigger:{trigger:'.prints',start:'top 60%'}});
+  gsap.from('.prints h2',{scale:1.25,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.prints',start:'top 70%'}});
+
+  /* ---------- ficha técnica e demais entradas ---------- */
+  gsap.from('.spec dl>div',{y:24,opacity:0,stagger:.04,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.spec dl',start:'top 80%'}});
+  ['.fit','.buy','.faq','.spec','.steel'].forEach(sel=>{
+    const h=$(sel+' h2'); if(h) gsap.from(h,{y:40,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 88%'}});
+  });
+  gsap.from(['.fit-lead','.presets','.rng','.fit-board'],{y:28,opacity:0,stagger:.08,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.fit',start:'top 70%'}});
+  gsap.from('.ticket',{y:60,rotate:-1.5,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.ticket',start:'top 85%'}});
+  gsap.from('.after>div',{y:24,opacity:0,stagger:.08,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.after',start:'top 90%'}});
+  gsap.from('.card',{y:50,opacity:0,stagger:.08,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.drawer',start:'top 80%'}});
+  gsap.from('.cta b',{yPercent:60,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.cta',start:'top 80%'}});
+  gsap.from('.foot-menu li',{x:-30,opacity:0,stagger:.06,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.foot',start:'top 70%'}});
+  gsap.fromTo('.foot-ph img',{scale:1.2},{scale:1,ease:'none',scrollTrigger:{trigger:'.foot',start:'top bottom',end:'bottom bottom',scrub:true}});
+
+  window.addEventListener('load',()=>ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
