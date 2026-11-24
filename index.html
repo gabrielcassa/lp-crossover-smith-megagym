@@ -289,9 +289,9 @@ input[type=range]::-moz-range-thumb{width:30px;height:30px;background:var(--oran
 .card-tab::before,.card-tab::after{content:"";position:absolute;bottom:0;width:var(--f);height:var(--f);pointer-events:none}
 .card-tab::before{right:100%;background:radial-gradient(circle at 0 0,transparent calc(var(--f) - .5px),var(--c) var(--f))}
 .card-tab::after{left:100%;background:radial-gradient(circle at 100% 0,transparent calc(var(--f) - .5px),var(--c) var(--f))}
-.card[style*="--i:0"] .card-tab::before{display:none}
+.card:first-child .card-tab::before{display:none}
 .card-body{background:var(--c);color:var(--t);padding:22px 28px 30px;border-radius:0 var(--r) var(--r) var(--r)}
-.card:not([style*="--i:0"]) .card-body{border-top-left-radius:var(--r)}
+.card:not(:first-child) .card-body{border-top-left-radius:var(--r)}
 .card button{display:block;width:100%;text-align:left;font-size:21px;font-weight:700;min-height:44px;color:var(--t)}
 .card button span{float:right;font-family:var(--display);font-weight:900;font-size:28px;line-height:1;transition:transform .3s var(--ease)}
 .card.open button span{transform:rotate(45deg)}
