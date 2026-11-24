@@ -3,557 +3,1042 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Multi Crossover Smith | Academia em casa | MegaGym</title>
-<meta name="description" content="Multi Crossover Smith MegaGym: smith, crossover, rack de supino e agachamento, pulley, remada e barra fixa numa estação de 2,20 m que não precisa ser fixada. Veja se cabe na sua casa. A partir de R$ 14.890 no Pix ou 15x sem juros.">
-<meta name="theme-color" content="#fc5400">
+<title>Multi Crossover Smith com Rack Integrado | MegaGym</title>
+<meta name="description" content="Multi Crossover Smith MegaGym: Smith com barra guiada, crossover de polias móveis, rack de supino e agachamento, pulley e barra fixa em um único equipamento. Baterias de 82 ou 122 kg por lado. A partir de R$ 14.890 no Pix ou 15x sem juros.">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
 <link rel="shortcut icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,800;1,900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/smith-cut.webp">
 <style>
 :root{
   --orange:#fc5400;
+  --orange-2:#ff7a33;
+  --orange-deep:#e04a00;
   --ink:#0a0a0a;
-  --ink-2:#1c1c1c;
-  --ink-3:#262626;
-  --paper:#eeebe6;
-  --stone:#d6d0c6;
-  --white:#ffffff;
-  --muted-ink:#3d3a36;
-  --muted-paper:#b9b4ad;
+  --ink-2:#121212;
+  --ink-3:#1a1a1a;
+  --line:rgba(255,255,255,.09);
+  --line-2:rgba(255,255,255,.16);
+  --text:#f4f1ee;
+  --muted:#a29d98;
+  --muted-2:#928c87;
+  --green:#22c55e;
+  --radius:22px;
   --display:"Barlow Condensed", Impact, sans-serif;
   --body:"Manrope", system-ui, sans-serif;
-  --m:clamp(16px,2.4vw,40px);
   --ease:cubic-bezier(.22,1,.36,1);
-  /* raios no padrão das LPs de bike */
-  --r-sm:12px;
-  --r:22px;
-  --r-lg:32px;
+  --gutter:clamp(16px,4vw,56px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;overflow-x:clip}
+html{-webkit-text-size-adjust:100%}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body{background:var(--ink);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
-a{color:inherit}
+a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-::selection{background:var(--orange);color:var(--ink)}
-.wrap{padding:0 var(--m);max-width:1600px;margin:0 auto;width:100%}
-.d{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
-:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+::selection{background:var(--orange);color:#000}
+.wrap{width:100%;max-width:1320px;margin:0 auto;padding:0 var(--gutter)}
+.display{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:-.01em}
+.o{color:var(--orange)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--orange)}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--orange)}
+.lead{font-size:clamp(16px,1.35vw,19px);color:var(--muted);max-width:56ch}
 section{position:relative}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-/* botão: pílula, como nas LPs de bike */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:16px 30px;border-radius:999px;background:var(--orange);color:var(--ink);font-family:var(--body);font-weight:800;font-size:16px;text-decoration:none;transition:transform .25s var(--ease),background .2s,color .2s}
-.btn:hover{transform:translateY(-2px)}
-.btn:active{transform:translateY(1px)}
-.btn svg{width:18px;height:18px;transition:transform .25s var(--ease)}
+/* grain + glow cursor */
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:90;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+.cursor-glow{position:fixed;left:0;top:0;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(252,84,0,.13),transparent 62%);transform:translate(-50%,-50%);opacity:0;transition:opacity .4s}
+@media (hover:hover){.cursor-glow{opacity:1}}
+
+/* preloader */
+.loader{position:fixed;inset:0;z-index:200;background:#000;display:grid;place-items:center}
+.loader-in{display:flex;flex-direction:column;align-items:center;gap:22px}
+.loader img{width:min(240px,60vw);opacity:0;transform:translateY(12px)}
+.loader-bar{width:min(240px,60vw);height:2px;background:rgba(255,255,255,.1);overflow:hidden}
+.loader-bar i{display:block;height:100%;width:0;background:var(--orange)}
+.loader-num{font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.3em;color:var(--muted-2)}
+
+/* top marquee */
+.topbar{background:var(--orange);color:#000;overflow:hidden;white-space:nowrap;font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;position:relative;z-index:60}
+.topbar-track{display:inline-flex;gap:0;animation:marq 32s linear infinite;padding:9px 0}
+.topbar-track span{display:inline-flex;align-items:center;gap:14px;padding:0 22px}
+.topbar-track span::after{content:"✦";font-size:10px}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* header */
+.header{position:sticky;top:0;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+.header.scrolled{background:rgba(10,10,10,.72);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-color:var(--line)}
+.header-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.header-logo img{height:34px;width:auto}
+.header-nav{display:flex;gap:30px;font-size:14px;font-weight:600;color:var(--muted)}
+.header-nav a{transition:color .25s}
+.header-nav a:hover{color:var(--text)}
+@media (max-width:900px){.header-nav{display:none}.header-logo img{height:28px}}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:20px 34px;border-radius:999px;background:var(--orange);color:#000;font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;overflow:hidden;isolation:isolate;transition:transform .35s var(--ease),box-shadow .35s;box-shadow:0 10px 40px -10px rgba(252,84,0,.7),inset 0 -3px 0 rgba(0,0,0,.18);will-change:transform;min-height:56px}
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:shine 3.4s var(--ease) infinite;z-index:-1}
+@keyframes shine{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.btn:hover{box-shadow:0 18px 60px -10px rgba(252,84,0,.95),inset 0 -3px 0 rgba(0,0,0,.18)}
+.btn svg{width:18px;height:18px;transition:transform .35s var(--ease)}
 .btn:hover svg{transform:translateX(4px)}
-.btn.dark{background:var(--ink);color:var(--white)}
-.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+.btn-sm{padding:12px 22px;font-size:12.5px;min-height:44px}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line-2);box-shadow:none}
+.btn-ghost::before{display:none}
+.btn-ghost:hover{border-color:var(--orange);box-shadow:none;color:var(--orange)}
+.btn-block{width:100%}
 
-/* cantos fixos: marca e ação, com a tinta do capítulo embaixo */
-.corner{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:18px var(--m);pointer-events:none}
-.corner>*{pointer-events:auto}
-.mark{display:block;width:150px;height:39px;background:currentColor;-webkit-mask:url(assets/logo.png) left center/contain no-repeat;mask:url(assets/logo.png) left center/contain no-repeat;color:var(--ink);transition:color .3s}
-.corner .btn{min-height:46px;padding:11px 22px;font-size:15px;transition:background .3s,color .3s,transform .2s var(--ease)}
-body[data-ch="orange"] .corner .btn{background:var(--ink);color:var(--white)}
-body[data-ch="ink"] .mark{color:var(--white)}
-@media (max-width:640px){.mark{width:118px;height:31px}.corner{padding:14px 16px}.corner .btn{min-height:44px;padding:10px 18px;font-size:14px}}
+/* hero */
+.hero{min-height:calc(100svh - 108px);display:flex;align-items:center;padding:24px 0 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-bg::before{content:"";position:absolute;right:-10%;top:-20%;width:80vw;height:80vw;max-width:1100px;max-height:1100px;border-radius:50%;background:radial-gradient(circle,rgba(252,84,0,.28),rgba(252,84,0,.05) 45%,transparent 65%)}
+.hero-bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at 70% 50%,#000 10%,transparent 65%);-webkit-mask-image:radial-gradient(ellipse at 70% 50%,#000 10%,transparent 65%);opacity:.5}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(42px,min(4.9vw,8.2vh),86px);margin:16px 0 20px}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .line>span{display:inline-block;will-change:transform}
+.hero h1 em{font-style:italic;color:var(--orange)}
+.hero .lead{margin-bottom:26px}
+.price-tag{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap;margin-bottom:26px}
+.price-old{font-size:15px;color:var(--muted-2);text-decoration:line-through;font-weight:600}
+.price-now{font-family:var(--display);font-weight:900;font-size:clamp(52px,5vw,74px);line-height:.85;letter-spacing:-.01em}
+.price-now small{font-size:.42em;vertical-align:top;margin-right:4px;color:var(--muted)}
+.price-meta{font-size:14px;color:var(--muted);line-height:1.45}
+.price-meta b{color:var(--text)}
+.pix{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:rgba(34,197,94,.12);color:var(--green);font-weight:800;font-size:12px;letter-spacing:.04em;margin-top:6px}
+.off-badge{position:relative;display:inline-grid;place-items:center;width:76px;height:76px;border-radius:50%;background:var(--orange);color:#000;font-family:var(--display);font-weight:900;font-size:26px;line-height:.9;text-align:center;transform:rotate(-12deg)}
+.off-badge small{display:block;font-size:12px;letter-spacing:.1em}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.trust-row{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:13px;color:var(--muted);font-weight:600}
+.trust-row span{display:inline-flex;align-items:center;gap:8px}
+.trust-row svg{width:18px;height:18px;color:var(--orange);flex:none}
 
-/* ---------- HERO: texto à esquerda, a estação inteira à direita com a cota de 2,20 m ---------- */
-.hero{background:var(--orange);min-height:100svh;overflow:hidden;display:flex;align-items:center;padding:110px 0 56px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
-.hero h1{font-size:clamp(72px,8.6vw,152px);line-height:.84;letter-spacing:-.03em}
-.hero h1 span{display:block}
-.hero h1 .l1{color:var(--white)}
-.hero h1 .l2{color:var(--ink)}
-.hero-sub{font-size:20px;font-weight:600;max-width:36ch;margin:26px 0 26px}
-.hero-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin-bottom:22px}
-.hero-price b{font-family:var(--display);font-weight:900;font-size:clamp(52px,4.6vw,80px);line-height:.9}
-.hero-price span{font-size:16px;font-weight:700}
-.hero-row{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center}
-.hero-note{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.hero-note span{font-size:15px;font-weight:700;background:rgba(10,10,10,.1);padding:8px 14px;border-radius:999px}
-.tmr{font-family:var(--display);font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:.02em}
-.tmr small{font-family:var(--body);font-size:.62em;font-weight:800;margin:0 4px 0 1px}
-.timer-pill{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;background:var(--ink);color:var(--white);padding:10px 16px;border-radius:999px}
-.timer-pill .tmr{color:var(--orange);font-size:20px}
-.stage{position:relative;display:flex;justify-content:center;align-items:flex-end;height:min(80svh,760px)}
-.stage img{height:100%;width:auto;max-width:100%;object-fit:contain;position:relative;z-index:2}
-.stage-dim{position:absolute;left:0;top:0;bottom:0;width:64px;display:flex;flex-direction:column;align-items:center;z-index:1}
-.stage-dim i{flex:1;width:3px;background:var(--ink);position:relative}
-.stage-dim i::before,.stage-dim i::after{content:"";position:absolute;left:50%;width:26px;height:3px;background:var(--ink);transform:translateX(-50%)}
-.stage-dim i::before{top:0}.stage-dim i::after{bottom:0}
-.stage-dim b{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);background:var(--orange);padding:4px 10px;font-family:var(--display);font-weight:900;font-size:30px;white-space:nowrap}
-.stage-tag{position:absolute;right:0;bottom:8%;z-index:3;background:var(--ink);color:var(--white);border-radius:var(--r);padding:14px 18px;font-size:15px;font-weight:700;line-height:1.3}
-.stage-tag b{display:block;font-family:var(--display);font-weight:900;font-size:34px;color:var(--orange);line-height:1}
-@media (max-width:900px){
-  .hero{padding:92px 0 40px;min-height:auto}
-  .hero-grid{grid-template-columns:1fr;gap:8px}
-  .hero h1{font-size:19vw}
-  .stage{order:2;height:auto;margin:12px 0 4px}
-  .stage img{height:auto;width:78%;max-width:440px;margin-left:12%}
-  .stage-dim{width:48px}
-  .stage-dim b{font-size:22px}
-  .stage-tag{padding:10px 14px;font-size:13px;bottom:4%}
-  .stage-tag b{font-size:26px}
-  .hero-copy{display:contents}
-  .hero-copy h1{order:1}
-  .hero-rest{order:3}
-  .hero-sub{font-size:17px;margin:18px 0}
+.hero-visual{position:relative;aspect-ratio:1/1.1;display:grid;place-items:center;perspective:1200px}
+.ring{position:absolute;width:92%;aspect-ratio:1;left:50%;top:50%;transform:translate(-50%,-50%)}
+.ring svg{width:100%;height:100%;overflow:visible}
+.ring-spin{transform-origin:50% 50%}
+.hero-bike{position:relative;z-index:3;width:86%;filter:drop-shadow(0 50px 60px rgba(0,0,0,.75)) drop-shadow(0 0 80px rgba(252,84,0,.15));will-change:transform}
+.hero-floor{position:absolute;bottom:6%;left:50%;width:70%;height:40px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(252,84,0,.45),transparent 70%);filter:blur(14px);z-index:2}
+.fg-badge{position:absolute;z-index:5;width:var(--fg,150px);aspect-ratio:1;border-radius:50%;background:var(--orange);color:#000;display:grid;place-items:center;box-shadow:0 20px 40px -14px rgba(0,0,0,.8),inset 0 0 0 4px rgba(0,0,0,.12)}
+.fg-ring{position:absolute;inset:0;width:100%;height:100%;animation:fgspin 14s linear infinite}
+.fg-ring text{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.06em;fill:#000}
+.fg-core{display:flex;flex-direction:column;align-items:center;justify-content:center;width:52%;aspect-ratio:1;border-radius:50%;background:#000;color:var(--orange)}
+.fg-core svg{width:44%;height:auto}
+.fg-core b{font-family:var(--display);font-weight:900;font-size:calc(var(--fg,150px)*.11);line-height:1;letter-spacing:.04em;margin-top:2px}
+@keyframes fgspin{to{transform:rotate(360deg)}}
+.fg-hero{left:0;bottom:4%;--fg:clamp(118px,11vw,160px);transform:rotate(-10deg)}
+.fg-card{left:0;top:4%;transform:rotate(-10deg);--fg:clamp(104px,9vw,136px)}
+@media (max-width:1000px){.fg-hero{left:2%;bottom:2%;--fg:104px}}
+@media (prefers-reduced-motion:reduce){.fg-ring{animation:none}}
+.chip{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;border-radius:999px;background:rgba(20,20,20,.72);border:1px solid var(--line-2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:13px;font-weight:700;white-space:nowrap;box-shadow:0 20px 40px -20px #000}
+.chip i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--orange);color:#000;font-style:normal;font-family:var(--display);font-weight:900;font-size:13px}
+.chip i svg{width:18px;height:18px}
+.chip small{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.chip-1{left:-2%;top:22%}
+.chip-2{right:-2%;top:12%}
+.chip-3{right:2%;bottom:20%}
+.chip-4{left:4%;bottom:12%}
+@media (max-width:1000px){
+  .hero{padding-top:20px}
+  .hero-grid{grid-template-columns:1fr;gap:10px}
+  .hero-visual{order:-1;width:100%;max-width:min(520px,82vw);margin:0 auto;aspect-ratio:1/1}
+  .chip{font-size:11.5px;padding:7px 12px 7px 7px}
+  .chip i{width:28px;height:28px;font-size:11px}
+  .chip small{display:none}
+  .chip-1{left:0;top:18%}.chip-2{right:0;top:6%}.chip-3{right:0;bottom:16%}.chip-4{display:none}
 }
 
-/* ---------- CASA (cena fixada) ---------- */
-.house-sec{background:var(--paper)}
-.house-pin{height:100svh;display:grid;grid-template-rows:auto 1fr;padding:88px var(--m) 20px;overflow:hidden}
-.house-head{display:grid;grid-template-columns:1fr minmax(0,420px);gap:16px 40px;align-items:end}
-.house-head h2{font-size:clamp(44px,5vw,84px)}
-.house-steps{position:relative;min-height:4.8em}
-.house-steps p{position:absolute;inset:auto 0 0 0;font-size:19px;font-weight:600}
-.house-steps p+p{opacity:0}
-.house-view{position:relative;display:grid;place-items:center;min-height:0;overflow:hidden;margin-top:12px;border-radius:var(--r-lg)}
-.house{position:relative;width:min(100%,calc((100svh - 240px)*1.6));aspect-ratio:1600/1000;transform-origin:72.5% 71%}
-.house svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.house-smith{position:absolute;left:66.5%;bottom:14%;width:10.75%;height:auto;max-width:none}
-.dim{stroke:var(--orange);stroke-width:4;fill:none}
-.dim-t{font:800 22px var(--body);fill:var(--ink)}
-.dim-t.o{fill:var(--orange)}
+/* giant scroller */
+.giant{padding:30px 0;border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;background:var(--ink-2)}
+.giant-track{display:inline-flex;will-change:transform}
+.giant-track span{font-family:var(--display);font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(60px,11vw,180px);line-height:.9;padding-right:.35em;display:inline-flex;align-items:center;gap:.35em}
+.giant-track span:nth-child(odd){-webkit-text-stroke:1.5px rgba(255,255,255,.35);color:transparent}
+.giant-track span b{display:inline-block;width:.32em;height:.32em;border-radius:50%;background:var(--orange)}
+
+/* stats */
+.stats{padding:clamp(70px,9vw,120px) 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.stat{padding:clamp(24px,3vw,44px);border-right:1px solid var(--line);position:relative}
+.stat:last-child{border-right:0}
+.stat-num{font-family:var(--display);font-weight:900;font-size:clamp(54px,6vw,96px);line-height:.85;letter-spacing:-.02em}
+.stat-num sup{font-size:.4em;color:var(--orange);vertical-align:top;margin-left:4px}
+.stat p{margin-top:14px;font-size:14px;color:var(--muted);max-width:22ch}
+@media (max-width:860px){.stats-grid{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* pain */
+.pain{padding:clamp(80px,10vw,150px) 0}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.pain h2{font-size:clamp(44px,5.4vw,88px);margin:18px 0 24px}
+.excuses{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.excuse{display:flex;align-items:center;gap:16px;padding:18px 22px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(90deg,rgba(255,255,255,.03),transparent);font-weight:600}
+.excuse s{color:var(--muted-2);text-decoration-color:var(--orange);text-decoration-thickness:2px;flex:1}
+.excuse .x{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(252,84,0,.15);color:var(--orange);font-weight:900;font-size:14px}
+.pain-media{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:3/4}
+.pain-media img{width:100%;height:120%;object-fit:cover;position:absolute;top:-10%}
+.pain-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.85))}
+.pain-media .cap{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;font-family:var(--display);font-weight:800;font-size:clamp(26px,2.6vw,38px);text-transform:uppercase;line-height:.95}
+@media (max-width:900px){.pain-grid{grid-template-columns:1fr}.pain-media{aspect-ratio:4/5}}
+
+/* features sticky */
+.features{padding:clamp(60px,8vw,120px) 0}
+.sec-head{max-width:860px;margin-bottom:clamp(40px,6vw,80px)}
+.sec-head h2{font-size:clamp(44px,5.6vw,92px);margin:18px 0 20px}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px)}
+.feat-sticky{position:sticky;top:110px;height:calc(100vh - 150px);max-height:760px}
+.feat-frame{position:relative;height:100%;border-radius:28px;overflow:hidden;background:#111;border:1px solid var(--line)}
+.feat-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .7s var(--ease),transform 1.2s var(--ease)}
+.feat-frame img.on{opacity:1;transform:scale(1)}
+.feat-progress{position:absolute;left:20px;right:20px;bottom:20px;z-index:3;display:flex;gap:6px}
+.feat-progress i{flex:1;height:3px;border-radius:3px;background:rgba(0,0,0,.18);overflow:hidden}
+.feat-progress i::after{content:"";display:block;height:100%;width:0;background:var(--orange);transition:width .6s var(--ease)}
+.feat-progress i.on::after{width:100%}
+.feat-list{display:flex;flex-direction:column}
+.feat{min-height:72vh;display:flex;flex-direction:column;justify-content:center;padding:40px 0;opacity:.28;transition:opacity .6s var(--ease)}
+.feat.on{opacity:1}
+.feat-n{font-family:var(--display);font-weight:800;font-size:16px;letter-spacing:.2em;color:var(--orange)}
+.feat h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,4.2vw,68px);line-height:.9;margin:12px 0 18px}
+.feat p{color:var(--muted);font-size:17px;max-width:46ch}
+.feat ul{list-style:none;margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.feat li{padding:7px 14px;border-radius:999px;border:1px solid var(--line-2);font-size:13px;font-weight:700}
+.feat-img-m{display:none}
 @media (max-width:900px){
-  .house-pin{padding-top:76px;padding-bottom:84px}
-  .house-head{grid-template-columns:1fr}
-  .house-head h2{font-size:10.5vw}
-  .house-steps{min-height:4.4em}
-  .house-steps p{font-size:16px}
-  .house{width:100%}
+  .feat-grid{grid-template-columns:1fr}
+  .feat-sticky{display:none}
+  .feat{min-height:auto;opacity:1;padding:26px 0;border-top:1px solid var(--line)}
+  .feat-img-m{display:block;border-radius:20px;overflow:hidden;margin-bottom:22px;aspect-ratio:4/4.4;background:#fff}
+  .feat-img-m img{width:100%;height:100%;object-fit:cover}
 }
 
-/* ---------- 8 EM 1 ---------- */
-.feat{background:var(--ink);color:var(--paper);padding:clamp(110px,12vw,180px) 0}
-.feat .wrap{display:grid;grid-template-columns:4fr 8fr;gap:48px}
-.feat-h{position:sticky;top:96px;align-self:start}
-.feat-h h2{font-size:clamp(88px,8.2vw,150px);color:var(--orange);white-space:nowrap}
-.feat-h p{font-size:20px;max-width:26ch;margin-top:28px}
-.blocks{display:flex;flex-direction:column;gap:110px}
-.blk-row{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:40px;align-items:center}
-.blk:nth-child(even) .blk-row{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
-.blk:nth-child(even) .blk-row figure{order:2}
-.blk figure{aspect-ratio:4/5;overflow:hidden;background:var(--ink-2);border-radius:var(--r)}
-.blk figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-.blk:hover figure img{transform:scale(1.04)}
-.blk h3{font-family:var(--display);font-weight:800;font-size:clamp(36px,3.2vw,52px);line-height:.95;text-transform:uppercase;margin-bottom:22px}
-.blk ul{list-style:none;display:flex;flex-direction:column;gap:14px;font-size:18px}
-.blk li{padding-left:22px;position:relative}
-.blk li::before{content:"";position:absolute;left:0;top:.5em;width:10px;height:10px;border-radius:50%;background:var(--orange)}
+/* horizontal world */
+.world{background:var(--ink-2);border-block:1px solid var(--line);overflow:hidden}
+.world-pin{height:100vh;display:flex;flex-direction:column;justify-content:center;padding:90px 0 40px}
+.world-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:34px}
+.world-head h2{font-size:clamp(44px,5.6vw,92px);margin-top:16px}
+.world-head .lead{max-width:40ch}
+.world-track{display:flex;gap:22px;padding:0 var(--gutter);will-change:transform;width:max-content}
+.w-card{position:relative;flex:none;width:clamp(280px,30vw,430px);aspect-ratio:3/4;border-radius:24px;overflow:hidden;border:1px solid var(--line)}
+.w-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.w-card:hover img{transform:scale(1.05)}
+.w-text{flex:none;width:clamp(280px,28vw,400px);aspect-ratio:3/4;border-radius:24px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(160deg,#1f1f1f,#0d0d0d);border:1px solid var(--line)}
+.w-text.hot{background:linear-gradient(160deg,var(--orange),var(--orange-deep));color:#000;border:0}
+.w-text h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(36px,3.2vw,52px);line-height:.9}
+.w-text p{font-size:15px;color:var(--muted)}
+.w-text.hot p{color:rgba(0,0,0,.75)}
+.apps{display:flex;flex-wrap:wrap;gap:8px}
+.apps span{padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line-2);font-weight:800;font-size:14px}
+.w-text.hot .apps span{background:rgba(0,0,0,.12);border-color:rgba(0,0,0,.2)}
+.world-note{margin-top:26px;font-size:12px;color:var(--muted-2)}
+@media (min-width:901px){.w-card,.w-text{width:auto;height:min(58vh,560px)}}
 @media (max-width:900px){
-  .feat .wrap{grid-template-columns:1fr;gap:24px}
-  .feat-h{position:static}
-  .feat-h h2{font-size:26vw}
-  .feat-h p{font-size:17px;margin-top:12px}
-  .blocks{gap:64px}
-  .blk-row,.blk:nth-child(even) .blk-row{grid-template-columns:1fr;gap:20px}
-  .blk:nth-child(even) .blk-row figure{order:0}
-  .blk h3{font-size:9.5vw;margin-bottom:14px}
-  .blk ul{font-size:17px}
+  .world-pin{height:auto;padding:80px 0 60px}
+  .world-head{flex-direction:column;align-items:flex-start}
+  .world-scroll{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .world-scroll::-webkit-scrollbar{display:none}
+  .world-track>*{scroll-snap-align:center;width:78vw}
 }
 
-/* ---------- VERBOS: foto em retrato no tamanho certo (sem esticar) ---------- */
-.verbs{background:var(--ink);color:var(--white);padding:40px 0}
-.verb{min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,5vw,80px);align-items:center;padding:40px 0}
-.verb:nth-child(odd) .verb-txt{order:2}
-.verb-txt{min-width:0}
-.verb-w{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(96px,13vw,230px);line-height:.85;letter-spacing:-.02em;color:var(--orange)}
-.verb-txt p{font-size:20px;font-weight:600;max-width:30ch;margin-top:22px}
-.verb figure{height:min(84svh,820px);aspect-ratio:3/4.1;border-radius:var(--r-lg);overflow:hidden;background:var(--ink-2)}
-.verb figure img{width:100%;height:100%;object-fit:cover}
+/* magnetic compare */
+.compare{padding:clamp(80px,10vw,150px) 0}
+.compare-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.compare h2{font-size:clamp(44px,5.4vw,88px);margin:18px 0 22px}
+.equation{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:34px}
+.eq-box{padding:20px 24px;border-radius:18px;border:1px solid var(--line-2);background:var(--ink-3)}
+.eq-box b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(40px,4vw,60px);line-height:.9}
+.eq-box span{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.eq-box.hot{background:var(--orange);color:#000;border:0}
+.eq-box.hot span{color:rgba(0,0,0,.7)}
+.eq-sign{font-family:var(--display);font-weight:900;font-size:44px;color:var(--orange)}
+.bars{display:flex;flex-direction:column;gap:18px;padding:clamp(24px,3vw,40px);border-radius:28px;border:1px solid var(--line);background:linear-gradient(160deg,#161616,#0c0c0c)}
+.bars-h{display:flex;justify-content:space-between;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.bar-row{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:center}
+.bar-row>b{font-family:var(--display);font-weight:900;font-size:26px}
+.bar-track{position:relative;height:46px;border-radius:12px;background:rgba(255,255,255,.04);overflow:hidden}
+.bar-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:12px;background:linear-gradient(90deg,#333,#555);display:flex;align-items:center;justify-content:flex-end;padding-right:14px;font-weight:800;font-size:14px;white-space:nowrap}
+.bar-row.me .bar-fill{background:linear-gradient(90deg,var(--orange-deep),var(--orange));color:#000}
+.bar-row.me>b{color:var(--orange)}
+.bars small{font-size:12px;color:var(--muted-2)}
+@media (max-width:900px){.compare-grid{grid-template-columns:1fr}}
+
+/* audience */
+.audience{padding:clamp(70px,9vw,130px) 0;background:var(--ink-2);border-block:1px solid var(--line)}
+.aud-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.aud{position:relative;padding:30px 26px 28px;border-radius:24px;border:1px solid var(--line);background:var(--ink);overflow:hidden;transition:border-color .4s,transform .5s var(--ease);min-height:290px;display:flex;flex-direction:column}
+.aud::before{content:"";position:absolute;inset:auto -30% -60% -30%;height:80%;background:radial-gradient(circle,rgba(252,84,0,.35),transparent 60%);opacity:0;transition:opacity .5s}
+.aud:hover{border-color:rgba(252,84,0,.6);transform:translateY(-6px)}
+.aud:hover::before{opacity:1}
+.aud{display:grid!important;grid-template-columns:auto 1fr;grid-template-rows:auto 1fr;column-gap:14px;align-content:start}
+.aud-ic{color:var(--orange);align-self:center;position:relative}
+.aud-ic svg{width:30px;height:30px;display:block}
+.aud h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:28px;line-height:.95;margin:0;align-self:center;position:relative}
+.aud{min-height:0!important}
+.aud p{grid-column:1 / -1;padding-top:16px}
+.aud p{font-size:14.5px;color:var(--muted);position:relative}
+@media (max-width:1000px){.aud-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.aud-grid{grid-template-columns:1fr}.aud{min-height:auto}}
+
+/* lifestyle gallery */
+.life{padding:clamp(80px,10vw,150px) 0}
+.life-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:auto auto;gap:16px}
+.life-item{position:relative;border-radius:24px;overflow:hidden;clip-path:inset(12% 12% 12% 12% round 24px)}
+.life-item img{width:100%;height:100%;object-fit:cover;transform:scale(1.25)}
+.life-item.big{grid-row:span 2;aspect-ratio:auto}
+.life-item:not(.big){aspect-ratio:3/4}
+.life-quote{grid-column:2 / span 2;display:flex;align-items:center;padding:clamp(24px,3vw,44px);border-radius:24px;background:var(--orange);color:#000}
+.life-quote p{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,3.2vw,52px);line-height:.92}
 @media (max-width:900px){
-  .verbs{padding:24px 0}
-  .verb{min-height:auto;grid-template-columns:1fr;gap:18px;padding:40px 0}
-  .verb:nth-child(odd) .verb-txt{order:0}
-  .verb-w{font-size:22vw}
-  .verb-txt p{font-size:17px;margin-top:10px}
-  .verb figure{height:auto;width:100%;aspect-ratio:3/3.6}
+  .life-grid{grid-template-columns:1fr 1fr}
+  .life-item.big{grid-column:span 2;grid-row:auto;aspect-ratio:4/5}
+  .life-quote{grid-column:span 2}
 }
 
-/* ---------- CABE AQUI? ---------- */
-.fit{background:var(--stone);padding:clamp(110px,12vw,180px) 0}
-.fit .wrap{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,80px);align-items:start}
-.fit h2{font-size:clamp(64px,7.4vw,124px)}
-.fit-lead{font-size:20px;margin:24px 0 32px;max-width:34ch}
-.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-.presets button{min-height:44px;padding:10px 20px;border-radius:999px;background:var(--paper);font-weight:800;font-size:16px;transition:background .2s,color .2s}
-.presets button:hover{background:var(--white)}
-.presets button.on{background:var(--ink);color:var(--white)}
-.rng{margin-bottom:22px}
-.rng-top{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:16px;margin-bottom:8px}
-.rng-top output{font-family:var(--display);font-weight:900;font-size:32px}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:8px;background:linear-gradient(90deg,var(--ink) var(--p,40%),var(--paper) var(--p,40%));outline:none;cursor:pointer}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--orange);border:0;transition:transform .2s}
+/* calculator */
+.calc{padding:clamp(80px,10vw,150px) 0;overflow:hidden}
+.calc-box{position:relative;display:grid;grid-template-columns:1fr 1fr;border-radius:32px;border:1px solid var(--line);background:linear-gradient(150deg,#171717,#0b0b0b);overflow:hidden}
+.calc-box::before{content:"";position:absolute;right:-20%;bottom:-40%;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(252,84,0,.22),transparent 65%)}
+.calc-l,.calc-r{position:relative;padding:clamp(28px,4.5vw,64px)}
+.calc-l{border-right:1px solid var(--line)}
+.calc h2{font-size:clamp(40px,4.4vw,72px);margin:16px 0 18px}
+.field{margin-top:34px}
+.field-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;font-weight:700;font-size:14px;color:var(--muted)}
+.field-top output{font-family:var(--display);font-weight:900;font-size:34px;color:var(--text)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--orange) var(--p,30%),rgba(255,255,255,.1) var(--p,30%));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:6px solid var(--orange);box-shadow:0 0 0 6px rgba(252,84,0,.2);transition:transform .2s}
 input[type=range]::-webkit-slider-thumb:active{transform:scale(1.15)}
-input[type=range]::-moz-range-thumb{width:30px;height:30px;background:var(--orange);border:0;border-radius:50%}
-.fit-board{background:var(--paper);padding:clamp(20px,2.4vw,36px);border-radius:var(--r-lg)}
-.fit-verdict{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(48px,5vw,84px);line-height:.9}
-.fit-verdict.no{color:#b33a00}
-.fit-detail{font-size:18px;font-weight:600;margin:10px 0 18px}
-.fit-draw{display:grid;grid-template-columns:2fr 1fr;gap:16px}
-.fit-draw svg{width:100%;height:auto;display:block}
-.fit-draw figcaption{font-size:14px;font-weight:700;margin-top:6px;color:var(--muted-ink)}
-.fit-tip{font-size:16px;margin-top:18px;color:var(--muted-ink)}
-@media (max-width:900px){.fit .wrap{grid-template-columns:1fr}.fit h2{font-size:17vw}.fit-lead{font-size:17px}.fit-draw{grid-template-columns:1fr 1fr}}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:6px solid var(--orange)}
+.calc-r{display:flex;flex-direction:column;justify-content:center;gap:24px}
+.res{padding-bottom:22px;border-bottom:1px solid var(--line)}
+.res:last-of-type{border:0}
+.res span{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.res b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(46px,5vw,80px);line-height:.95;margin-top:6px}
+.res b.o{color:var(--orange)}
+.calc-note{font-size:12px;color:var(--muted-2)}
+@media (max-width:900px){.calc-box{grid-template-columns:1fr}.calc-l{border-right:0;border-bottom:1px solid var(--line)}}
 
-/* ---------- AÇO ---------- */
-.steel{background:var(--paper);padding:clamp(110px,12vw,180px) 0}
-.steel h2{font-size:clamp(56px,6.4vw,110px);margin-bottom:40px}
-.tiles{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px}
-.tile{padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:clamp(300px,34vw,440px);border-radius:var(--r-lg)}
-.tile b{font-family:var(--display);font-weight:900;font-size:clamp(64px,6.4vw,112px);line-height:.85}
-.tile p{font-size:18px;font-weight:600;max-width:32ch}
-.t1{background:var(--orange)}
-.t2{background:var(--ink);color:var(--paper)}
-.t3{background:var(--stone)}
-@media (max-width:900px){.steel h2{font-size:13vw;margin-bottom:24px}.tiles{grid-template-columns:1fr;gap:10px}.tile{min-height:auto;padding:24px;gap:28px}.tile b{font-size:17vw}.tile p{font-size:16px}}
+/* specs */
+.specs{padding:clamp(70px,9vw,130px) 0}
+.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.specs-img{border-radius:28px;background:radial-gradient(circle at 50% 60%,rgba(252,84,0,.22),transparent 60%),linear-gradient(160deg,#181818,#0b0b0b);border:1px solid var(--line);overflow:hidden;position:sticky;top:110px;padding:clamp(24px,4vw,56px)}
+.specs-img img{filter:drop-shadow(0 40px 50px rgba(0,0,0,.7))}
+.spec-table{border-top:1px solid var(--line)}
+.spec-row{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:15px}
+.spec-row span{color:var(--muted)}
+.spec-row b{text-align:right;font-weight:700}
+@media (max-width:900px){.specs-grid{grid-template-columns:1fr}.specs-img{position:relative;top:0}}
 
-/* ---------- FICHA ---------- */
-.spec{background:var(--ink);color:var(--paper);padding:clamp(110px,12vw,180px) 0}
-.spec h2{font-size:clamp(64px,7.4vw,124px);margin-bottom:56px;color:var(--orange)}
-.spec dl{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.spec dl div{background:var(--ink-2);padding:20px 24px;border-radius:16px;display:grid;grid-template-columns:minmax(0,15ch) 1fr;gap:16px;align-items:baseline}
-.spec dt{font-size:16px;font-weight:700;color:var(--muted-paper)}
-.spec dd{font-size:19px;font-weight:700}
-@media (max-width:900px){.spec h2{font-size:17vw;margin-bottom:32px}.spec dl{grid-template-columns:1fr}.spec dl div{grid-template-columns:1fr;gap:4px;padding:16px}.spec dd{font-size:17px}}
+/* offer */
+.offer{padding:clamp(80px,10vw,150px) 0;background:radial-gradient(ellipse at 50% 0%,rgba(252,84,0,.18),transparent 60%),var(--ink)}
+.offer .sec-head{text-align:center;margin-inline:auto}
+.offer .sec-head .eyebrow{justify-content:center}
+.offer .sec-head .lead{margin-inline:auto}
+.offer-grid{display:grid;grid-template-columns:1fr;max-width:1080px;margin:0 auto}
+.card{position:relative;border-radius:32px;border:1px solid var(--line-2);background:linear-gradient(160deg,#1a1a1a,#0c0c0c);padding:clamp(24px,3.5vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;overflow:hidden}
+.card.main{border:1.5px solid var(--orange);box-shadow:0 30px 120px -40px rgba(252,84,0,.6)}
+.card.alt{grid-template-columns:1fr}
+.card-flag{position:absolute;top:22px;left:22px;padding:7px 14px;border-radius:999px;background:var(--orange);color:#000;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;z-index:2}
+.card.alt .card-flag{background:#fff}
+.card-img{position:relative}
+.card-img img{width:100%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.7))}
+.card.alt .card-img{max-width:260px;margin:30px auto 0}
+.card h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,2.8vw,44px);line-height:.92;margin-bottom:16px}
+.card .from{font-size:14px;color:var(--muted)}
+.card .from s{color:var(--muted-2)}
+.card .big{font-family:var(--display);font-weight:900;font-size:clamp(56px,5.2vw,84px);line-height:.85;margin:6px 0 8px}
+.card .big small{font-size:.38em;color:var(--muted);vertical-align:top}
+.card .inst{font-size:15px;color:var(--muted);margin-bottom:6px}
+.card .inst b{color:var(--text)}
+.card ul{list-style:none;margin:22px 0 26px;display:flex;flex-direction:column;gap:10px;font-size:14.5px}
+.card li{display:flex;gap:10px;align-items:flex-start}
+.card li svg{flex:none;width:18px;height:18px;color:var(--orange);margin-top:3px}
+.volt{display:flex;gap:8px;margin:16px 0 4px}
+.volt button{flex:1;padding:12px;border-radius:12px;border:1px solid var(--line-2);font-weight:800;font-size:14px;transition:all .25s;min-height:44px}
+.volt button.on{border-color:var(--orange);background:rgba(252,84,0,.12);color:var(--orange)}
+.save-pill{display:inline-block;padding:5px 12px;border-radius:999px;background:rgba(34,197,94,.12);color:var(--green);font-weight:800;font-size:12.5px;margin-top:4px}
+.stock{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:13px;font-weight:700;color:var(--muted)}
+.stock i{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+@media (max-width:1000px){.offer-grid{grid-template-columns:1fr}.card{grid-template-columns:1fr}.card.main .card-img{max-width:360px;margin:30px auto 0}}
 
-/* ---------- MONTE A SUA (faixa) ---------- */
-.mount{background:var(--orange);padding:clamp(100px,11vw,170px) 0}
-.mount .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:32px 64px;align-items:end}
-.mount h2{font-size:clamp(100px,13vw,220px);line-height:.84}
-.mount p{font-size:20px;font-weight:600;margin-bottom:24px}
-@media (max-width:900px){.mount .wrap{grid-template-columns:1fr}.mount h2{font-size:24vw}.mount p{font-size:17px}}
+/* frete */
+.ship{margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding:24px clamp(20px,3vw,36px);border-radius:24px;border:1px solid var(--line);background:var(--ink-2)}
+.ship-l{display:flex;align-items:center;gap:16px}
+.ship-l svg{width:40px;height:40px;color:var(--orange);flex:none}
+.ship-l b{display:block;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:24px;line-height:1}
+.ship-l span{font-size:13px;color:var(--muted)}
+.ship-r{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.ship select{appearance:none;-webkit-appearance:none;padding:14px 44px 14px 18px;border-radius:12px;border:1px solid var(--line-2);background:#0e0e0e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23fc5400' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 16px center;color:var(--text);font:inherit;font-weight:700;font-size:16px;min-height:48px;cursor:pointer}
+.ship-res{font-weight:700;font-size:15px;min-height:24px}
+.ship-res.ok{color:var(--green)}
+.ship-res.no{color:var(--muted)}
+@media (max-width:760px){.ship{grid-template-columns:1fr}.ship-r{justify-content:flex-start}}
 
-/* ---------- ESCOLHA E GARANTA ---------- */
-.buy{background:var(--paper);padding:clamp(110px,12vw,180px) 0}
-.buy h2{font-size:clamp(64px,7.4vw,124px);margin-bottom:40px}
-.buy-card{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:12px;background:var(--ink);color:var(--paper);border-radius:var(--r-lg);padding:12px;max-width:1320px;margin:0 auto}
-.b-conf{padding:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:28px}
-.b-conf h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,3.6vw,60px);line-height:.9}
-.resumo{display:block;font-size:16px;font-weight:700;color:var(--muted-paper);margin-top:12px}
-.opt{margin-top:24px}
-.opt-k{display:block;font-size:16px;font-weight:700;margin-bottom:10px}
-.opt-g{display:flex;flex-wrap:wrap;gap:8px}
-.opt-g button{min-height:44px;padding:10px 16px;border-radius:var(--r-sm);background:var(--ink-3);color:var(--paper);font-weight:800;font-size:15px;transition:background .2s,color .2s}
-.opt-g button:hover{background:#333}
-.opt-g button.on{background:var(--orange);color:var(--ink)}
-.sw{display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px;border-radius:50%}
-.kit-img{background:var(--white);aspect-ratio:3/4;overflow:hidden;border-radius:var(--r)}
-.kit-img img{width:100%;height:100%;object-fit:contain}
-.kit-name{font-family:var(--display);font-weight:800;font-size:28px;text-transform:uppercase;margin:16px 0 4px;line-height:1}
-.kit-tag{font-size:16px;color:var(--muted-paper);margin-bottom:12px}
-.kit-lista{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:16px}
-.kit-lista li{padding-left:18px;position:relative;line-height:1.4}
-.kit-lista li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;border-radius:50%;background:var(--orange)}
-.b-price{background:var(--ink-2);border-radius:var(--r);padding:36px 28px;display:flex;flex-direction:column;justify-content:center;gap:12px}
-.b-price .k{font-size:16px;font-weight:700;color:var(--muted-paper)}
-.b-price .price{font-family:var(--display);font-weight:900;font-size:clamp(64px,5.8vw,100px);line-height:.85;color:var(--white)}
-.b-price .price small{font-size:.4em;vertical-align:top}
-.b-price .off{display:inline-block;align-self:flex-start;font-size:15px;font-weight:800;background:rgba(252,84,0,.16);color:var(--orange);padding:6px 12px;border-radius:999px}
-.b-price .inst{font-size:17px}
-.b-price .btn{width:100%;margin-top:8px}
-.b-price .cd{font-size:16px;font-weight:700}
-.b-price .cd .tmr{font-size:24px;color:var(--orange)}
-.after{max-width:1320px;margin:12px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.after div{background:var(--stone);padding:22px 24px;font-size:16px;border-radius:var(--r)}
-.after b{display:block;font-size:18px;margin-bottom:4px}
-@media (max-width:1100px){.b-conf{grid-template-columns:1fr}.kit-img{max-width:340px}}
-@media (max-width:900px){
-  .buy h2{font-size:15vw}
-  .buy-card{grid-template-columns:1fr;padding:8px;border-radius:26px}
-  .b-conf{padding:20px 14px}
-  .b-conf h3{font-size:10vw}
-  .b-price{padding:28px 20px}
-  .b-price .price{font-size:17vw}
-  .after{grid-template-columns:1fr}
+/* guarantees */
+.guar{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.g{padding:22px;border-radius:20px;border:1px solid var(--line);display:flex;gap:14px;align-items:flex-start}
+.g svg{width:28px;height:28px;color:var(--orange);flex:none}
+.g b{display:block;font-size:15px;margin-bottom:2px}
+.g span{font-size:13px;color:var(--muted);line-height:1.45}
+@media (max-width:1000px){.guar{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.guar{grid-template-columns:1fr}}
+
+/* faq */
+.faq{padding:clamp(80px,10vw,140px) 0}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,90px)}
+.faq h2{font-size:clamp(44px,5vw,80px);margin-top:16px}
+.qa{border-bottom:1px solid var(--line)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;text-align:left;font-weight:700;font-size:clamp(16px,1.3vw,19px);min-height:44px}
+.qa button i{flex:none;position:relative;width:32px;height:32px;border-radius:50%;border:1px solid var(--line-2);transition:all .35s var(--ease)}
+.qa button i::before,.qa button i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:currentColor;transform:translate(-50%,-50%);transition:transform .35s var(--ease)}
+.qa button i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.qa.open button i{background:var(--orange);border-color:var(--orange);color:#000}
+.qa.open button i::after{transform:translate(-50%,-50%) rotate(0)}
+.qa-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.qa.open .qa-body{grid-template-rows:1fr}
+.qa-body>div{overflow:hidden}
+.qa-body p{padding-bottom:24px;color:var(--muted);max-width:62ch}
+@media (max-width:900px){.faq-grid{grid-template-columns:1fr}}
+
+/* final */
+.final{position:relative;padding:clamp(100px,12vw,180px) 0;overflow:hidden;text-align:center}
+.final-bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,rgba(252,84,0,.35),transparent 55%)}
+.final h2{position:relative;font-size:clamp(56px,9vw,150px)}
+.final .lead{position:relative;margin:24px auto 40px}
+.final-bike{position:relative;width:min(420px,70vw);margin:0 auto 30px}
+.final .btn{position:relative}
+
+/* footer */
+.footer{border-top:1px solid var(--line);padding:50px 0 120px;font-size:13px;color:var(--muted-2)}
+.footer-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer img{height:30px;width:auto}
+
+/* sticky mobile cta */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(10,10,10,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;transform:translateY(110%);transition:transform .5s var(--ease)}
+.sticky-cta.show{transform:none}
+.sticky-cta .p b{display:block;font-family:var(--display);font-weight:900;font-size:26px;line-height:1}
+.sticky-cta .p span{font-size:11.5px;color:var(--muted)}
+.sticky-cta .btn{padding:14px 22px;font-size:13px;flex:none}
+@media (min-width:901px){.sticky-cta{left:auto;right:24px;bottom:24px;border-radius:999px;border:1px solid var(--line-2);padding:10px 10px 10px 26px;gap:22px}}
+
+/* section transitions */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:80;background:var(--orange);transform-origin:0 50%;transform:scaleX(0);box-shadow:0 0 14px rgba(252,84,0,.8)}
+body{background:#000}
+.sx{position:relative;will-change:clip-path;background-color:var(--ink);background-image:radial-gradient(ellipse 70% 320px at 50% 0%,rgba(252,84,0,.10),transparent 70%)}
+.sx.audience{background-color:var(--ink-2)}
+.hero,.giant,.stats{background-color:var(--ink)}
+.sx-shade{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:6}
+.sx-line{position:absolute;left:var(--gutter);right:var(--gutter);top:0;height:1px;background:linear-gradient(90deg,transparent,var(--orange),transparent);transform:scaleX(0);z-index:7;pointer-events:none}
+.sx-tag{position:absolute;top:22px;right:var(--gutter);z-index:7;font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.3em;color:var(--muted-2);pointer-events:none}
+.sx-tag b{color:var(--orange);font-weight:800}
+.wd{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em;margin-bottom:-.06em}
+.wd>i{display:inline-block;font-style:inherit;will-change:transform}
+.wipe{position:fixed;inset:0;z-index:150;pointer-events:none;display:grid;grid-template-columns:repeat(5,1fr)}
+.wipe i{background:var(--orange);transform:scaleY(0);transform-origin:50% 100%}
+@media (max-width:900px){.sx-tag{display:none}}
+
+/* ignition sequence */
+.ignite{position:relative;height:100vh;height:100svh;background:#000;overflow:hidden}
+.ig-stage{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
+.ig-stage>*{grid-area:1/1}
+.ig-word{font-family:var(--display);font-weight:900;font-style:italic;font-size:clamp(110px,26vw,420px);line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.18);white-space:nowrap;letter-spacing:.02em;opacity:0}
+.ig-lines{position:relative;width:0;height:0}
+.ig-lines i{position:absolute;left:0;top:0;width:2px;height:55vmax;margin-left:-1px;transform-origin:50% 0;background:linear-gradient(180deg,transparent 0 22%,rgba(252,84,0,.0) 22%,rgba(252,84,0,.9) 60%,transparent);opacity:0}
+.ig-lines i:nth-child(3n){background:linear-gradient(180deg,transparent 0 30%,rgba(255,255,255,.7) 65%,transparent);width:1px}
+.ig-rings{width:min(64vmin,600px);height:min(64vmin,600px);overflow:visible;margin-top:-6vh}
+.ig-r{transform-origin:300px 300px}
+.ig-glow{margin-top:-6vh;width:50vmin;height:50vmin;border-radius:50%;background:radial-gradient(circle,rgba(252,84,0,.5),rgba(252,84,0,.15) 45%,transparent 68%);opacity:0}
+.ig-bike{margin-top:-6vh;width:min(42vmin,420px);filter:drop-shadow(0 40px 60px rgba(0,0,0,.9));will-change:transform;opacity:0}
+.ig-cap{align-self:end;margin-bottom:5vh;position:relative;z-index:2;padding:12px 22px;border-radius:999px;background:rgba(0,0,0,.72);border:1px solid var(--line);display:flex;gap:clamp(14px,3vw,40px);font-family:var(--display);font-weight:800;font-size:clamp(14px,1.6vw,22px);letter-spacing:.3em;color:var(--muted)}
+.ig-cap span{opacity:0}
+.ig-cap span::before{content:"◆ ";color:var(--orange)}
+.ig-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;mix-blend-mode:overlay}
+.ig-flood{position:absolute;inset:0;background:var(--orange);clip-path:circle(0% at 59% 58%);display:grid;place-items:center;color:#000;text-align:center;padding:0 16px}
+.ig-flood::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(115deg,rgba(0,0,0,.07) 0 2px,transparent 2px 22px)}
+.ig-final{position:relative}
+.ig-final small{display:block;font-weight:800;letter-spacing:.3em;text-transform:uppercase;font-size:clamp(11px,1.1vw,14px);margin-bottom:10px}
+.ig-big{display:block;font-family:var(--display);font-weight:900;font-style:italic;font-size:clamp(96px,21vw,340px);line-height:.82;letter-spacing:-.02em;white-space:nowrap}
+.ig-big span{display:inline-block}
+.ig-final p{font-size:clamp(15px,1.5vw,20px);font-weight:600;margin-top:18px}
+.ig-final p strong{font-weight:900}
+.ig-down{margin:26px auto 0;width:52px;height:52px;border-radius:50%;border:2px solid #000;display:grid;place-items:center;font-weight:900;font-size:20px;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+
+/* price drop */
+.pdrive{position:relative;height:100vh;height:100svh;background:#000;overflow:hidden}
+.pd-wipe{position:absolute;inset:0;background:var(--orange);transform:scaleX(0);transform-origin:0 50%}
+.pd-wipe::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(115deg,rgba(0,0,0,.07) 0 2px,transparent 2px 22px)}
+.pd-stage{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;padding:0 16px}
+.pd-stage>*{grid-area:1/1}
+.pd-old{text-align:center;position:relative;z-index:2}
+.pd-old small{display:block;font-weight:800;letter-spacing:.3em;text-transform:uppercase;font-size:12px;color:var(--muted);margin-bottom:8px}
+.pd-old-n{position:relative;font-family:var(--display);font-weight:900;font-style:italic;font-size:clamp(84px,16vw,270px);line-height:.85;letter-spacing:-.02em;white-space:nowrap;color:var(--text)}
+.pd-old-n span{display:inline-block}
+.pd-strike{position:absolute;left:-4%;right:-4%;top:50%;height:clamp(8px,1vw,16px);background:var(--orange);border-radius:4px;transform:scaleX(0) rotate(-6deg);transform-origin:0 50%}
+.pd-final{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;color:#000}
+.pd-k{font-weight:800;letter-spacing:.3em;text-transform:uppercase;font-size:clamp(11px,1.1vw,14px)}
+.pd-new{display:block;font-family:var(--display);font-weight:900;font-style:italic;font-size:clamp(84px,14vw,230px);line-height:.85;letter-spacing:-.02em;white-space:nowrap;margin-top:8px}
+.pd-new span{display:inline-block}
+.pd-sub{margin-top:14px;font-weight:700;font-size:clamp(14px,1.4vw,19px)}
+.pd-urg{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 30px;border-radius:22px;background:#000;color:var(--text);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.pd-ltd{font-family:var(--display);font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(26px,3vw,40px);line-height:.95;color:var(--orange)}
+.pd-tlabel{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.pd-timer{display:flex;align-items:flex-start;gap:10px;font-family:var(--display);font-weight:900}
+.pd-timer>div{display:flex;flex-direction:column;align-items:center;min-width:84px;padding:8px 10px 6px;border-radius:14px;background:#151515;border:1px solid var(--line-2)}
+.pd-timer b{font-size:clamp(48px,5.4vw,76px);line-height:.9;color:var(--orange);font-variant-numeric:tabular-nums}
+.pd-timer small{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pd-timer i{font-style:normal;font-size:clamp(40px,4vw,60px);line-height:1.1;color:var(--muted-2)}
+.pd-limit{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin-top:4px}
+.pd-limit i{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.pd-cta{margin-top:20px;background:#000;color:#fff;box-shadow:0 14px 40px -12px rgba(0,0,0,.6)}
+.pd-cta:hover{box-shadow:0 20px 50px -12px rgba(0,0,0,.8)}
+.pd-stamp{position:absolute;right:max(5vw,16px);top:12%;width:clamp(96px,13vw,180px);aspect-ratio:1;border-radius:50%;background:#000;color:var(--orange);display:grid;place-content:center;font-family:var(--display);font-weight:900;font-size:clamp(30px,4vw,56px);line-height:.85;text-align:center;border:3px dashed var(--orange);outline:6px solid #000}
+.pd-stamp small{font-size:.45em;letter-spacing:.12em}
+@media (max-width:700px){
+  .pd-stamp{top:7%;right:12px}
+  .pd-urg{padding:14px 18px}
+  .pd-timer>div{min-width:70px}
+}
+/* the page countdown, inline wherever it appears */
+.tmr{font-family:var(--display);font-weight:900;color:var(--orange);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.tmr b{display:inline!important;font:inherit!important;color:inherit!important;line-height:inherit!important}
+.tm-inline{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 14px;border-radius:999px;background:rgba(252,84,0,.1);border:1px solid rgba(252,84,0,.35);font-size:13.5px;font-weight:700}
+.tm-inline .tmr{font-size:20px}
+.final-tm{position:relative;margin:-14px auto 26px;font-weight:700;color:var(--muted)}
+.final-tm .tmr{font-size:28px;margin-left:6px}
+.sticky-cta .tmr{font-size:13px}
+/* countdown inside the offer card */
+.card-cd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding:10px 14px;border-radius:12px;background:rgba(252,84,0,.1);border:1px solid rgba(252,84,0,.35);font-size:13.5px;font-weight:700}
+.card-cd .tmr{font-size:22px}
+
+/* reveal helpers */
+.rv{opacity:0;transform:translateY(40px)}
+.no-js .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .rv{opacity:1!important;transform:none!important}
+  .life-item{clip-path:none!important}.life-item img{transform:none!important}
+  .grain{display:none}
 }
 
-/* ---------- DÚVIDAS (fichas com aba) ---------- */
-.faq{background:var(--paper);padding:0 0 clamp(110px,12vw,180px)}
-.faq h2{font-size:clamp(56px,5.6vw,96px);margin-bottom:48px}
-.drawer{max-width:1100px;margin:0 auto}
-.card{--i:0;--step:150px;--f:14px;position:relative;margin-top:10px;padding-top:42px}
-.card:first-child{margin-top:0}
-.card-tab{position:absolute;top:0;left:calc(var(--i)*var(--step));height:43px;width:220px;display:flex;align-items:center;padding:0 18px;font-weight:800;font-size:16px;background:var(--c);color:var(--t);border-radius:14px 14px 0 0}
-.card-tab::before,.card-tab::after{content:"";position:absolute;bottom:0;width:var(--f);height:var(--f);pointer-events:none}
-.card-tab::before{right:100%;background:radial-gradient(circle at 0 0,transparent calc(var(--f) - .5px),var(--c) var(--f))}
-.card-tab::after{left:100%;background:radial-gradient(circle at 100% 0,transparent calc(var(--f) - .5px),var(--c) var(--f))}
-.card:first-child .card-tab::before{display:none}
-.card-body{background:var(--c);color:var(--t);padding:22px 28px 30px;border-radius:0 var(--r) var(--r) var(--r)}
-.card:not(:first-child) .card-body{border-top-left-radius:var(--r)}
-.card button{display:block;width:100%;text-align:left;font-size:21px;font-weight:700;min-height:44px;color:var(--t)}
-.card button span{float:right;font-family:var(--display);font-weight:900;font-size:28px;line-height:1;transition:transform .3s var(--ease)}
-.card.open button span{transform:rotate(45deg)}
-.card .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
-.card.open .ans{grid-template-rows:1fr}
-.card .ans>div{overflow:hidden}
-.card .ans p{padding-top:14px;font-size:17px;max-width:62ch}
-.c-o{--c:var(--orange);--t:var(--ink)}
-.c-i{--c:var(--ink);--t:var(--paper)}
-.c-s{--c:var(--stone);--t:var(--ink)}
-@media (max-width:900px){.faq h2{font-size:13vw}.card{--step:min(40px,calc((100vw - 32px - 140px)/5))}.card-tab{width:140px;font-size:15px}.card button{font-size:18px}.card-body{padding:18px 20px 24px}.card .ans p{font-size:16px}}
+/* ===== Multi Crossover Smith: ajustes sobre a base da LP da Bike ===== */
+.hero-bike{width:78%}
+.price-now .cents{font-size:.42em;vertical-align:top;color:var(--muted)}
+.price-k{display:block;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-top:8px}
+.ig-big{font-size:clamp(72px,17vw,280px)}
+.ig-bike{width:min(40vmin,400px)}
+.feat-img-m{background:#111}
+.bar-row{grid-template-columns:118px 1fr}
+.bar-row>b{font-size:19px;line-height:1.05;text-transform:uppercase}
+@media (max-width:560px){.bar-row{grid-template-columns:86px 1fr;gap:10px}.bar-row>b{font-size:15px}.bar-fill{font-size:12.5px;padding-right:10px}}
+.eq-box b{white-space:nowrap}
 
-/* ---------- FAIXA: COMPRAR ---------- */
-.cta-wrap{background:var(--paper);padding:0 var(--m) var(--m)}
-.cta{display:block;position:relative;background:var(--orange);color:var(--ink);text-decoration:none;height:56svh;min-height:360px;overflow:hidden;border-radius:var(--r-lg);transition:background .2s,color .2s}
-.cta:hover,.cta:focus-visible{background:var(--ink);color:var(--orange)}
-.cta p{position:absolute;left:32px;top:32px;font-size:20px;font-weight:700;max-width:30ch}
-.cta svg{position:absolute;right:32px;top:32px;width:48px;height:48px}
-.cta b{position:absolute;left:28px;right:28px;bottom:24px;font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(84px,23vw,400px);line-height:.78;letter-spacing:-.03em;white-space:nowrap}
-@media (max-width:640px){.cta{height:44svh;min-height:280px;border-radius:26px}.cta p{font-size:16px;left:20px;top:20px;right:70px}.cta svg{width:32px;height:32px;right:20px;top:20px}.cta b{left:16px;right:16px}}
+/* seletores (conjunto, cor, bateria) */
+.opt{margin-top:22px}
+.opt-k{display:block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.opt-g{display:flex;flex-wrap:wrap;gap:8px}
+.opt-g button{padding:11px 16px;border-radius:12px;border:1px solid var(--line-2);font-weight:800;font-size:14px;min-height:44px;transition:border-color .25s,background .25s,color .25s}
+.opt-g button:hover{border-color:rgba(252,84,0,.6)}
+.opt-g button.on{border-color:var(--orange);background:rgba(252,84,0,.12);color:var(--orange)}
+.opt-g button:focus-visible,.qa button:focus-visible,.btn:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.opt-g .sw{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px;border:1px solid rgba(255,255,255,.35)}
+.opt-g.two button{flex:1}
 
-/* ---------- RODAPÉ ---------- */
-.foot{display:grid;grid-template-columns:1fr 1fr;min-height:90svh;background:var(--ink);color:var(--paper)}
-.foot-ph{position:relative;overflow:hidden}
-.foot-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 35%}
-.foot-r{padding:80px var(--m) 28px calc(var(--m)*1.5);display:flex;flex-direction:column}
-.foot-r .mark{color:var(--paper);margin-bottom:40px}
-.foot-menu{list-style:none;display:flex;flex-direction:column;gap:20px}
-.foot-menu a{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(34px,2.8vw,48px);line-height:1;text-decoration:none;display:inline-block;transition:transform .25s var(--ease),color .25s}
-.foot-menu:hover a{color:var(--muted-paper)}
-.foot-menu a:hover,.foot-menu a:focus-visible{transform:translateX(12px);color:var(--orange)}
-.foot-buy{margin-top:56px;align-self:flex-start}
-.legal{margin-top:auto;padding-top:40px;font-size:14px;color:var(--muted-paper)}
-@media (max-width:900px){.foot{grid-template-columns:1fr;min-height:auto}.foot-ph{height:48svh}.foot-r{padding:48px 16px 96px}.foot-menu a{font-size:9vw}}
+/* kits */
+.kit-r{gap:18px!important;justify-content:flex-start!important}
+.kit-img{border-radius:20px;overflow:hidden;background:#fff;aspect-ratio:4/3}
+.kit-img img{width:100%;height:100%;object-fit:contain}
+.kit-nome{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(34px,3.2vw,50px);line-height:.92}
+.kit-tag{color:var(--muted);font-size:15px;margin-top:6px}
+.kit-lista{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:7px 18px;font-size:13.5px;color:var(--text)}
+.kit-lista li{position:relative;padding-left:18px;line-height:1.4}
+.kit-lista li::before{content:"";position:absolute;left:0;top:.5em;width:7px;height:7px;border-radius:50%;background:var(--orange)}
+@media (max-width:560px){.kit-lista{grid-template-columns:1fr}}
+.kit-preco{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--line)}
+.kit-preco span{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kit-preco b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(40px,4vw,60px);line-height:.95;color:var(--orange)}
+.kit-preco small{font-size:13px;color:var(--muted)}
 
-/* ---------- barra fixa no celular ---------- */
-.dock{position:fixed;left:10px;right:10px;bottom:10px;z-index:70;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;border-radius:999px;background:var(--ink);color:var(--paper);transform:translateY(140%);transition:transform .45s var(--ease)}
-.dock.show{transform:none}
-.dock b{font-family:var(--display);font-weight:900;font-size:24px;line-height:1;display:block}
-.dock span{font-size:13px}
-.dock .btn{min-height:46px;padding:10px 20px;font-size:15px}
-@media (max-width:900px){.dock{display:flex}}
+/* card da oferta */
+.card .resumo{display:inline-block;margin-bottom:14px;padding:6px 12px;border-radius:999px;border:1px solid var(--line-2);font-size:12.5px;font-weight:700;color:var(--muted)}
+.card .big .cents{font-size:.38em;color:var(--muted);vertical-align:top}
+.card .opt{margin-top:16px}
+.card .opt-g button{padding:9px 13px;font-size:13px}
+.card .opt-g.quad{display:grid;grid-template-columns:1fr 1fr}
+.card-img .smith{max-width:420px;margin:0 auto}
 
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}}
+/* contador com dias */
+.pd-timer>div{min-width:76px}
+@media (max-width:700px){.pd-timer{gap:5px}.pd-timer>div{min-width:56px;padding:6px 6px 5px}.pd-timer b{font-size:40px}.pd-timer i{font-size:30px}}
+.pd-old-n,.pd-new{font-size:clamp(64px,13vw,220px)}
+.tmr small{font-family:var(--body);font-size:.6em;font-weight:800;margin:0 5px 0 1px;color:var(--muted)}
+
+/* bloco de prazo */
+.ship-r .btn{padding:14px 24px;font-size:13px;min-height:48px}
+.final-smith{position:relative;width:min(340px,62vw);margin:0 auto 26px;filter:drop-shadow(0 40px 50px rgba(0,0,0,.8))}
+.sticky-cta .p b span{font:inherit;color:inherit}
 </style>
 </head>
-<body data-ch="orange">
+<body>
 
-<div class="corner">
-  <a href="#topo" class="mark" aria-label="MegaGym, voltar ao topo"></a>
-  <a href="#oferta" class="btn">Comprar</a>
+<div class="loader" aria-hidden="true">
+  <div class="loader-in">
+    <img src="assets/logo.png" alt="">
+    <div class="loader-bar"><i></i></div>
+    <div class="loader-num">000</div>
+  </div>
 </div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<!-- TOPBAR -->
+<div class="topbar" role="note">
+  <div class="topbar-track">
+    <span>Frete grátis Black Friday*</span><span>12 meses de garantia</span><span>15x sem juros no cartão</span><span>10% off no Pix</span><span>Em estoque</span><span>Não precisa fixar no chão nem na parede</span>
+    <span>Frete grátis Black Friday*</span><span>12 meses de garantia</span><span>15x sem juros no cartão</span><span>10% off no Pix</span><span>Em estoque</span><span>Não precisa fixar no chão nem na parede</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="wrap header-in">
+    <a href="#topo" class="header-logo" aria-label="MegaGym, voltar ao topo"><img src="assets/logo.png" alt="MegaGym" width="800" height="206"></a>
+    <nav class="header-nav" aria-label="Seções">
+      <a href="#tecnologia">Funções</a>
+      <a href="#estacoes">Exercícios</a>
+      <a href="#kits">Kits</a>
+      <a href="#especificacoes">Especificações</a>
+      <a href="#faq">Dúvidas</a>
+    </nav>
+    <a href="#oferta" class="btn btn-sm magnetic">Comprar agora</a>
+  </div>
+</header>
 
 <main>
 <!-- HERO -->
-<section class="hero" id="topo" data-ch="orange">
+<section class="hero" id="topo">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <h1 class="d"><span class="l1">Academia</span><span class="l2">em casa.</span><span class="sr"> Multi Crossover Smith MegaGym</span></h1>
-      <div class="hero-rest">
-        <p class="hero-sub">Multi Crossover Smith: smith, crossover, rack, pulley, remada e barra fixa numa estação de 2,20 m que fica de pé sozinha.</p>
-        <div class="hero-price"><b>R$ 14.890</b><span>no Pix, a partir de<br>ou 15x de R$ 1.102,96 sem juros</span></div>
-        <div class="hero-row">
-          <a href="#oferta" class="btn dark">Ver kits e comprar
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <span class="timer-pill" data-tm>Black Friday termina em <span class="tmr"><b data-u="d">0</b><small>d</small><b data-u="h">00</b>:<b data-u="m">00</b>:<b data-u="s">00</b></span></span>
+      <span class="eyebrow h-fade">Multi Crossover Smith com Rack Integrado</span>
+      <h1 class="display">
+        <span class="line"><span>Oito estações.</span></span>
+        <span class="line"><span><em>Uma máquina.</em></span></span>
+        <span class="line"><span>Zero fila.</span></span>
+      </h1>
+      <p class="lead h-fade">Smith com barra guiada, crossover de polias móveis, rack de supino e agachamento, pulley, remada baixa e barra fixa no mesmo equipamento. Com duas baterias de pesos injetados de 82 kg ou 122 kg por lado, para treinar pesado em casa, no studio ou no condomínio.</p>
+      <div class="price-tag h-fade">
+        <div>
+          <div class="price-old">De R$ 20.518,66</div>
+          <div class="price-now"><small>R$</small>14.890</div>
+          <span class="price-k">no Pix · a partir de</span>
         </div>
-        <div class="hero-note"><span>Frete grátis na Black Friday*</span><span>12 meses de garantia</span><span>Não precisa fixar</span></div>
+        <div class="price-meta">
+          ou R$ 16.544,44 no cartão<br>
+          em <b>15x de R$ 1.102,96</b> sem juros<br>
+          <span class="pix">◆ 10% off no Pix já aplicado</span>
+        </div>
+        <div class="off-badge">27%<small>OFF</small></div>
+      </div>
+      <div class="tm-inline h-fade" data-tm style="margin:0 0 22px">Black Friday termina em <span class="tmr"><b data-u="d">0</b><small>d</small><b data-u="h">00</b>:<b data-u="m">00</b>:<b data-u="s">00</b></span></div>
+      <div class="hero-ctas h-fade">
+        <a href="#oferta" class="btn magnetic">Quero o meu Crossover Smith
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#kits" class="btn btn-ghost">Ver os kits</a>
+      </div>
+      <div class="trust-row h-fade">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><b style="color:var(--text)">Frete grátis</b>&nbsp;na Black Friday*</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>12 meses de garantia</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V8l6-5 6 5v13M10 21v-6h4v6"/></svg>Não precisa fixar no chão</span>
       </div>
     </div>
-    <div class="stage">
-      <div class="stage-dim" aria-hidden="true"><i></i><b>2,20 m</b></div>
-      <img class="hero-smith" src="assets/smith-cut.webp" alt="Multi Crossover Smith MegaGym, estação preta com topo laranja" width="1160" height="1484" fetchpriority="high">
-      <div class="stage-tag"><b>8 em 1</b>smith, crossover<br>e rack numa estrutura</div>
-    </div>
-  </div>
-</section>
 
-<!-- A CASA -->
-<section class="house-sec" id="casa" data-ch="paper" aria-labelledby="casa-h">
-  <div class="house-pin">
-    <div class="house-head">
-      <h2 class="d" id="casa-h">É gigante.<br>E cabe em casa.</h2>
-      <div class="house-steps" aria-live="polite">
-        <p>Uma casa comum: sala, quarto e garagem. Nenhuma obra.</p>
-        <p>Escolha um canto. A garagem dá conta.</p>
-        <p>São 2,20 m de altura: mais alta que a porta, que tem 2,10 m.</p>
-        <p>E não precisa furar parede nem piso: são 300 kg de pé sozinhos.</p>
-      </div>
-    </div>
-    <div class="house-view">
-      <div class="house">
-        <svg viewBox="0 0 1600 1000" role="img" aria-label="Desenho em corte de uma casa com sala, quarto e garagem; a estação fica na garagem, ao lado de uma porta de 2,10 m e de uma pessoa de 1,80 m">
-          <rect x="0" y="860" width="1600" height="140" fill="#d6d0c6"/>
-          <rect x="120" y="280" width="760" height="580" fill="#f7f5f1"/>
-          <path d="M96 290 L500 96 L904 290 Z" fill="#0a0a0a"/>
-          <rect x="120" y="280" width="16" height="580" fill="#0a0a0a"/>
-          <rect x="864" y="280" width="16" height="580" fill="#0a0a0a"/>
-          <rect x="120" y="562" width="760" height="18" fill="#0a0a0a"/>
-          <rect x="190" y="360" width="150" height="110" rx="6" fill="#d6d0c6"/><rect x="262" y="360" width="6" height="110" fill="#f7f5f1"/><rect x="190" y="412" width="150" height="6" fill="#f7f5f1"/>
-          <rect x="420" y="372" width="70" height="88" rx="6" fill="#fc5400"/>
-          <rect x="560" y="440" width="240" height="44" rx="8" fill="#0a0a0a"/><rect x="560" y="410" width="22" height="122" rx="6" fill="#0a0a0a"/><rect x="560" y="484" width="240" height="40" rx="6" fill="#3d3a36"/><rect x="600" y="430" width="70" height="16" rx="8" fill="#eeebe6"/>
-          <rect x="560" y="524" width="12" height="38" fill="#0a0a0a"/><rect x="788" y="524" width="12" height="38" fill="#0a0a0a"/>
-          <rect x="560" y="640" width="190" height="130" rx="6" fill="#d6d0c6"/><rect x="652" y="640" width="6" height="130" fill="#f7f5f1"/><rect x="560" y="700" width="190" height="6" fill="#f7f5f1"/>
-          <rect x="190" y="760" width="300" height="56" rx="10" fill="#0a0a0a"/><rect x="190" y="720" width="300" height="46" rx="12" fill="#3d3a36"/><rect x="170" y="736" width="34" height="80" rx="10" fill="#0a0a0a"/><rect x="476" y="736" width="34" height="80" rx="10" fill="#0a0a0a"/>
-          <rect x="196" y="816" width="10" height="44" fill="#0a0a0a"/><rect x="474" y="816" width="10" height="44" fill="#0a0a0a"/>
-          <rect x="150" y="846" width="420" height="14" rx="7" fill="#fc5400"/>
-          <rect x="770" y="700" width="8" height="160" fill="#0a0a0a"/><path d="M740 700 L808 700 L790 660 L758 660 Z" fill="#fc5400"/>
-          <rect x="880" y="580" width="560" height="280" fill="#f7f5f1"/>
-          <rect x="880" y="562" width="580" height="18" fill="#0a0a0a"/>
-          <rect x="1424" y="580" width="16" height="280" fill="#0a0a0a"/>
-          <rect x="1424" y="580" width="16" height="64" fill="#3d3a36"/>
-          <rect x="912" y="650" width="80" height="210" rx="4" fill="#d6d0c6"/>
-          <rect x="976" y="752" width="8" height="18" rx="4" fill="#0a0a0a"/>
-          <g fill="#3d3a36"><circle cx="1378" cy="694" r="13"/><path d="M1360 712 h36 l6 70 h-10 l-4 78 h-10 l-2 -64 h-4 l-2 64 h-10 l-4 -78 h-10 z"/></g>
-          <g class="dims">
-            <path class="dim dim-door" d="M900 650 L900 860 M890 650 L910 650 M890 860 L910 860"/>
-            <text class="dim-t" x="912" y="638">2,10 m</text>
-            <path class="dim dim-smith" d="M1254 640 L1254 860 M1244 640 L1264 640 M1244 860 L1264 860"/>
-            <text class="dim-t o" x="1266" y="760">2,20 m</text>
+    <div class="hero-visual">
+      <div class="ring" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fc5400"/><stop offset="1" stop-color="#fc5400" stop-opacity="0"/></linearGradient>
+          </defs>
+          <g class="ring-spin">
+            <circle cx="200" cy="200" r="190" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <circle cx="200" cy="200" r="190" fill="none" stroke="url(#rg)" stroke-width="3" stroke-dasharray="300 900" stroke-linecap="round"/>
+            <circle cx="200" cy="200" r="160" fill="none" stroke="rgba(252,84,0,.35)" stroke-width="10" stroke-dasharray="2 14"/>
           </g>
-          <text class="dim-t" x="150" y="320">Quarto</text>
-          <text class="dim-t" x="150" y="618">Sala</text>
-          <text class="dim-t" x="1240" y="618">Garagem</text>
+          <g class="ring-spin-r">
+            <circle cx="200" cy="200" r="132" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1" stroke-dasharray="60 20"/>
+          </g>
         </svg>
-        <img class="house-smith" src="assets/smith-cut-640.webp" alt="" aria-hidden="true" width="640" height="818">
       </div>
+      <div class="hero-floor"></div>
+      <img class="hero-bike" src="assets/smith-cut.webp" alt="Multi Crossover Smith MegaGym com rack integrado e barra guiada, preto com detalhes laranja" width="1200" height="1600" fetchpriority="high">
+      <div class="chip chip-1"><i>122</i><div>Até 122 kg por lado<small>Baterias de pesos injetados</small></div></div>
+      <div class="chip chip-2"><i>16</i><div>Smith com 16 níveis<small>Barra guiada de 2,20 m</small></div></div>
+      <div class="chip chip-3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/></svg></i><div>Polias móveis<small>Trava click rápido</small></div></div>
+      <div class="fg-badge fg-hero" role="img" aria-label="Frete grátis na Black Friday"><svg class="fg-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="fgp-fg-hero" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#fgp-fg-hero" textLength="474">FRETE GRÁTIS • BLACK FRIDAY • FRETE GRÁTIS • BLACK FRIDAY •</textPath></text></svg><div class="fg-core" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><b>GRÁTIS</b></div></div>
     </div>
   </div>
 </section>
 
-<!-- 8 EM 1 -->
-<section class="feat" id="estacoes" data-ch="ink" aria-labelledby="f-h">
+<!-- GIANT MARQUEE -->
+<div class="giant" aria-hidden="true">
+  <div class="giant-track">
+    <span>Multi Crossover<b></b></span><span>Smith + Rack<b></b></span><span>Multi Crossover<b></b></span><span>Smith + Rack<b></b></span>
+    <span>Multi Crossover<b></b></span><span>Smith + Rack<b></b></span><span>Multi Crossover<b></b></span><span>Smith + Rack<b></b></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats">
   <div class="wrap">
-    <div class="feat-h">
-      <h2 class="d" id="f-h">8 em 1.</h2>
-      <p>Smith, crossover, pulley, remada baixa, rack de agachamento, rack de supino, barra fixa e apolete numa estrutura só.</p>
-    </div>
-    <div class="blocks">
-      <article class="blk"><div class="blk-row">
-        <figure><img src="assets/s-smith.webp" alt="Barra guiada do smith com travas de segurança" loading="lazy" width="900" height="1200"></figure>
-        <div><h3>Smith com barra guiada</h3><ul><li>Barra de 2,20 m e 28 mm, em trilhos cromados</li><li>16 níveis de trava ao longo do curso</li><li>Travas de segurança automáticas</li><li>Anilhas de furo 31 mm (ponteira olímpica de 51 mm à parte)</li></ul></div>
-      </div></article>
-      <article class="blk"><div class="blk-row">
-        <figure><img src="assets/s-crossover.webp" alt="Homem fazendo crucifixo no crossover" loading="lazy" width="900" height="1200"></figure>
-        <div><h3>Crossover de polias móveis</h3><ul><li>Duas polias independentes, uma de cada lado</li><li>Altura trocada com trava click rápido</li><li>Polias em ABS de alta resistência com rolamento</li><li>Tensão constante do começo ao fim do movimento</li></ul></div>
-      </div></article>
-      <article class="blk"><div class="blk-row">
-        <figure><img src="assets/s-bateria.webp" alt="Baterias de pesos injetados da estação" loading="lazy" width="900" height="1200"></figure>
-        <div><h3>Bateria de 82 ou 122 kg por lado</h3><ul><li>Pesos injetados e emborrachados</li><li>Carga escolhida no pino, sem carregar anilha</li><li>Deslizam sem barulho e não enferrujam</li><li>Fáceis de limpar</li></ul></div>
-      </div></article>
-      <article class="blk"><div class="blk-row">
-        <figure><img src="assets/s-rack.webp" alt="Rack modular em uso para supino e agachamento" loading="lazy" width="900" height="1200"></figure>
-        <div><h3>Rack de supino e agachamento</h3><ul><li>Suportes cavalete para até 250 kg</li><li>Suportes de barra para até 100 kg</li><li>Agachamento livre ou guiado</li><li>6 anilheiros para até 500 kg no total</li></ul></div>
-      </div></article>
-      <article class="blk"><div class="blk-row">
-        <figure><img src="assets/s-pulley.webp" alt="Homem fazendo puxada alta no pulley" loading="lazy" width="900" height="1200"></figure>
-        <div><h3>Pulley e remada baixa</h3><ul><li>Puxador curvado e articulado de 97 cm</li><li>Puxador reto de 51 cm</li><li>Corda e dois puxadores de crossover</li><li>Duas tornozeleiras para pernas e glúteos</li></ul></div>
-      </div></article>
-      <article class="blk"><div class="blk-row">
-        <figure><img src="assets/s-barra-fixa.webp" alt="Homem fazendo barra fixa no topo da estação" loading="lazy" width="900" height="1200"></figure>
-        <div><h3>Barra fixa, paralela e apolete</h3><ul><li>Barra fixa multipegadas para até 150 kg</li><li>Aceita cadeira extensora, banco pulley e barras paralelas de encaixe</li><li>Acessórios vendidos à parte ou inclusos nos kits</li></ul></div>
-      </div></article>
+    <div class="stats-grid rv-group">
+      <div class="stat rv"><div class="stat-num"><span class="count" data-to="8">0</span><sup>EM 1</sup></div><p>Smith, crossover, pulley, remada, dois racks, barra fixa e apolete.</p></div>
+      <div class="stat rv"><div class="stat-num"><span class="count" data-to="122">0</span><sup>KG</sup></div><p>por lado na bateria maior. Também disponível com 82 kg por lado.</p></div>
+      <div class="stat rv"><div class="stat-num"><span class="count" data-to="16">0</span><sup>NÍVEIS</sup></div><p>de ajuste no Smith e nas polias, com trava click rápido.</p></div>
+      <div class="stat rv"><div class="stat-num"><span class="count" data-to="500">0</span><sup>KG</sup></div><p>de capacidade nos 6 anilheiros reforçados da estrutura.</p></div>
     </div>
   </div>
 </section>
 
-<!-- VERBOS -->
-<section class="verbs" data-ch="ink" aria-labelledby="v-h">
-  <h2 class="sr" id="v-h">O que dá para fazer na estação</h2>
-  <div class="wrap">
-    <div class="verb"><div class="verb-txt"><div class="verb-w">Empurre.</div><p>Desenvolvimento, supino e agachamento guiados no smith, com trava a cada nível.</p></div><figure><img src="assets/v-empurre.webp" alt="Homem fazendo desenvolvimento de ombros no smith" loading="lazy" width="978" height="1370"></figure></div>
-    <div class="verb"><div class="verb-txt"><div class="verb-w">Puxe.</div><p>Puxada alta e remada baixa no pulley, com a carga escolhida no pino.</p></div><figure><img src="assets/v-puxe.webp" alt="Homem fazendo puxada alta no pulley" loading="lazy" width="1000" height="1333"></figure></div>
-    <div class="verb"><div class="verb-txt"><div class="verb-w">Abra.</div><p>Crucifixo no crossover, com as polias na altura que o exercício pede.</p></div><figure><img src="assets/v-abra.webp" alt="Homem fazendo crucifixo no crossover" loading="lazy" width="1000" height="1400"></figure></div>
-    <div class="verb"><div class="verb-txt"><div class="verb-w">Suba.</div><p>Barra fixa no topo da estrutura, para dorsais, bíceps e core.</p></div><figure><img src="assets/v-suba.webp" alt="Homem fazendo barra fixa no topo da estação" loading="lazy" width="1000" height="1400" style="object-position:50% 20%"></figure></div>
-  </div>
-</section>
-
-<!-- CABE AQUI? -->
-<section class="fit" id="cabe" data-ch="paper" aria-labelledby="fit-h">
-  <div class="wrap">
+<!-- PAIN -->
+<section class="pain">
+  <div class="wrap pain-grid">
     <div>
-      <h2 class="d" id="fit-h">Cabe aí?</h2>
-      <p class="fit-lead">Coloque as medidas do cômodo e veja a estação na planta, em escala.</p>
-      <div class="presets" role="group" aria-label="Cômodo">
-        <button type="button" data-room="garagem" class="on">Garagem</button>
-        <button type="button" data-room="quarto">Quarto</button>
-        <button type="button" data-room="sala">Sala</button>
-        <button type="button" data-room="varanda">Varanda</button>
+      <span class="eyebrow rv">Seja sincero</span>
+      <h2 class="display rv">Quanto do seu treino é <span class="o">esperar aparelho?</span></h2>
+      <p class="lead rv">Smith ocupado, fila no crossover, rack tomado. O treino de 50 minutos vira uma hora e meia. O Multi Crossover Smith junta tudo isso em um único equipamento, e ele é só seu.</p>
+      <div class="excuses">
+        <div class="excuse rv"><i class="x">✕</i><s>“O smith tá ocupado, volta depois.”</s></div>
+        <div class="excuse rv"><i class="x">✕</i><s>“Tem três na fila do crossover.”</s></div>
+        <div class="excuse rv"><i class="x">✕</i><s>“Pulei o agachamento, o rack não liberou.”</s></div>
+        <div class="excuse rv"><i class="x">✕</i><s>“Não tenho espaço pra cinco aparelhos.”</s></div>
+        <div class="excuse rv"><i class="x">✕</i><s>“Academia em casa nunca é completa.”</s></div>
       </div>
-      <div class="rng"><div class="rng-top"><label for="rw">Largura</label><output id="rwo">3,0 m</output></div><input type="range" id="rw" min="1.8" max="6" step="0.1" value="3"></div>
-      <div class="rng"><div class="rng-top"><label for="rd">Profundidade</label><output id="rdo">5,0 m</output></div><input type="range" id="rd" min="1" max="7" step="0.1" value="5"></div>
-      <div class="rng"><div class="rng-top"><label for="rh">Pé-direito</label><output id="rho">2,70 m</output></div><input type="range" id="rh" min="2" max="3.5" step="0.05" value="2.7"></div>
     </div>
-    <div class="fit-board">
-      <div class="fit-verdict" id="fv" aria-live="polite">Cabe com folga.</div>
-      <p class="fit-detail" id="fd">Sobram 50 cm até o teto e 13,1 m² livres no cômodo.</p>
-      <div class="fit-draw">
-        <figure><svg id="plan" viewBox="0 0 600 440" role="img" aria-label="Planta do cômodo com a estação"></svg><figcaption>Planta, vista de cima</figcaption></figure>
-        <figure><svg id="elev" viewBox="0 0 300 440" role="img" aria-label="Corte do cômodo com a altura da estação"></svg><figcaption>Corte, vista de lado</figcaption></figure>
+    <div class="pain-media rv">
+      <img class="parallax" src="assets/s-estudio.webp" alt="Multi Crossover Smith MegaGym montado em uma sala de treino" loading="lazy" width="900" height="1200">
+      <div class="cap">Nenhuma fila resiste a<br><span class="o">uma máquina só sua.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- IGNITION -->
+<section class="ignite" aria-label="Por dentro do Multi Crossover Smith">
+  <div class="ig-stage">
+    <div class="ig-lines" aria-hidden="true"></div>
+    <svg class="ig-rings" viewBox="0 0 600 600" aria-hidden="true">
+      <circle class="ig-r ig-r1" cx="300" cy="300" r="280" fill="none" stroke="#fc5400" stroke-width="2"/>
+      <circle class="ig-r ig-r2" cx="300" cy="300" r="240" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1" stroke-dasharray="4 10"/>
+      <circle class="ig-r ig-r3" cx="300" cy="300" r="200" fill="none" stroke="#fc5400" stroke-width="14" stroke-dasharray="2 18" opacity=".7"/>
+      <circle class="ig-r ig-r4" cx="300" cy="300" r="160" fill="none" stroke="rgba(252,84,0,.5)" stroke-width="1"/>
+    </svg>
+    <div class="ig-glow" aria-hidden="true"></div>
+    <img class="ig-bike" src="assets/smith-cut-600.webp" alt="" aria-hidden="true">
+    <div class="ig-cap" aria-hidden="true"><span>SMITH</span><span>CROSSOVER</span><span>RACK</span></div>
+    <div class="ig-flash" aria-hidden="true"></div>
+    <div class="ig-flood">
+      <div class="ig-final">
+        <small>Agora, por dentro da máquina</small>
+        <b class="ig-big"><span>8</span> <span>E</span><span>M</span> <span>1</span></b>
+        <p>Smith, crossover, pulley, remada, racks e barra fixa. <strong>Um único sistema, projetado para carga de verdade.</strong></p>
+        <div class="ig-down" aria-hidden="true">↓</div>
       </div>
-      <p class="fit-tip">Conta usada: 2,20 m de largura (a barra guiada) por 1,20 m de fundo e 2,20 m de altura. Nossa sugestão: deixe cerca de 1 m livre na frente para o banco e os exercícios no cabo (a área clara na planta) e uns 30 cm acima da estação para a barra fixa.</p>
     </div>
   </div>
 </section>
 
-<!-- AÇO -->
-<section class="steel" data-ch="paper" aria-labelledby="st-h">
+<!-- FEATURES -->
+<section class="features" id="tecnologia">
   <div class="wrap">
-    <h2 class="d" id="st-h">Aço que não balança.</h2>
-    <div class="tiles">
-      <div class="tile t1"><b><span class="count" data-to="300">300</span> kg</b><p>de equipamento com as baterias de 82 kg (340 kg com as de 122 kg). Por isso fica firme sem ser fixada no chão nem na parede.</p></div>
-      <div class="tile t2"><b><span class="count" data-to="500">500</span> kg</b><p>de capacidade nos 6 anilheiros reforçados da estrutura.</p></div>
-      <div class="tile t3"><b>60x60</b><p>é o tubo das guias, com chapa de até 2 mm.</p></div>
+    <div class="sec-head">
+      <span class="eyebrow rv">Uma estação de cada vez</span>
+      <h2 class="display rv">Cada função feita pra você <span class="o">não pular treino.</span></h2>
+      <p class="lead rv">Juntar aparelhos num só é fácil. Fazer cada um deles funcionar como o aparelho dedicado da academia é outra conversa.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-sticky">
+        <div class="feat-frame">
+          <img class="on" src="assets/s-smith.webp" alt="" loading="lazy">
+          <img src="assets/s-crossover.webp" alt="" loading="lazy">
+          <img src="assets/s-bateria.webp" alt="" loading="lazy">
+          <img src="assets/s-rack.webp" alt="" loading="lazy">
+          <img src="assets/s-pulley.webp" alt="" loading="lazy">
+          <img src="assets/s-barra-fixa.webp" alt="" loading="lazy">
+          <img src="assets/s-extensora.webp" alt="" loading="lazy">
+          <div class="feat-progress"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="feat-list">
+        <article class="feat on">
+          <div class="feat-img-m"><img src="assets/s-smith.webp" alt="Barra guiada do Smith correndo em trilhos cromados" loading="lazy"></div>
+          <span class="feat-n">01 / 07</span>
+          <h3>Smith com <span class="o">barra guiada</span></h3>
+          <p>A barra corre em trilhos verticais cromados, em movimento linear e seguro. Sem precisar estabilizar a carga, você concentra o esforço na contração: agachamento, supino e desenvolvimento, com 16 níveis de trava ao longo do curso.</p>
+          <ul><li>16 níveis de ajuste</li><li>Barra de 2,20 m</li><li>Travas de segurança</li></ul>
+        </article>
+        <article class="feat">
+          <div class="feat-img-m"><img src="assets/s-crossover.webp" alt="Homem fazendo crucifixo no crossover de polias móveis" loading="lazy"></div>
+          <span class="feat-n">02 / 07</span>
+          <h3>Crossover de <span class="o">polias móveis</span></h3>
+          <p>Duas polias independentes, uma de cada lado, que sobem e descem com trava click rápido. Do crucifixo alto ao glúteo no cabo, a troca de exercício leva segundos e a tensão fica constante no movimento inteiro.</p>
+          <ul><li>2 polias móveis</li><li>Trava click rápido</li><li>Polias com rolamento</li></ul>
+        </article>
+        <article class="feat">
+          <div class="feat-img-m"><img src="assets/s-bateria.webp" alt="Baterias de pesos injetados de 82 ou 122 kg por lado" loading="lazy"></div>
+          <span class="feat-n">03 / 07</span>
+          <h3>Bateria de <span class="o">82 ou 122 kg</span> por lado</h3>
+          <p>Pesos injetados e emborrachados, que deslizam sem barulho e não enferrujam. Você escolhe a carga no pino, sem carregar anilha, e a máquina acompanha a sua evolução do primeiro treino ao treino pesado.</p>
+          <ul><li>Pesos injetados</li><li>Movimento fluido</li><li>Fácil de higienizar</li></ul>
+        </article>
+        <article class="feat">
+          <div class="feat-img-m"><img src="assets/s-rack.webp" alt="Rack modular em uso para supino e agachamento" loading="lazy"></div>
+          <span class="feat-n">04 / 07</span>
+          <h3>Rack de <span class="o">supino e agachamento</span></h3>
+          <p>Os apoios reguláveis e os suportes cavalete transformam a estação em um rack completo para treino livre: agachamento, supino e levantamento terra. E os seis anilheiros deixam os discos organizados ao alcance da mão.</p>
+          <ul><li>Cavalete: até 250 kg</li><li>Suporte de barra: até 100 kg</li><li>6 anilheiros</li></ul>
+        </article>
+        <article class="feat">
+          <div class="feat-img-m"><img src="assets/s-pulley.webp" alt="Homem fazendo puxada alta no pulley" loading="lazy"></div>
+          <span class="feat-n">05 / 07</span>
+          <h3>Pulley e <span class="o">remada baixa</span></h3>
+          <p>Puxada alta, remada baixa, tríceps e bíceps no cabo. A estação já acompanha puxador curvado de 97 cm, puxador reto de 51 cm, corda, dois puxadores de crossover e duas tornozeleiras.</p>
+          <ul><li>Puxador de 97 cm</li><li>Puxador de 51 cm</li><li>Corda e tornozeleiras</li></ul>
+        </article>
+        <article class="feat">
+          <div class="feat-img-m"><img src="assets/s-barra-fixa.webp" alt="Homem fazendo barra fixa no topo da estação" loading="lazy"></div>
+          <span class="feat-n">06 / 07</span>
+          <h3>Barra fixa <span class="o">multipegadas</span></h3>
+          <p>No topo da estrutura, uma barra fixa cromada com várias pegadas para trabalhar dorsais, bíceps e core com o peso do corpo. Ela suporta até 150 kg.</p>
+          <ul><li>Até 150 kg</li><li>Várias pegadas</li><li>Cromada</li></ul>
+        </article>
+        <article class="feat">
+          <div class="feat-img-m"><img src="assets/s-extensora.webp" alt="Homem usando a cadeira extensora acoplada à estação" loading="lazy"></div>
+          <span class="feat-n">07 / 07</span>
+          <h3>Ela cresce <span class="o">com o seu treino</span></h3>
+          <p>A estrutura aceita acessórios de encaixe: cadeira extensora, banco pulley e barras paralelas. Você começa só com a estação e completa a academia quando quiser, ou já leva tudo em um dos kits.</p>
+          <ul><li>Cadeira extensora</li><li>Banco pulley</li><li>Barras paralelas</li></ul>
+        </article>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FICHA -->
-<section class="spec" id="especificacoes" data-ch="ink" aria-labelledby="sp-h">
-  <div class="wrap">
-    <h2 class="d" id="sp-h">Ficha técnica</h2>
-    <dl>
-      <div><dt>Montado (A × L × C)</dt><dd>2,20 × 1,60 × 1,20 m</dd></div>
-      <div><dt>Peso do equipamento</dt><dd>300 kg (82 kg) · 340 kg (122 kg)</dd></div>
-      <div><dt>Bateria de pesos</dt><dd>2 × 82 kg ou 2 × 122 kg, injetada e emborrachada</dd></div>
-      <div><dt>Barra guiada</dt><dd>2,20 m · 28 mm · 16 níveis</dd></div>
-      <div><dt>Anilhas na barra guiada</dt><dd>Furo de 31 mm (ponteira olímpica de 51 mm à parte)</dd></div>
-      <div><dt>Polias</dt><dd>2 móveis, em ABS com rolamento</dd></div>
-      <div><dt>Suporte cavalete</dt><dd>Até 250 kg</dd></div>
-      <div><dt>Suporte de barra</dt><dd>Até 100 kg</dd></div>
-      <div><dt>Barra fixa</dt><dd>Multipegadas, até 150 kg</dd></div>
-      <div><dt>Anilheiros</dt><dd>6 unidades, até 500 kg no total</dd></div>
-      <div><dt>Usuário</dt><dd>Até 2,00 m e 150 kg</dd></div>
-      <div><dt>Estrutura</dt><dd>Metalon e aço SAE 1020, pintura eletrostática fosca</dd></div>
-      <div><dt>Fixação</dt><dd>Não precisa fixar no chão nem na parede</dd></div>
-      <div><dt>Garantia</dt><dd>12 meses</dd></div>
-    </dl>
+<!-- WORLD (horizontal) -->
+<section class="world" id="estacoes">
+  <div class="world-pin">
+    <div class="wrap world-head">
+      <div>
+        <span class="eyebrow rv">Corpo inteiro</span>
+        <h2 class="display rv">Treine tudo <br><span class="o">sem sair do lugar.</span></h2>
+      </div>
+      <p class="lead rv">Superiores, inferiores e core no mesmo equipamento. A troca entre um exercício e outro é o tempo de mudar o pino e a altura da polia.</p>
+    </div>
+    <div class="world-scroll">
+      <div class="world-track">
+        <div class="w-text hot">
+          <h3>Oito estações em um único sistema</h3>
+          <div class="apps"><span>Smith</span><span>Crossover</span><span>Pulley</span><span>Remada baixa</span><span>Rack de agachamento</span><span>Rack de supino</span><span>Barra fixa</span><span>Apolete</span></div>
+          <p>E ainda aceita cadeira extensora, banco pulley e barras paralelas*.</p>
+        </div>
+        <div class="w-card"><img src="assets/s-desenvolvimento.webp" alt="Desenvolvimento de ombros na barra guiada do Smith" loading="lazy"></div>
+        <div class="w-text">
+          <h3>Superiores</h3>
+          <p>Puxada alta frontal e atrás da nuca, remada baixa, crucifixo no crossover, desenvolvimento de ombros, tríceps na corda ou na barra, rosca direta e rosca martelo.</p>
+        </div>
+        <div class="w-card"><img src="assets/s-crossover.webp" alt="Crucifixo no crossover de polias móveis" loading="lazy"></div>
+        <div class="w-text">
+          <h3>Inferiores <span class="o">e core</span></h3>
+          <p>Agachamento livre ou guiado, avanço, stiff, glúteo no cabo, adução e abdução de quadril. Para o core: abdominal na polia, rotação de tronco e woodchopper.</p>
+        </div>
+        <div class="w-card"><img src="assets/s-barra-fixa.webp" alt="Barra fixa multipegadas" loading="lazy"></div>
+      </div>
+    </div>
+    <p class="wrap world-note">*Cadeira extensora, banco pulley e barras paralelas são acessórios de encaixe: vendidos à parte ou inclusos em alguns kits.</p>
   </div>
 </section>
 
-<!-- MONTE A SUA -->
-<section class="mount" id="kits" data-ch="orange" aria-labelledby="mt-h">
-  <div class="wrap">
-    <h2 class="d" id="mt-h">Monte<br>a sua.</h2>
+<!-- COMPARE -->
+<section class="compare">
+  <div class="wrap compare-grid">
     <div>
-      <p>Só a estação ou a academia inteira: 8 conjuntos, em preto ou laranja, com bateria de 82 ou 122 kg por lado.</p>
-      <a href="#oferta" class="btn dark">Escolher meu conjunto
+      <span class="eyebrow rv">Por que ela aguenta?</span>
+      <h2 class="display rv">Aço de 60x60. <span class="o">Não de 40.</span></h2>
+      <p class="lead rv">Muitos modelos dessa faixa usam tubos de 40x40 ou 50x50 com chapa fina. As guias do Multi Crossover Smith são em tubo 60x60 com chapa de até 2 mm, em aço SAE 1020 com pintura eletrostática. O resultado é estabilidade para treino pesado, sem precisar fixar no chão nem na parede.</p>
+      <div class="equation rv">
+        <div class="eq-box hot"><b>60x60</b><span>Crossover Smith</span></div>
+        <div class="eq-sign">&gt;</div>
+        <div class="eq-box"><b>40x40</b><span>Comum na faixa</span></div>
+      </div>
+    </div>
+    <div class="bars rv">
+      <div class="bars-h"><span>Ponto de carga</span><span>Limite suportado</span></div>
+      <div class="bar-row"><b>Suporte de barra</b><div class="bar-track"><div class="bar-fill" data-w="36">100 kg</div></div></div>
+      <div class="bar-row"><b>Barra fixa</b><div class="bar-track"><div class="bar-fill" data-w="48">150 kg</div></div></div>
+      <div class="bar-row"><b>Suporte cavalete</b><div class="bar-track"><div class="bar-fill" data-w="68">250 kg</div></div></div>
+      <div class="bar-row me"><b>Anilheiros</b><div class="bar-track"><div class="bar-fill" data-w="100">500 kg no total</div></div></div>
+      <small>Limites informados pela MegaGym. O equipamento pesa 300 kg (baterias de 82 kg) ou 340 kg (baterias de 122 kg).</small>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="audience">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Feito para</span>
+      <h2 class="display rv">Quem treina sério, <span class="o">onde estiver.</span></h2>
+    </div>
+    <div class="aud-grid">
+      <div class="aud rv"><div class="aud-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg></div><h3>Home gym</h3><p>Uma academia completa na garagem ou no quarto de treino, sem furar piso nem parede.</p></div>
+      <div class="aud rv"><div class="aud-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Studios e personais</h3><p>Atende do iniciante ao avançado, com troca rápida de exercício entre um aluno e outro.</p></div>
+      <div class="aud rv"><div class="aud-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 9h5a1 1 0 011 1v11M2 21h20M8 8h2M8 12h2M8 16h2"/></svg></div><h3>Condomínios</h3><p>Um único equipamento resolve a sala de musculação, para usuários de até 2,00 m e 150 kg.</p></div>
+      <div class="aud rv"><div class="aud-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h2M20 12h2M5 8v8M19 8v8M8 6v12M16 6v12M8 12h8"/></svg></div><h3>Academias</h3><p>Uma estação a mais de smith, crossover e rack para aliviar o horário de pico.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section class="life">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">No seu espaço</span>
+      <h2 class="display rv">Seu espaço. <span class="o">Sua carga.</span> Seu ritmo.</h2>
+    </div>
+    <div class="life-grid">
+      <div class="life-item big"><img src="assets/s-desenvolvimento.webp" alt="Desenvolvimento de ombros no Smith" loading="lazy"></div>
+      <div class="life-item"><img src="assets/s-pulley.webp" alt="Puxada alta no pulley" loading="lazy"></div>
+      <div class="life-item"><img src="assets/s-extensora.webp" alt="Cadeira extensora acoplada à estação" loading="lazy"></div>
+      <div class="life-quote rv"><p>O melhor aparelho é o que está <span style="color:#fff">sempre livre.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KITS -->
+<section class="calc" id="kits">
+  <div class="wrap">
+    <div class="calc-box rv">
+      <div class="calc-l">
+        <span class="eyebrow">Monte o seu</span>
+        <h2 class="display">Só a estação. <span class="o">Ou a academia inteira.</span></h2>
+        <p class="lead">Escolha o conjunto, a cor e a bateria de pesos. O preço e a lista do que vem na caixa se atualizam na hora.</p>
+        <div class="opt">
+          <span class="opt-k">Conjunto</span>
+          <div class="opt-g" role="group" aria-label="Conjunto">
+            <button type="button" data-opt="conj" data-val="uni">Unidade</button>
+            <button type="button" data-opt="conj" data-val="k1">Kit 1</button>
+            <button type="button" data-opt="conj" data-val="k2">Kit 2</button>
+            <button type="button" data-opt="conj" data-val="k3">Kit 3</button>
+            <button type="button" data-opt="conj" data-val="k4">Kit 4</button>
+            <button type="button" data-opt="conj" data-val="k5">Kit 5</button>
+            <button type="button" data-opt="conj" data-val="k6a">Kit 6 · 110 V</button>
+            <button type="button" data-opt="conj" data-val="k6b">Kit 6 · 220 V</button>
+          </div>
+        </div>
+        <div class="opt">
+          <span class="opt-k">Cor</span>
+          <div class="opt-g two" role="group" aria-label="Cor">
+            <button type="button" data-opt="cor" data-val="L"><i class="sw" style="background:#fc5400"></i>Laranja</button>
+            <button type="button" data-opt="cor" data-val="P"><i class="sw" style="background:#111"></i>Preto</button>
+          </div>
+        </div>
+        <div class="opt">
+          <span class="opt-k">Bateria de pesos (cada lado)</span>
+          <div class="opt-g two" role="group" aria-label="Bateria de pesos">
+            <button type="button" data-opt="bat" data-val="82">2 × 82 kg</button>
+            <button type="button" data-opt="bat" data-val="122">2 × 122 kg</button>
+          </div>
+        </div>
+      </div>
+      <div class="calc-r kit-r">
+        <div class="kit-img"><img data-b="kit-img" src="assets/kit-uni-L.webp" alt="Unidade do Multi Crossover Smith" width="800" height="1067" loading="lazy"></div>
+        <div>
+          <div class="kit-nome" data-b="kit-nome">Unidade</div>
+          <p class="kit-tag" data-b="kit-tag">A estação completa, pronta para treinar.</p>
+        </div>
+        <ul class="kit-lista" data-b="kit-lista"></ul>
+        <div class="kit-preco">
+          <div><span>No Pix</span><b>R$ <i data-b="pix" style="font-style:normal">14.890,00</i></b><small>ou 15x de R$ <i data-b="parcela" style="font-style:normal">1.102,96</i> sem juros</small></div>
+          <a href="#oferta" class="btn magnetic">Quero este
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs" id="especificacoes">
+  <div class="wrap specs-grid">
+    <div class="specs-img rv"><img src="assets/smith-cut.webp" alt="Multi Crossover Smith com rack integrado e barra guiada" loading="lazy" width="1200" height="1600"></div>
+    <div>
+      <span class="eyebrow rv">Ficha técnica</span>
+      <h2 class="display rv" style="font-size:clamp(44px,5vw,80px);margin:16px 0 30px">Os números <span class="o">sem rodeio.</span></h2>
+      <div class="spec-table">
+        <div class="spec-row rv"><span>Funções</span><b>Smith, crossover, pulley, remada baixa, rack de supino e agachamento, barra fixa</b></div>
+        <div class="spec-row rv"><span>Bateria de pesos</span><b>2 × 82 kg ou 2 × 122 kg, injetada e emborrachada</b></div>
+        <div class="spec-row rv"><span>Barra guiada (Smith)</span><b>2,20 m · 28 mm · 16 níveis de ajuste</b></div>
+        <div class="spec-row rv"><span>Anilhas na barra guiada</span><b>Furo de 31 mm (ponteira olímpica de 51 mm vendida à parte)</b></div>
+        <div class="spec-row rv"><span>Polias</span><b>2 móveis, em ABS de alta resistência com rolamento</b></div>
+        <div class="spec-row rv"><span>Suporte cavalete</span><b>Até 250 kg</b></div>
+        <div class="spec-row rv"><span>Suporte de barra</span><b>Até 100 kg</b></div>
+        <div class="spec-row rv"><span>Barra fixa</span><b>Multipegadas, até 150 kg</b></div>
+        <div class="spec-row rv"><span>Anilheiros</span><b>6 unidades · até 500 kg no total</b></div>
+        <div class="spec-row rv"><span>Usuário</span><b>Até 2,00 m de altura e 150 kg</b></div>
+        <div class="spec-row rv"><span>Estrutura</span><b>Metalon e aço SAE 1020 · pintura eletrostática fosca</b></div>
+        <div class="spec-row rv"><span>Dimensões montado (A × L × C)</span><b>2,20 × 1,60 × 1,20 m</b></div>
+        <div class="spec-row rv"><span>Peso do equipamento</span><b>300 kg (82 kg) · 340 kg (122 kg)</b></div>
+        <div class="spec-row rv"><span>Fixação</span><b>Não precisa fixar no chão nem na parede</b></div>
+        <div class="spec-row rv"><span>Garantia</span><b>12 meses</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE DROP -->
+<section class="pdrive" aria-label="De R$ 20.518,66 por R$ 14.890 no Pix, 27% OFF na Black Friday">
+  <div class="pd-wipe" aria-hidden="true"></div>
+  <div class="pd-stage">
+    <div class="pd-old" aria-hidden="true"><small>Preço normal</small><div class="pd-old-n"><span>R$</span><span>&nbsp;</span><span>2</span><span>0</span><span>.</span><span>5</span><span>1</span><span>8</span><i class="pd-strike"></i></div></div>
+    <div class="pd-final">
+      <small class="pd-k">Na Black Friday, no Pix, a partir de</small>
+      <b class="pd-new"><span>R$</span> <span>1</span><span>4</span><span>.</span><span>8</span><span>9</span><span>0</span></b>
+      <p class="pd-sub">ou R$ 16.544,44 em 15x de R$ 1.102,96 sem juros · frete grátis Black Friday*</p>
+      <div class="pd-urg" data-tm>
+        <b class="pd-ltd">Oferta de Black Friday</b>
+        <span class="pd-tlabel">Esta condição termina em</span>
+        <div class="pd-timer" role="timer"><div><b data-u="d">0</b><small>dias</small></div><i>:</i><div><b data-u="h">00</b><small>h</small></div><i>:</i><div><b data-u="m">00</b><small>min</small></div><i>:</i><div><b data-u="s">00</b><small>seg</small></div></div>
+        <span class="pd-limit"><i></i>Preço e frete grátis válidos enquanto durar a campanha</span>
+      </div>
+      <a href="#oferta" class="btn pd-cta">Garantir o meu agora
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
+    <div class="pd-stamp" aria-hidden="true">27%<small>OFF</small></div>
   </div>
 </section>
 
-<!-- PREÇO -->
-<section class="buy" id="oferta" data-ch="paper" aria-labelledby="buy-h">
+<!-- OFFER -->
+<section class="offer" id="oferta">
   <div class="wrap">
-    <h2 class="d" id="buy-h">Escolha e garanta.</h2>
-    <div class="buy-card">
-      <div class="b-conf">
+    <div class="sec-head">
+      <span class="eyebrow rv">Oferta de Black Friday</span>
+      <h2 class="display rv">Garanta o seu <span class="o">Crossover Smith.</span></h2>
+      <p class="lead rv">Desconto de Black Friday, frete grátis* e 12 meses de garantia. Escolha a configuração e finalize direto no checkout da MegaGym.</p>
+    </div>
+
+    <div class="offer-grid">
+      <div class="card main rv">
+        <span class="card-flag">Oferta de Black Friday</span>
+        <div class="card-img"><img class="smith" src="assets/smith-cut.webp" alt="Multi Crossover Smith com rack integrado e barra guiada" loading="lazy" width="1200" height="1600"><div class="fg-badge fg-card" role="img" aria-label="Frete grátis na Black Friday"><svg class="fg-ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="fgp-fg-card" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#fgp-fg-card" textLength="474">FRETE GRÁTIS • BLACK FRIDAY • FRETE GRÁTIS • BLACK FRIDAY •</textPath></text></svg><div class="fg-core" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><b>GRÁTIS</b></div></div></div>
         <div>
-          <h3>Multi Crossover Smith</h3>
+          <h3>Multi Crossover Smith com Rack + Barra Guiada</h3>
           <span class="resumo" data-b="resumo" aria-live="polite">Unidade · Laranja · 2 baterias de 82 kg</span>
+          <div class="from">De <s>R$ <span data-b="de">20.518,66</span></s> por</div>
+          <div class="big"><small>R$</small><span data-b="pix-int">14.890</span><span class="cents" data-b="pix-cents">,00</span></div>
+          <span class="pix">◆ no Pix, com 10% off · <span data-b="off">27%</span> OFF</span>
+          <div class="inst" style="margin-top:10px">ou R$ <span data-b="cartao">16.544,44</span> em <b>15x de R$ <span data-b="parcela">1.102,96</span></b> sem juros</div>
           <div class="opt">
             <span class="opt-k">Conjunto</span>
             <div class="opt-g" role="group" aria-label="Conjunto">
@@ -568,90 +1053,91 @@ input[type=range]::-moz-range-thumb{width:30px;height:30px;background:var(--oran
             </div>
           </div>
           <div class="opt">
-            <span class="opt-k">Cor</span>
-            <div class="opt-g" role="group" aria-label="Cor">
+            <span class="opt-k">Cor e bateria (cada lado)</span>
+            <div class="opt-g quad" role="group" aria-label="Cor e bateria de pesos">
               <button type="button" data-opt="cor" data-val="L"><i class="sw" style="background:#fc5400"></i>Laranja</button>
-              <button type="button" data-opt="cor" data-val="P"><i class="sw" style="background:#555"></i>Preto</button>
-            </div>
-          </div>
-          <div class="opt">
-            <span class="opt-k">Bateria de pesos (cada lado)</span>
-            <div class="opt-g" role="group" aria-label="Bateria de pesos">
+              <button type="button" data-opt="cor" data-val="P"><i class="sw" style="background:#111"></i>Preto</button>
               <button type="button" data-opt="bat" data-val="82">2 × 82 kg</button>
               <button type="button" data-opt="bat" data-val="122">2 × 122 kg</button>
             </div>
           </div>
+          <div class="card-cd" data-tm>Black Friday termina em <span class="tmr"><b data-u="d">0</b><small>d</small><b data-u="h">00</b>:<b data-u="m">00</b>:<b data-u="s">00</b></span></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg><b>Frete grátis na Black Friday*</b></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>12 meses de garantia MegaGym</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Puxadores, corda e tornozeleiras inclusos</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg>Não precisa fixar no chão nem na parede</li>
+          </ul>
+          <a class="btn btn-block magnetic" href="https://megagym.com.br/cart/52078340604178:1" data-buy>Comprar agora
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="stock"><i></i>Em estoque</div>
         </div>
-        <div>
-          <div class="kit-img"><img data-b="kit-img" src="assets/kit-uni-L.webp" alt="Unidade do Multi Crossover Smith" width="800" height="1067" loading="lazy"></div>
-          <div class="kit-name" data-b="kit-nome">Unidade</div>
-          <p class="kit-tag" data-b="kit-tag">A estação completa, pronta para treinar.</p>
-          <ul class="kit-lista" data-b="kit-lista"></ul>
-        </div>
-      </div>
-      <div class="b-price">
-        <span class="k">No Pix</span>
-        <div class="price"><small>R$</small><span data-b="pix-int">14.890</span><small data-b="pix-cents">,00</small></div>
-        <span class="off">De R$ <s data-b="de">20.518,66</s> · <span data-b="off">27%</span> OFF</span>
-        <span class="inst">ou R$ <span data-b="cartao">16.544,44</span> em 15x de R$ <span data-b="parcela">1.102,96</span> sem juros</span>
-        <a class="btn" href="https://megagym.com.br/cart/52078340604178:1" data-buy>Comprar agora
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <span class="cd" data-tm>Termina em <span class="tmr"><b data-u="d">0</b><small>d</small><b data-u="h">00</b>:<b data-u="m">00</b>:<b data-u="s">00</b></span></span>
-        <span class="k">Em estoque</span>
       </div>
     </div>
-    <div class="after">
-      <div><b>Frete grátis na Black Friday*</b>O prazo e o valor para o seu CEP aparecem no checkout.</div>
-      <div><b>Até 5 dias de preparação</b>Antes do envio, já inclusos na previsão de entrega.</div>
-      <div><b>12 meses de garantia</b>Até 21x no cartão (15x sem juros) e 10% off no Pix.</div>
+
+    <div class="ship rv">
+      <div class="ship-l">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+        <div><b>Prazo de preparação</b><span>Até 5 dias antes do envio, já inclusos na previsão de entrega que aparece no checkout</span></div>
+      </div>
+      <div class="ship-r">
+        <a class="btn btn-ghost" href="https://megagym.com.br/cart/52078340604178:1" data-buy>Calcular no checkout</a>
+      </div>
+    </div>
+
+    <div class="guar">
+      <div class="g rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><div><b>12 meses de garantia</b><span>Garantia MegaGym para o equipamento</span></div></div>
+      <div class="g rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg><div><b>Montagem simplificada</b><span>Instalação mais intuitiva e organizada</span></div></div>
+      <div class="g rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><div><b>Compra segura</b><span>Finalize no checkout oficial da MegaGym</span></div></div>
+      <div class="g rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><div><b>Até 21x no cartão</b><span>15x sem juros · 10% off no Pix</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- DÚVIDAS -->
-<section class="faq" id="faq" data-ch="paper" aria-labelledby="faq-h">
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow rv">Dúvidas</span>
+      <h2 class="display rv">Tudo que você <span class="o">precisa saber.</span></h2>
+    </div>
+    <div>
+      <div class="qa open"><button type="button" aria-expanded="true">Precisa fixar no chão ou na parede?<i></i></button><div class="qa-body"><div><p>Não. O equipamento pesa 300 kg com as baterias de 82 kg (ou 340 kg com as de 122 kg) e foi projetado para ficar estável apenas apoiado no piso.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Quanto espaço eu preciso?<i></i></button><div class="qa-body"><div><p>Montado, ele mede 2,20 m de altura, 1,60 m de largura e 1,20 m de comprimento. A barra guiada tem 2,20 m, então deixe essa largura livre, além do espaço para se movimentar à frente da estação.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Qual bateria escolher: 82 kg ou 122 kg?<i></i></button><div class="qa-body"><div><p>São duas baterias, uma de cada lado. A de 82 kg por lado atende a maior parte dos treinos em casa. A de 122 kg por lado é indicada para quem já treina com carga alta ou para uso por várias pessoas, como em studios e condomínios.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Quais anilhas servem na barra guiada?<i></i></button><div class="qa-body"><div><p>A barra guiada tem 28 mm e vem no padrão para anilhas com furo de 31 mm. Para usar anilhas olímpicas, com furo de 51 mm, existe uma ponteira de aço cromado vendida à parte. Fale com a equipe da MegaGym para adquirir.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">O que vem na unidade e o que muda nos kits?<i></i></button><div class="qa-body"><div><p>A unidade traz a estação, dois suportes cavalete, dois suportes de barra, puxadores de 97 cm e 51 cm, corda, dois puxadores de crossover e duas tornozeleiras. Os kits somam banco, barra livre, cadeira extensora, banco pulley, anilhas e até bike ou esteira. A lista completa de cada um está na seção Kits.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Em quanto tempo chega?<i></i></button><div class="qa-body"><div><p>Este equipamento pede até 5 dias de preparação antes do envio. Esse período já está incluso na previsão de entrega que aparece no checkout, quando você informa o seu CEP.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Serve para a minha altura e peso?<i></i></button><div class="qa-body"><div><p>Ele é indicado para usuários de até 2,00 m de altura e suporta até 150 kg de peso do usuário.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">Quais as formas de pagamento e a garantia?<i></i></button><div class="qa-body"><div><p>Cartão em até 15x sem juros (ou em até 21x, consulte as condições no checkout) e Pix com 10% de desconto. A garantia é de 12 meses.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="final-bg" aria-hidden="true"></div>
   <div class="wrap">
-    <h2 class="d" id="faq-h">Antes de levar pra casa.</h2>
-    <div class="drawer">
-      <div class="card c-o open" style="--i:0"><span class="card-tab">Fixação</span><div class="card-body"><button type="button" aria-expanded="true">Precisa fixar no chão ou na parede?<span aria-hidden="true">+</span></button><div class="ans"><div><p>Não. Com 300 kg (baterias de 82 kg) ou 340 kg (baterias de 122 kg), ela foi projetada para ficar estável apenas apoiada no piso.</p></div></div></div></div>
-      <div class="card c-i" style="--i:1"><span class="card-tab">Espaço</span><div class="card-body"><button type="button" aria-expanded="false">Quanto espaço eu preciso?<span aria-hidden="true">+</span></button><div class="ans"><div><p>Montada, ela mede 2,20 m de altura, 1,60 m de largura e 1,20 m de comprimento, e a barra guiada tem 2,20 m. Use o "Cabe aí?" acima para testar o seu cômodo.</p></div></div></div></div>
-      <div class="card c-s" style="--i:2"><span class="card-tab">Bateria</span><div class="card-body"><button type="button" aria-expanded="false">Qual bateria escolher: 82 kg ou 122 kg?<span aria-hidden="true">+</span></button><div class="ans"><div><p>São duas baterias, uma de cada lado. A de 82 kg por lado atende a maior parte dos treinos em casa. A de 122 kg por lado é para quem já treina com carga alta ou para uso por várias pessoas, como em studios e condomínios.</p></div></div></div></div>
-      <div class="card c-o" style="--i:3"><span class="card-tab">Anilhas</span><div class="card-body"><button type="button" aria-expanded="false">Quais anilhas servem na barra guiada?<span aria-hidden="true">+</span></button><div class="ans"><div><p>A barra guiada tem 28 mm e vem no padrão para anilhas com furo de 31 mm. Para anilhas olímpicas (furo de 51 mm), existe uma ponteira de aço cromado vendida à parte. Fale com a equipe da MegaGym.</p></div></div></div></div>
-      <div class="card c-i" style="--i:4"><span class="card-tab">Entrega</span><div class="card-body"><button type="button" aria-expanded="false">Em quanto tempo chega?<span aria-hidden="true">+</span></button><div class="ans"><div><p>Ela pede até 5 dias de preparação antes do envio, e esse período já está incluso na previsão de entrega que aparece no checkout, quando você informa o seu CEP.</p></div></div></div></div>
-      <div class="card c-s" style="--i:5"><span class="card-tab">Pagamento</span><div class="card-body"><button type="button" aria-expanded="false">Quais as formas de pagamento e a garantia?<span aria-hidden="true">+</span></button><div class="ans"><div><p>Cartão em até 15x sem juros (ou em até 21x, consulte as condições no checkout) e Pix com 10% de desconto. A garantia é de 12 meses. Ela é indicada para usuários de até 2,00 m e 150 kg.</p></div></div></div></div>
-    </div>
+    <img class="final-smith rv" src="assets/smith-cut-600.webp" alt="" aria-hidden="true" loading="lazy" width="600" height="800">
+    <h2 class="display rv">Chega de fila.<br><span class="o">Treine na sua.</span></h2>
+    <p class="lead rv">Smith, crossover e rack em um único equipamento, a partir de R$ 14.890 no Pix e com frete grátis na Black Friday*.</p>
+    <p class="final-tm rv" data-tm>Black Friday termina em <span class="tmr"><b data-u="d">0</b><small>d</small><b data-u="h">00</b>:<b data-u="m">00</b>:<b data-u="s">00</b></span></p>
+    <a href="#oferta" class="btn magnetic rv">Garantir o meu Crossover Smith
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </section>
-
-<div class="cta-wrap">
-  <a class="cta" href="https://megagym.com.br/cart/52078340604178:1" data-buy data-ch="orange" aria-label="Comprar: vai para o checkout da MegaGym com a configuração escolhida">
-    <p>Leva você ao checkout com o conjunto, a cor e a bateria que você escolheu.</p>
-    <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M12 36L36 12M16 12h20v20"/></svg>
-    <b aria-hidden="true">Comprar</b>
-  </a>
-</div>
 </main>
 
-<footer class="foot" data-ch="ink">
-  <div class="foot-ph"><img src="assets/s-estudio.webp" alt="Multi Crossover Smith montado na sala de exposição da MegaGym" loading="lazy" width="900" height="1200"></div>
-  <div class="foot-r">
-    <a href="#topo" class="mark" aria-label="MegaGym, voltar ao topo"></a>
-    <ul class="foot-menu">
-      <li><a href="#casa">A casa</a></li>
-      <li><a href="#estacoes">8 em 1</a></li>
-      <li><a href="#cabe">Cabe aí?</a></li>
-      <li><a href="#especificacoes">Ficha técnica</a></li>
-      <li><a href="#oferta">Kits e preço</a></li>
-      <li><a href="#faq">Dúvidas</a></li>
-    </ul>
-    <a class="btn foot-buy" href="https://megagym.com.br/cart/52078340604178:1" data-buy>Comprar agora
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <p class="legal">*Frete grátis válido durante a campanha de Black Friday. O prazo e o valor para o seu CEP aparecem no checkout. Preços e condições sujeitos a alteração sem aviso prévio. © MegaGym Equipamentos.</p>
+<footer class="footer">
+  <div class="wrap footer-in">
+    <img src="assets/logo.png" alt="MegaGym" width="800" height="206">
+    <p>*Frete grátis válido durante a campanha de Black Friday. Confirme a disponibilidade e o prazo para o seu CEP no checkout. Preços e condições sujeitos a alteração sem aviso prévio.</p>
+    <p>© MegaGym Equipamentos</p>
   </div>
 </footer>
 
-<div class="dock" id="dock">
-  <div><b>R$ <span data-b="pix-int">14.890</span></b><span>no Pix · 15x R$ <span data-b="parcela">1.102,96</span></span></div>
+<div class="sticky-cta" id="stickyCta">
+  <div class="p"><b>R$ <span data-b="pix-int">14.890</span></b><span>no Pix · 15x R$ <span data-b="parcela">1.102,96</span><span data-tm> · termina em <span class="tmr"><b data-u="d">0</b><small>d</small><b data-u="h">00</b>:<b data-u="m">00</b></span></span></span></div>
   <a href="#oferta" class="btn">Comprar</a>
 </div>
 
@@ -660,14 +1146,24 @@ input[type=range]::-moz-range-thumb{width:30px;height:30px;background:var(--oran
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = typeof gsap !== 'undefined';
   const $ = (s,c=document)=>c.querySelector(s);
   const $$ = (s,c=document)=>Array.from(c.querySelectorAll(s));
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
 
+  /* ---------- non-animation interactivity (always works) ---------- */
+  // FAQ
+  $$('.qa button').forEach(b=>b.addEventListener('click',()=>{
+    const qa=b.parentElement, open=!qa.classList.contains('open');
+    $$('.qa').forEach(q=>{q.classList.remove('open');q.querySelector('button').setAttribute('aria-expanded','false')});
+    if(open){qa.classList.add('open');b.setAttribute('aria-expanded','true')}
+  }));
   /* ---------- CONFIGURAÇÃO DA OFERTA (edite aqui) ---------- */
+  // Fim real da campanha. Quando a data passa, os contadores somem sozinhos.
   const OFERTA_FIM = new Date('2026-11-27T23:59:59-03:00');
-  const PIX_OFF = 0.10, PARCELAS = 15, CART = 'https://megagym.com.br/cart/';
+  const PIX_OFF = 0.10; // 10% de desconto no Pix
+  const PARCELAS = 15;  // parcelas sem juros
+  const CART = 'https://megagym.com.br/cart/';
   // conjunto | cor (P preto, L laranja) | bateria | id da variante | preço | preço "de"
   const VARIANTES = [
     ['uni','P',82,52078340538642,16544.44,20518.66],['uni','P',122,52078340571410,19433.33,26385.33],
@@ -688,12 +1184,13 @@ input[type=range]::-moz-range-thumb{width:30px;height:30px;background:var(--oran
     ['k6b','L',82,52141758742802,24766.67,33425.33],['k6b','L',122,52141758972178,27655.55,37972.00]
   ];
   const BASE = ['Puxador pulley curvado de 97 cm','Puxador pulley reto de 51 cm','2 puxadores de crossover','Puxador corda','2 tornozeleiras'];
+  const ANILHAS80 = '80 kg em anilhas emborrachadas (2 a 20 kg)';
   const CARDIO = ['Barra W de 1,20 m','2 halteres de 40 cm','2 steps de EVA','Colchonete','100 kg em anilhas emborrachadas (2 a 20 kg)'];
   const KITS = {
     uni:{n:'Unidade',img:'uni',t:'A estação completa, pronta para treinar.',i:['Multi Crossover Smith com rack e barra guiada','2 suportes cavalete','2 suportes de barra',...BASE]},
     k1:{n:'Kit 1',img:'k1',t:'Estação + banco + barra livre.',i:['Multi Crossover Smith com rack e barra guiada','Banco livre ajustável profissional M1','Barra reta maciça de 2,20 m',...BASE]},
     k2:{n:'Kit 2',img:'k2',t:'Estação + banco + extensora e pulley.',i:['Multi Crossover Smith com rack e barra guiada','Banco livre ajustável profissional M1','Banco pulley','Cadeira extensora',...BASE]},
-    k3:{n:'Kit 3',img:'k3',t:'Tudo do Kit 2, com banco supino e anilhas.',i:['Multi Crossover Smith com rack e barra guiada','Banco supino regulável com extensora e mesa flexora','Barra reta maciça de 2,20 m','Banco pulley','Cadeira extensora','80 kg em anilhas emborrachadas (2 a 20 kg)',...BASE]},
+    k3:{n:'Kit 3',img:'k3',t:'Tudo do Kit 2, com banco supino e anilhas.',i:['Multi Crossover Smith com rack e barra guiada','Banco supino regulável com extensora e mesa flexora','Barra reta maciça de 2,20 m','Banco pulley','Cadeira extensora',ANILHAS80,...BASE]},
     k4:{n:'Kit 4',img:'k4',t:'Banco M1, extensora, pulley, barra e anilhas.',i:['Multi Crossover Smith com rack e barra guiada','Banco livre ajustável profissional M1','Barra reta maciça de 2,20 m','Banco pulley','Cadeira extensora','80 kg em anilhas Sport emborrachadas (2 a 20 kg)',...BASE]},
     k5:{n:'Kit 5',img:'k5',t:'Musculação completa + Smart Bike 13K.',i:['Multi Crossover Smith com rack e barra guiada','Banco supino regulável com extensora e mesa flexora','Bicicleta Smart Magnetic 13K','Barra reta maciça de 2,20 m',...CARDIO,...BASE]},
     k6a:{n:'Kit 6 · esteira 110 V',img:'k6',t:'Musculação completa + esteira Smart Pace.',i:['Multi Crossover Smith com rack e barra guiada','Banco supino regulável com extensora e mesa flexora','Esteira MegaGym Smart Pace 110 V','Barra reta maciça de 2,20 m',...CARDIO,...BASE]},
@@ -705,8 +1202,8 @@ input[type=range]::-moz-range-thumb{width:30px;height:30px;background:var(--oran
   function render(){
     const row=VARIANTES.find(r=>r[0]===state.conj&&r[1]===state.cor&&r[2]===state.bat); if(!row) return;
     const price=row[4],de=row[5],pix=Math.round(price*(1-PIX_OFF)*100)/100,kit=KITS[state.conj];
-    const pt=brl(pix),cut=pt.lastIndexOf(',');
-    txt('pix-int',pt.slice(0,cut)); txt('pix-cents',pt.slice(cut));
+    const pixTxt=brl(pix),cut=pixTxt.lastIndexOf(',');
+    txt('pix-int',pixTxt.slice(0,cut)); txt('pix-cents',pixTxt.slice(cut)); txt('pix',pixTxt);
     txt('de',brl(de)); txt('cartao',brl(price)); txt('parcela',brl(price/PARCELAS));
     txt('off',Math.round((de-pix)/de*100)+'%');
     txt('kit-nome',kit.n); txt('kit-tag',kit.t);
@@ -716,162 +1213,305 @@ input[type=range]::-moz-range-thumb{width:30px;height:30px;background:var(--oran
     $$('[data-buy]').forEach(a=>{a.href=CART+row[3]+':1'});
     $$('[data-opt]').forEach(b=>{const on=String(state[b.dataset.opt])===b.dataset.val; b.classList.toggle('on',on); b.setAttribute('aria-pressed',on?'true':'false')});
   }
-  $$('[data-opt]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.opt; state[k]=k==='bat'?+b.dataset.val:b.dataset.val; render();}));
+  $$('[data-opt]').forEach(b=>b.addEventListener('click',()=>{
+    const k=b.dataset.opt; state[k]=k==='bat'?+b.dataset.val:b.dataset.val; render();
+  }));
   render();
-
-  // contador preso à data real do fim da campanha
-  function tick(){
+  // Um único contador para a página inteira, preso à data real do fim da campanha.
+  function tickTimer(){
     const left=OFERTA_FIM-Date.now();
-    if(left<=0){ $$('[data-tm]').forEach(e=>{e.style.display='none'}); clearInterval(tid); return }
+    if(left<=0){ $$('[data-tm]').forEach(e=>{e.style.display='none'}); clearInterval(timerId); return }
     const p=n=>String(n).padStart(2,'0');
     const v={d:String(Math.floor(left/864e5)),h:p(Math.floor(left%864e5/36e5)),m:p(Math.floor(left%36e5/6e4)),s:p(Math.floor(left%6e4/1e3))};
     $$('[data-u]').forEach(b=>{ if(b.textContent!==v[b.dataset.u]) b.textContent=v[b.dataset.u]; });
   }
-  const tid=setInterval(tick,250); tick();
-
-  // dúvidas: uma ficha aberta por vez
-  $$('.card button').forEach(b=>b.addEventListener('click',()=>{
-    const c=b.closest('.card'), open=!c.classList.contains('open');
-    $$('.card').forEach(x=>{x.classList.remove('open');x.querySelector('button').setAttribute('aria-expanded','false')});
-    if(open){c.classList.add('open');b.setAttribute('aria-expanded','true')}
-  }));
-
-  /* ---------- CABE AÍ? planta e corte em escala ---------- */
-  const ROOMS={garagem:[3,5,2.7],quarto:[3,3,2.6],sala:[4,4.5,2.7],varanda:[2.5,3.5,2.6]};
-  const SW=2.2, SD=1.2, SH=2.2, FRONT=1.0, BASEW=1.6;
-  const rw=$('#rw'),rd=$('#rd'),rh=$('#rh');
-  const m=(v,d=1)=>v.toFixed(d).replace('.',',')+' m';
-  const NS='http://www.w3.org/2000/svg';
-  const el=(tag,a)=>{const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);return e};
-  function draw(){
-    const W=+rw.value,D=+rd.value,Hh=+rh.value;
-    $('#rwo').textContent=m(W); $('#rdo').textContent=m(D); $('#rho').textContent=m(Hh,2);
-    [rw,rd,rh].forEach(i=>i.style.setProperty('--p',((i.value-i.min)/(i.max-i.min)*100)+'%'));
-    const plan=$('#plan'); plan.innerHTML='';
-    const s=Math.min(520/Math.max(W,SW),360/Math.max(D,SD+FRONT)), w=W*s,d=D*s, x0=(600-w)/2, y0=(440-d)/2;
-    plan.append(el('rect',{x:x0-8,y:y0-8,width:w+16,height:d+16,rx:10,fill:'#0a0a0a'}));
-    plan.append(el('rect',{x:x0,y:y0,width:w,height:d,rx:4,fill:'#ffffff'}));
-    const sx=x0+(w-SW*s)/2, fy=y0+Math.min(SD,D)*s;
-    plan.append(el('rect',{x:sx,y:fy,width:SW*s,height:Math.max(0,Math.min(FRONT,D-SD))*s,rx:6,fill:'#e6e0d6'}));
-    plan.append(el('rect',{x:x0+(w-BASEW*s)/2,y:y0,width:BASEW*s,height:SD*s,rx:4,fill:'#0a0a0a'}));
-    plan.append(el('rect',{x:sx,y:y0+SD*s*0.45,width:SW*s,height:Math.max(6,0.08*s),rx:3,fill:'#fc5400'}));
-    const t1=el('text',{x:x0+w/2,y:y0+d-14,'text-anchor':'middle',style:'font:800 18px Manrope,sans-serif',fill:'#0a0a0a'}); t1.textContent=m(W)+' × '+m(D); plan.append(t1);
-    const elev=$('#elev'); elev.innerHTML='';
-    const e=330/Math.max(Hh,2.6), fl=410, ce=fl-Hh*e;
-    elev.append(el('rect',{x:20,y:ce-14,width:260,height:14,rx:4,fill:'#0a0a0a'}));
-    elev.append(el('rect',{x:20,y:fl,width:260,height:14,rx:4,fill:'#0a0a0a'}));
-    const top=fl-SH*e;
-    elev.append(el('rect',{x:70,y:top,width:12,height:SH*e,fill:'#0a0a0a'}));
-    elev.append(el('rect',{x:168,y:top,width:12,height:SH*e,fill:'#0a0a0a'}));
-    elev.append(el('rect',{x:62,y:top,width:126,height:14,rx:4,fill:'#fc5400'}));
-    const ph=1.8*e; elev.append(el('circle',{cx:232,cy:fl-ph+12,r:12,fill:'#3d3a36'})); elev.append(el('rect',{x:220,y:fl-ph+26,width:24,height:ph-26,rx:8,fill:'#3d3a36'}));
-    const gap=Math.round((Hh-SH)*100);
-    const t2=el('text',{x:150,y:Math.max(24,top-(gap>0?14:-30)),'text-anchor':'middle',style:'font:800 18px Manrope,sans-serif',fill:gap>=0?'#0a0a0a':'#b33a00'}); t2.textContent=gap>=0?('+'+gap+' cm'):(gap+' cm'); elev.append(t2);
-    const fv=$('#fv'),fd=$('#fd'); fv.classList.remove('no');
-    const free=(W*D-BASEW*SD);
-    if(Hh<SH){fv.textContent='Não cabe.';fv.classList.add('no');fd.textContent='O pé-direito precisa de pelo menos 2,20 m. Faltam '+Math.round((SH-Hh)*100)+' cm.';}
-    else if(W<SW||D<SD){fv.textContent='Não cabe.';fv.classList.add('no');fd.textContent='A barra guiada pede 2,20 m de largura e a base, 1,20 m de fundo.';}
-    else if(W<SW+0.4||D<SD+FRONT||Hh<SH+0.3){fv.textContent='Cabe, mas justo.';fd.textContent='Sobram '+gap+' cm até o teto. Fica apertado para o banco e para a barra fixa.';}
-    else {fv.textContent='Cabe com folga.';fd.textContent='Sobram '+gap+' cm até o teto e '+free.toFixed(1).replace('.',',')+' m² livres no cômodo.';}
+  const timerId=setInterval(tickTimer,250); tickTimer();
+  // Header + sticky CTA
+  const header=$('.header'),sticky=$('#stickyCta'),hero=$('.hero'),offer=$('#oferta');
+  function onScroll(){
+    const y=window.scrollY;
+    header.classList.toggle('scrolled',y>20);
+    const pastHero=y>hero.offsetTop+hero.offsetHeight*.7;
+    const r=offer.getBoundingClientRect();
+    const inOffer=r.top<window.innerHeight*.6&&r.bottom>0;
+    sticky.classList.toggle('show',pastHero&&!inOffer);
   }
-  [rw,rd,rh].forEach(i=>i.addEventListener('input',()=>{$$('[data-room]').forEach(b=>b.classList.remove('on'));draw()}));
-  $$('[data-room]').forEach(b=>b.addEventListener('click',()=>{const r=ROOMS[b.dataset.room];rw.value=r[0];rd.value=r[1];rh.value=r[2];$$('[data-room]').forEach(x=>x.classList.toggle('on',x===b));draw()}));
-  draw();
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  // capítulo de cor: os cantos fixos pegam a tinta da seção embaixo deles
-  const chSecs=$$('[data-ch]').filter(e=>e!==document.body);
-  function chapter(){
-    const y=40; let ch='orange';
-    for(const s of chSecs){const r=s.getBoundingClientRect(); if(r.top<=y&&r.bottom>y){ch=s.dataset.ch;break}}
-    if(document.body.dataset.ch!==ch) document.body.dataset.ch=ch;
-    const dock=$('#dock'),hero=$('.hero'),off=$('#oferta').getBoundingClientRect();
-    dock.classList.toggle('show',window.scrollY>hero.offsetHeight*.8&&!(off.top<innerHeight&&off.bottom>0));
+  const loader=$('.loader');
+  if(!hasGsap||reduce){
+    loader.remove();
+    $$('.rv,.h-fade').forEach(e=>{e.style.opacity=1;e.style.transform='none'});
+    $$('.count').forEach(c=>c.textContent=c.dataset.to);
+    $$('.bar-fill').forEach(b=>b.style.width=b.dataset.w+'%');
+    $$('.life-item').forEach(l=>l.style.clipPath='none');
+    const ig=$('.ignite'); if(ig) ig.remove();
+    const pd=$('.pdrive'); if(pd) pd.remove();
+    if(!hasGsap) return;
   }
-  window.addEventListener('scroll',chapter,{passive:true}); chapter();
+  if(reduce) return;
 
-  if(!hasGsap||reduce) return;
   gsap.registerPlugin(ScrollTrigger);
 
+  /* ---------- smooth scroll ---------- */
   let lenis=null;
   if(typeof Lenis!=='undefined'){
-    lenis=new Lenis({duration:1.1,smoothWheel:true});
-    lenis.on('scroll',ScrollTrigger.update); lenis.on('scroll',chapter);
-    gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
-    $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=$(a.getAttribute('href'));if(!t)return;e.preventDefault();lenis.scrollTo(t,{offset:0})}));
+    lenis=new Lenis({duration:1.15,smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(t=>lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+    $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+      const t=$(a.getAttribute('href'));if(!t)return;e.preventDefault();lenis.scrollTo(t,{offset:-80});
+    }));
   }
 
-  /* ---------- hero: o título sobe, a estação é erguida, a cota se desenha ---------- */
-  gsap.from('.hero h1 span:not(.sr)',{yPercent:100,opacity:0,duration:1.1,stagger:.1,ease:'expo.out'});
-  gsap.from('.hero-smith',{y:120,opacity:0,duration:1.4,ease:'expo.out',delay:.15});
-  gsap.from('.stage-dim i',{scaleY:0,transformOrigin:'50% 100%',duration:1.1,ease:'expo.out',delay:.5});
-  gsap.from('.stage-dim b',{opacity:0,duration:.6,delay:1.1});
-  gsap.from('.stage-tag',{y:30,opacity:0,duration:.8,ease:'back.out(1.6)',delay:1.0});
-  gsap.from('.hero-rest>*',{y:24,opacity:0,duration:.9,stagger:.08,ease:'power3.out',delay:.4});
-  gsap.to('.hero-smith',{yPercent:-6,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  /* ---------- preloader + hero intro ---------- */
+  gsap.set('.h-fade',{opacity:0,y:30});
+  gsap.set('.hero h1 .line>span',{yPercent:110});
+  gsap.set('.hero-bike',{opacity:0,scale:.82,y:60,filter:'blur(18px) drop-shadow(0 50px 60px rgba(0,0,0,.75))'});
+  gsap.set('.ring',{opacity:0,scale:.6});
+  gsap.set('.chip',{opacity:0,scale:.6});
+  const num=$('.loader-num'),cnt={v:0};
+  const tl=gsap.timeline();
+  tl.to('.loader img',{opacity:1,y:0,duration:.6,ease:'power3.out'})
+    .to('.loader-bar i',{width:'100%',duration:1.1,ease:'power2.inOut'},'<.1')
+    .to(cnt,{v:100,duration:1.1,ease:'power2.inOut',onUpdate:()=>num.textContent=String(Math.round(cnt.v)).padStart(3,'0')},'<')
+    .to('.loader',{clipPath:'inset(0 0 100% 0)',duration:.9,ease:'expo.inOut'})
+    .set('.loader',{display:'none'})
+    .to('.hero h1 .line>span',{yPercent:0,duration:1.1,stagger:.08,ease:'expo.out'},'-=.45')
+    .to('.ring',{opacity:1,scale:1,duration:1.4,ease:'expo.out'},'<')
+    .to('.hero-bike',{opacity:1,scale:1,y:0,filter:'blur(0px) drop-shadow(0 50px 60px rgba(0,0,0,.75))',duration:1.4,ease:'expo.out'},'<.1')
+    .to('.h-fade',{opacity:1,y:0,duration:.9,stagger:.08,ease:'power3.out'},'<.2')
+    .to('.chip',{opacity:1,scale:1,duration:.8,stagger:.1,ease:'back.out(2)'},'<.3')
+    .add(()=>{ $$('.chip').forEach((c,i)=>gsap.to(c,{y:i%2?-12:12,duration:2.4+i*.3,yoyo:true,repeat:-1,ease:'sine.inOut'})) });
 
-  /* ---------- a casa: câmera entra na garagem e a centraliza; a estação é colocada ---------- */
+  /* ---------- ring spin linked to scroll velocity ---------- */
+  const spin=gsap.to('.ring-spin',{rotation:360,svgOrigin:'200 200',duration:14,repeat:-1,ease:'none'});
+  const spinR=gsap.to('.ring-spin-r',{rotation:-360,svgOrigin:'200 200',duration:22,repeat:-1,ease:'none'});
+
+  /* ---------- hero parallax on scroll + mouse tilt ---------- */
+  gsap.to('.hero-bike',{yPercent:-12,scale:1.06,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-copy',{yPercent:-10,opacity:.2,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  const hv=$('.hero-visual'),bike=$('.hero-bike');
+  if(window.matchMedia('(hover:hover)').matches){
+    const rx=gsap.quickTo(bike,'rotationY',{duration:.8,ease:'power3'}),ry=gsap.quickTo(bike,'rotationX',{duration:.8,ease:'power3'});
+    hv.addEventListener('mousemove',e=>{const r=hv.getBoundingClientRect();rx(((e.clientX-r.left)/r.width-.5)*16);ry(-((e.clientY-r.top)/r.height-.5)*10)});
+    hv.addEventListener('mouseleave',()=>{rx(0);ry(0)});
+    // cursor glow
+    const g=$('.cursor-glow'),gx=gsap.quickTo(g,'x',{duration:.6,ease:'power3'}),gy=gsap.quickTo(g,'y',{duration:.6,ease:'power3'});
+    window.addEventListener('mousemove',e=>{gx(e.clientX);gy(e.clientY)});
+    // magnetic buttons
+    $$('.magnetic').forEach(b=>{
+      const mx=gsap.quickTo(b,'x',{duration:.5,ease:'power3'}),my=gsap.quickTo(b,'y',{duration:.5,ease:'power3'});
+      b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();mx((e.clientX-r.left-r.width/2)*.25);my((e.clientY-r.top-r.height/2)*.35)});
+      b.addEventListener('mouseleave',()=>{mx(0);my(0)});
+    });
+  }
+
+  /* ---------- giant marquee driven by scroll velocity ---------- */
+  const track=$('.giant-track');
+  let gx=0,dir=1,boost=0;
+  const half=()=>track.scrollWidth/2;
+  ScrollTrigger.create({onUpdate:self=>{dir=self.direction;boost=Math.min(Math.abs(self.getVelocity())/120,30)}});
+  gsap.ticker.add(()=>{
+    gx-=(1.2+boost)*dir; boost*=.92;
+    const h=half(); if(gx<=-h)gx+=h; if(gx>0)gx-=h;
+    track.style.transform='translate3d('+gx+'px,0,0)';
+    spin.timeScale(1+boost*.6);spinR.timeScale(1+boost*.6);
+  });
+
+  /* ---------- scroll progress ---------- */
+  const prog=document.createElement('div');prog.className='progress';document.body.appendChild(prog);
+  gsap.to(prog,{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
+
+  /* ---------- heading word-mask reveal ---------- */
+  function splitWords(el){
+    [...el.childNodes].forEach(n=>{
+      if(n.nodeType===3){
+        const frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(t=>{
+          if(!t)return;
+          if(/^\s+$/.test(t)){frag.appendChild(document.createTextNode(' '));return}
+          const w=document.createElement('span');w.className='wd';const i=document.createElement('i');i.textContent=t;w.appendChild(i);frag.appendChild(w);
+        });
+        n.replaceWith(frag);
+      }else if(n.nodeType===1&&n.tagName!=='BR'){splitWords(n)}
+    });
+  }
+  $$('main h2.display').forEach(h=>{
+    h.classList.remove('rv');gsap.set(h,{opacity:1,y:0});
+    splitWords(h);
+    gsap.fromTo(h.querySelectorAll('.wd>i'),{yPercent:115,rotate:4},{yPercent:0,rotate:0,duration:1.1,stagger:.06,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 86%'}});
+  });
+
+  /* ---------- section-to-section transitions ---------- */
+  const sxSel=['.pain','.features','.compare','.audience','.life','.calc','.specs','.offer','.faq','.final'];
+  const sxNames={'.pain':'A verdade','.features':'Tecnologia','.compare':'Estrutura','.audience':'Para quem','.life':'Estilo de vida','.calc':'Kits','.specs':'Ficha técnica','.offer':'Oferta','.faq':'Dúvidas','.final':'Agora'};
+  sxSel.forEach((sel,idx)=>{
+    const sec=$(sel);if(!sec)return;
+    sec.classList.add('sx');
+    const shade=document.createElement('div');shade.className='sx-shade';sec.appendChild(shade);
+    const line=document.createElement('div');line.className='sx-line';sec.appendChild(line);
+    const tag=document.createElement('div');tag.className='sx-tag';tag.innerHTML='<b>'+String(idx+1).padStart(2,'0')+'</b> / '+sxNames[sel].toUpperCase();sec.appendChild(tag);
+    // entrance: rounded clip opens up like a curtain
+    gsap.fromTo(sec,{clipPath:'inset(5% 3.5% 0% 3.5% round 56px)'},{clipPath:'inset(0% 0% 0% 0% round 0px)',ease:'none',
+      scrollTrigger:{trigger:sec,start:'top bottom',end:'top 25%',scrub:true}});
+    gsap.fromTo(line,{scaleX:0},{scaleX:1,ease:'none',scrollTrigger:{trigger:sec,start:'top 90%',end:'top 40%',scrub:true}});
+    gsap.fromTo(tag,{opacity:0,x:30},{opacity:1,x:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:sec,start:'top 70%'}});
+    // exit: section dims as the next one takes over
+    gsap.fromTo(shade,{opacity:0},{opacity:.55,ease:'none',scrollTrigger:{trigger:sec,start:'bottom 70%',end:'bottom top',scrub:true}});
+  });
+  // world section: zoom-in entrance
+  gsap.fromTo('.world',{clipPath:'inset(8% 6% 0% 6% round 64px)'},{clipPath:'inset(0% 0% 0% 0% round 0px)',ease:'none',scrollTrigger:{trigger:'.world',start:'top bottom',end:'top top',scrub:true}});
+
+  /* ---------- anchor navigation: orange shutter wipe ---------- */
+  const wipe=document.createElement('div');wipe.className='wipe';wipe.innerHTML='<i></i><i></i><i></i><i></i><i></i>';document.body.appendChild(wipe);
+  $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const t=$(a.getAttribute('href'));if(!t||!lenis)return;e.preventDefault();e.stopImmediatePropagation();
+    const bars=wipe.children;
+    gsap.timeline()
+      .set(bars,{transformOrigin:'50% 100%'})
+      .to(bars,{scaleY:1,duration:.45,stagger:.05,ease:'expo.in'})
+      .add(()=>lenis.scrollTo(t,{offset:-80,immediate:true,force:true}))
+      .set(bars,{transformOrigin:'50% 0%'})
+      .to(bars,{scaleY:0,duration:.6,stagger:.05,ease:'expo.out'},'+=.05');
+  },true));
+
+  /* ---------- IGNITION: pinned cinematic dive into the flywheel (leads into Tecnologia) ---------- */
   (function(){
-    const sec=$('.house-sec'),view=$('.house-view'),house=$('.house'),smith=$('.house-smith'),steps=$$('.house-steps p');
-    const dims=$$('.dims path'); dims.forEach(p=>{const L=p.getTotalLength?p.getTotalLength():400;p.style.strokeDasharray=L;p.style.strokeDashoffset=L});
-    gsap.set(smith,{yPercent:-260,opacity:0});
-    gsap.set('.dims text',{opacity:0});
-    const zoom=()=>innerWidth<900?2.6:2.2;
-    // deslocamento que leva a garagem (72,5% x 71% da casa) para o meio da área visível
-    const dx=()=>view.clientWidth/2-(house.offsetLeft+house.offsetWidth*.725);
-    const dy=()=>view.clientHeight/2-(house.offsetTop+house.offsetHeight*.71);
-    const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:sec,start:'top top',end:'+=320%',pin:'.house-pin',scrub:1,anticipatePin:1,invalidateOnRefresh:true}});
-    const swap=(i,at)=>tl.to(steps[i-1],{opacity:0,y:-12,duration:.25},at).fromTo(steps[i],{opacity:0,y:12},{opacity:1,y:0,duration:.25},at+.15);
-    tl.to({}, {duration:.3})
-      .to(house,{scale:zoom,x:dx,y:dy,duration:1.3,ease:'power2.inOut'},.3);
-    swap(1,.5);
-    tl.to(smith,{opacity:1,duration:.1},1.6)
-      .to(smith,{yPercent:0,duration:.9,ease:'bounce.out'},1.6)
-      .to(dims[0],{strokeDashoffset:0,duration:.5},2.5)
-      .to('.dims text:nth-of-type(1)',{opacity:1,duration:.2},2.7)
-      .to(dims[1],{strokeDashoffset:0,duration:.6},2.9)
-      .to('.dims text:nth-of-type(2)',{opacity:1,duration:.2},3.3);
-    swap(2,2.6);
-    swap(3,3.7);
-    tl.to(house,{scale:()=>zoom()*1.1,duration:1,ease:'power1.inOut'},3.9).to({}, {duration:.4});
+    const sec=$('.ignite');if(!sec)return;
+    const lines=$('.ig-lines',sec),N=28;
+    for(let i=0;i<N;i++){const l=document.createElement('i');l.style.transform='rotate('+(i*360/N)+'deg)';lines.appendChild(l)}
+    const L=lines.children;
+    const rings=['.ig-r1','.ig-r2','.ig-r3','.ig-r4'].map(s=>$(s,sec));
+    const r1=rings[0],len=2*Math.PI*280;
+    gsap.set(r1,{strokeDasharray:len,strokeDashoffset:len});
+    gsap.set('.ig-r2,.ig-r3,.ig-r4',{scale:.6,opacity:0});
+    gsap.set('.ig-bike',{scale:.35,opacity:0,y:60,filter:'blur(14px) drop-shadow(0 40px 60px rgba(0,0,0,.9))'});
+    gsap.set(L,{scaleY:0,opacity:0});
+    gsap.set('.ig-big span',{yPercent:120,opacity:0,scale:2.4,rotate:-8});
+    gsap.set('.ig-final small,.ig-final p,.ig-down',{opacity:0,y:30});
+
+    const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:sec,start:'top top',end:'+=320%',pin:true,scrub:1,anticipatePin:1,refreshPriority:1}});
+    tl
+      // 1. arrival: word + bike materialise, outer ring draws itself
+      .to('.ig-bike',{scale:1,opacity:1,y:0,filter:'blur(0px) drop-shadow(0 40px 60px rgba(0,0,0,.9))',duration:1.2,ease:'power3.out'},0.1)
+      .to(r1,{strokeDashoffset:0,duration:1.2,ease:'power2.inOut'},0.2)
+      .to('.ig-r2,.ig-r3,.ig-r4',{scale:1,opacity:1,stagger:.12,duration:.9,ease:'back.out(1.6)'},0.4)
+      .to('.ig-glow',{opacity:1,duration:1},0.5)
+      .to('.ig-cap span',{opacity:1,stagger:.15,duration:.4},0.8)
+      // 2. spin-up: rings accelerate, warp lines blast outward, bike vibrates
+      .to('.ig-r1',{rotate:540,duration:2.2,ease:'power2.in'},1.4)
+      .to('.ig-r2',{rotate:-720,duration:2.2,ease:'power2.in'},1.4)
+      .to('.ig-r3',{rotate:1080,duration:2.2,ease:'power2.in'},1.4)
+      .to('.ig-r4',{rotate:-360,scale:1.08,duration:2.2,ease:'power2.in'},1.4)
+      .to(L,{scaleY:1,opacity:1,stagger:{each:.03,from:'random'},duration:.8,ease:'power2.out'},1.6)
+      .to(L,{y:'18vmax',duration:1.6,ease:'power2.in'},2.0)
+      .to('.ig-cap',{opacity:0,y:20,duration:.5},2.2)
+      .to('.ig-bike',{keyframes:{x:[0,-4,5,-3,4,-2,0],y:[0,3,-4,2,-3,1,0]},duration:1,ease:'none'},2.0)
+      .to('.ig-glow',{scale:1.8,duration:1.2},2.2)
+      // 3. dive: camera crashes into the flywheel, flash, orange floods out of the wheel
+      .set('.ig-bike',{filter:'none'},2.95)
+      .to('.ig-bike',{scale:5.5,transformOrigin:'66% 64%',duration:1.3,ease:'power3.in'},3.0)
+      .fromTo('.ig-bike,.ig-rings,.ig-lines,.ig-glow',{visibility:'visible'},{visibility:'hidden',duration:.01,immediateRender:false},4.9)
+      .to('.ig-rings',{scale:3,opacity:0,duration:1.2,ease:'power3.in'},3.0)
+      .to(L,{opacity:0,duration:.6},3.4)
+      .to('.ig-flash',{opacity:1,duration:.15},4.05)
+      .to('.ig-flash',{opacity:0,duration:.4},4.2)
+      .to('.ig-flood',{clipPath:'circle(150% at 59% 58%)',duration:1.1,ease:'power3.inOut'},3.9)
+      // 4. slam: the headline punches in letter by letter
+      .to('.ig-big span',{yPercent:0,opacity:1,scale:1,rotate:0,stagger:.08,duration:.7,ease:'back.out(2.2)'},4.8)
+      .to('.ig-final small',{opacity:1,y:0,duration:.5},5.0)
+      .to('.ig-final p',{opacity:1,y:0,duration:.5},5.3)
+      .to('.ig-down',{opacity:1,y:0,duration:.4},5.6)
+      .to('.ig-big',{scale:1.04,duration:.8},5.8);
   })();
 
-  /* ---------- 8 em 1: blocos entram em sequência ---------- */
-  $$('.blk').forEach(b=>{
-    const tl=gsap.timeline({scrollTrigger:{trigger:b,start:'top 82%'}});
-    tl.from(b.querySelector('figure'),{clipPath:'inset(100% 0 0 0 round 22px)',duration:1.1,ease:'expo.out'})
-      .from(b.querySelector('h3'),{y:28,opacity:0,duration:.8,ease:'power3.out'},'-=.8')
-      .from(b.querySelectorAll('li'),{x:-16,opacity:0,stagger:.07,duration:.6,ease:'power3.out'},'-=.6');
+  /* ---------- PRICE DROP ---------- */
+  (function(){
+    const sec=$('.pdrive');if(!sec)return;
+    const digits=$$('.pd-old-n span',sec);
+    gsap.set('.pd-old',{opacity:0,scale:.85});
+    gsap.set('.pd-new span',{yPercent:120,opacity:0,scale:2.2,rotate:-8});
+    gsap.set('.pd-k,.pd-sub,.pd-cta',{opacity:0,y:30});
+    gsap.set('.pd-urg',{opacity:0,y:40,scale:.9});
+    gsap.set('.pd-stamp',{scale:0,rotate:-220,opacity:0});
+    const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:sec,start:'top top',end:'+=220%',pin:true,scrub:1,anticipatePin:1,refreshPriority:1}});
+    tl
+      .to('.pd-old',{opacity:1,scale:1,duration:.6,ease:'power3.out'},0)
+      .to('.pd-strike',{scaleX:1,duration:.45,ease:'power2.inOut'},.6)
+      .to(digits,{y:()=>gsap.utils.random(320,620),x:()=>gsap.utils.random(-80,80),rotate:()=>gsap.utils.random(-100,100),opacity:0,stagger:{each:.06,from:'random'},duration:.9,ease:'power2.in'},1.0)
+      .to('.pd-old small,.pd-strike',{opacity:0,duration:.3},1.2)
+      .to('.pd-wipe',{scaleX:1,duration:.7,ease:'expo.inOut'},1.5)
+      .set('.pd-old',{visibility:'hidden'},2.2)
+      .to('.pd-k',{opacity:1,y:0,duration:.4},1.9)
+      .to('.pd-new span',{yPercent:0,opacity:1,scale:1,rotate:0,stagger:.07,duration:.6,ease:'back.out(2.2)'},2.0)
+      .to('.pd-stamp',{scale:1,rotate:-12,opacity:1,duration:.6,ease:'back.out(2.5)'},2.4)
+      .to('.pd-sub',{opacity:1,y:0,duration:.4},2.5)
+      .to('.pd-urg',{opacity:1,y:0,scale:1,duration:.6,ease:'back.out(1.8)'},2.7)
+      .to('.pd-cta',{opacity:1,y:0,duration:.4},3.0)
+      .to('.pd-stamp',{rotate:-4,duration:.5},3.2);
+  })();
+
+  /* ---------- generic reveals ---------- */
+  $$('.rv').forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  ScrollTrigger.batch('.excuse',{start:'top 90%',onEnter:b=>gsap.fromTo(b,{x:-40,opacity:0},{x:0,opacity:1,stagger:.1,duration:.9,ease:'expo.out',overwrite:true})});
+  ScrollTrigger.batch('.aud',{start:'top 90%',onEnter:b=>gsap.fromTo(b,{y:60,opacity:0,rotate:2},{y:0,opacity:1,rotate:0,stagger:.1,duration:1,ease:'expo.out',overwrite:true})});
+  // strike-through excuses as they scroll by
+  $$('.excuse s').forEach(s=>{
+    s.style.textDecorationColor='transparent';
+    ScrollTrigger.create({trigger:s,start:'top 70%',onEnter:()=>{s.style.transition='text-decoration-color .6s, color .6s';s.style.textDecorationColor='var(--orange)'}});
   });
 
-  /* ---------- verbos: a palavra se fecha e a foto se aproxima ---------- */
-  $$('.verb').forEach(v=>{
-    gsap.fromTo(v.querySelector('.verb-w'),{letterSpacing:'.14em',opacity:.25},{letterSpacing:'-.02em',opacity:1,ease:'none',scrollTrigger:{trigger:v,start:'top 85%',end:'center 55%',scrub:true}});
-    gsap.fromTo(v.querySelector('figure img'),{scale:1.12},{scale:1,ease:'none',scrollTrigger:{trigger:v,start:'top bottom',end:'center center',scrub:true}});
-    gsap.from(v.querySelector('figure'),{y:60,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:v,start:'top 75%'}});
-    gsap.from(v.querySelector('.verb-txt p'),{y:20,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:v,start:'top 60%'}});
+  /* ---------- counters ---------- */
+  $$('.count').forEach(c=>{
+    const to=+c.dataset.to,o={v:to===0?99:0};
+    ScrollTrigger.create({trigger:c,start:'top 85%',once:true,onEnter:()=>gsap.to(o,{v:to,duration:2,ease:'power3.out',onUpdate:()=>c.textContent=Math.round(o.v)})});
   });
 
-  /* ---------- números do aço contam; blocos sobem ---------- */
-  gsap.from('.tile',{y:70,opacity:0,stagger:.12,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.tiles',start:'top 80%'}});
-  $$('.count').forEach(c=>{const to=+c.dataset.to,o={v:0};c.textContent='0';
-    ScrollTrigger.create({trigger:c,start:'top 88%',once:true,onEnter:()=>gsap.to(o,{v:to,duration:1.8,ease:'power3.out',onUpdate:()=>c.textContent=Math.round(o.v)})});});
+  /* ---------- parallax images ---------- */
+  $$('.parallax').forEach(img=>gsap.fromTo(img,{yPercent:-8},{yPercent:8,ease:'none',scrollTrigger:{trigger:img.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
 
-  /* ---------- demais entradas ---------- */
-  gsap.from('.mount h2',{yPercent:30,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.mount',start:'top 75%'}});
-  gsap.from('.mount .wrap>div>*',{y:24,opacity:0,stagger:.1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.mount',start:'top 65%'}});
-  gsap.from('.spec dl>div',{y:24,opacity:0,stagger:.04,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.spec dl',start:'top 80%'}});
-  ['.fit','.buy','.faq','.spec','.steel'].forEach(sel=>{
-    const h=$(sel+' h2'); if(h) gsap.from(h,{y:40,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 88%'}});
+  /* ---------- features sticky switcher ---------- */
+  const feats=$$('.feat'),fimgs=$$('.feat-frame img'),fbars=$$('.feat-progress i');
+  feats.forEach((f,i)=>ScrollTrigger.create({trigger:f,start:'top 55%',end:'bottom 55%',onToggle:s=>{
+    if(!s.isActive)return;
+    feats.forEach(x=>x.classList.remove('on'));f.classList.add('on');
+    fimgs.forEach((im,k)=>im.classList.toggle('on',k===i));
+    fbars.forEach((b,k)=>b.classList.toggle('on',k<=i));
+  }}));
+
+  /* ---------- horizontal world (desktop pin) ---------- */
+  const mm=gsap.matchMedia();
+  mm.add('(min-width: 901px)',()=>{
+    const wt=$('.world-track');
+    const dist=()=>Math.max(0,wt.scrollWidth-window.innerWidth);
+    const tw=gsap.to(wt,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.world-pin',start:'top top',end:()=>'+='+dist(),pin:true,scrub:1,invalidateOnRefresh:true,refreshPriority:1}});
+    $$('.w-card img').forEach(img=>gsap.fromTo(img,{scale:1.25},{scale:1,ease:'none',scrollTrigger:{trigger:img,containerAnimation:tw,start:'left right',end:'center center',scrub:true}}));
   });
-  gsap.from(['.fit-lead','.presets','.rng','.fit-board'],{y:28,opacity:0,stagger:.08,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.fit',start:'top 70%'}});
-  gsap.from('.buy-card',{y:60,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.buy-card',start:'top 85%'}});
-  gsap.from('.after>div',{y:24,opacity:0,stagger:.08,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.after',start:'top 90%'}});
-  gsap.from('.card',{y:50,opacity:0,stagger:.08,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.drawer',start:'top 80%'}});
-  gsap.from('.cta b',{yPercent:60,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.cta',start:'top 80%'}});
-  gsap.from('.foot-menu li',{x:-30,opacity:0,stagger:.06,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.foot',start:'top 70%'}});
-  gsap.fromTo('.foot-ph img',{scale:1.2},{scale:1,ease:'none',scrollTrigger:{trigger:'.foot',start:'top bottom',end:'bottom bottom',scrub:true}});
 
-  window.addEventListener('load',()=>ScrollTrigger.refresh());
+  /* ---------- bars ---------- */
+  ScrollTrigger.create({trigger:'.bars',start:'top 75%',once:true,onEnter:()=>{
+    $$('.bar-fill').forEach((b,i)=>gsap.to(b,{width:b.dataset.w+'%',duration:1.5,delay:i*.15,ease:'expo.out'}));
+  }});
+  gsap.from('.eq-box.hot',{scale:.6,ease:'back.out(2)',duration:1,scrollTrigger:{trigger:'.equation',start:'top 85%'}});
+
+  /* ---------- lifestyle clip reveals ---------- */
+  $$('.life-item').forEach(it=>{
+    gsap.to(it,{clipPath:'inset(0% 0% 0% 0% round 24px)',ease:'none',scrollTrigger:{trigger:it,start:'top 95%',end:'top 35%',scrub:true}});
+    gsap.to(it.querySelector('img'),{scale:1,ease:'none',scrollTrigger:{trigger:it,start:'top bottom',end:'bottom top',scrub:true}});
+  });
+
+  /* ---------- offer card glow ---------- */
+  gsap.fromTo('.card.main',{boxShadow:'0 30px 120px -40px rgba(252,84,0,0)'},{boxShadow:'0 30px 120px -40px rgba(252,84,0,.75)',scrollTrigger:{trigger:'.card.main',start:'top 80%',end:'top 30%',scrub:true}});
+  gsap.fromTo('.card.main .card-img img',{rotate:-6,scale:.9},{rotate:0,scale:1,ease:'none',scrollTrigger:{trigger:'.card.main',start:'top bottom',end:'center center',scrub:true}});
+
+  /* ---------- final ---------- */
+
+  ScrollTrigger.sort(); ScrollTrigger.refresh();
+  window.addEventListener('load',()=>{ScrollTrigger.sort();ScrollTrigger.refresh()});
 })();
 </script>
 </body>
